@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مجلس الإدارة | السيف غاليري</title>
+  <link rel="stylesheet" href="../css/shared-layout.css">
+  <style>
+    body {
+      background: white;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dialog-header {
+      background: #C62030;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+    
+    .dialog-header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .close-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .dialog-content {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .composition-section {
+      background: #F9FAFB;
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 48px;
+    }
+    
+    .composition-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 16px 0;
+      text-align: right;
+    }
+    
+    .composition-note {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+    
+    .composition-note strong {
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .ratio-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    
+    .ratio-card {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #E5E7EB;
+    }
+    
+    .ratio-card__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #6B7280;
+      margin-bottom: 8px;
+      text-align: right;
+    }
+    
+    .ratio-card__value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #C62030;
+      text-align: right;
+      unicode-bidi: plaintext;
+    }
+    
+    .member-profile {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .member-profile__name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 12px 0;
+      text-align: right;
+    }
+    
+    .member-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      justify-content: flex-end;
+    }
+    
+    .role-badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    
+    .role-badge--primary {
+      background: rgba(220, 38, 38, 0.1);
+      color: #DC2626;
+    }
+    
+    .role-badge--secondary {
+      background: rgba(107, 114, 128, 0.1);
+      color: #6B7280;
+    }
+    
+    .member-info {
+      font-size: 13px;
+      color: #6B7280;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 8px 0;
+      text-align: right;
+    }
+    
+    .section-content {
+      font-size: 13px;
+      color: #4B5563;
+      line-height: 1.5;
+      padding-right: 16px;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+    
+    .data-table {
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    
+    .data-table__header {
+      background: #F3F4F6;
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 3fr 2fr 1fr 2fr;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .data-table__row {
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 3fr 2fr 1fr 2fr;
+      gap: 12px;
+      font-size: 12px;
+      color: #1F2937;
+      border-top: 1px solid #E5E7EB;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .data-table__row:nth-child(even) {
+      background: #FAFAFA;
+    }
+    
+    .exp-table__header {
+      grid-template-columns: 4fr 3fr 2fr 2fr 3fr;
+    }
+    
+    .exp-table__row {
+      grid-template-columns: 4fr 3fr 2fr 2fr 3fr;
+    }
+    
+    @media (max-width: 899px) {
+      .dialog-content {
+        padding: 16px;
+      }
+      
+      .ratio-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .data-table__header,
+      .data-table__row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      
+      .exp-table__header,
+      .exp-table__row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog-header">
+    <h1>مجلس الإدارة</h1>
+    <button class="close-btn" title="إغلاق">&times;</button>
+  </div>
+  
+  <div class="dialog-content">
+    <!-- Board Composition -->
+    <div class="composition-section">
+      <h2>تكوين المجلس وتصنيف الأعضاء</h2>
+      <p class="composition-note">
+        <strong>ملاحظة:</strong> اعتذر كل من أحمد بن سليمان السيف وأحمد بن صالح السلطان عن الترشح للدورة الحالية. تم تخصيص مقعدين ضمن هيكل المجلس لاستكمال النصاب القانوني، والإجراءات المطلوبة جارية.
+      </p>
+      <div class="ratio-cards">
+        <div class="ratio-card">
+          <div class="ratio-card__label">نسبة الأعضاء المستقلين</div>
+          <div class="ratio-card__value">٢ من أصل ٦ = <bdi>٣٣٫٣٪</bdi></div>
+        </div>
+        <div class="ratio-card">
+          <div class="ratio-card__label">نسبة الأعضاء غير التنفيذيين</div>
+          <div class="ratio-card__value">٤ من أصل ٦ = <bdi>٦٦٫٧٪</bdi></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Board Members -->
+    
+    <!-- Member 1: Suleiman bin Mohammed Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">سليمان بن محمد السيف</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">رئيس مجلس الإدارة</span>
+        <span class="role-badge role-badge--secondary">غير تنفيذي</span>
+        <span class="role-badge role-badge--secondary">غير مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ١٢/٠٩/١٤٣٥هـ (٠٩/٠٧/٢٠١٤م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">شهادة في العلوم الشرعية، المعهد العلمي، الرياض، المملكة العربية السعودية، ١٩٧٤م</div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠٠٦م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة نواة للاستثمار العقاري</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠١٧م</div>
+          <div>التطوير العقاري</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة بيت التصنيع البلاستيكي</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠١٥م</div>
+          <div>تصنيع البلاستيك</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة السيف للوكالات التجارية</div>
+          <div>نائب رئيس مجلس الإدارة</div>
+          <div>٢٠١٨م</div>
+          <div>٢٠٢٢م</div>
+          <div>تجارة الجملة للسلع المنزلية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة السيف للوكالات التجارية</div>
+          <div>المدير العام</div>
+          <div>١٩٨٢م</div>
+          <div>٢٠١٧م</div>
+          <div>تجارة الجملة للسلع المنزلية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>التجارة الدولية</div>
+          <div>—</div>
+          <div>١٩٧٥م</div>
+          <div>مستمر</div>
+          <div>التجارة العامة (آسيا / أوروبا)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 2: Mohammed bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">محمد بن سليمان السيف</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">نائب الرئيس / العضو المنتدب</span>
+        <span class="role-badge role-badge--secondary">تنفيذي</span>
+        <span class="role-badge role-badge--secondary">غير مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ١٢/٠٩/١٤٣٥هـ (٠٩/٠٧/٢٠١٤م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">ماجستير في المالية، جامعة تامبا، فلوريدا، الولايات المتحدة الأمريكية، ٢٠١١م<br>بكالوريوس في الإدارة المالية، جامعة الملك سعود، المملكة العربية السعودية، ٢٠٠٦م</div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>العضو المنتدب</div>
+          <div>٢٠١٤م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة نواة للاستثمار العقاري</div>
+          <div>مؤسس مشارك وعضو مجلس إدارة</div>
+          <div>٢٠١٧م</div>
+          <div>التطوير العقاري</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>الرئيس التنفيذي</div>
+          <div>٢٠١٢م</div>
+          <div>٢٠٢٤م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>هيئة السوق المالية</div>
+          <div>متدرب</div>
+          <div>٢٠٠٨م</div>
+          <div>٢٠١١م</div>
+          <div>تنظيم سوق رأس المال</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة يقين للخدمات المالية</div>
+          <div>محلل مالي</div>
+          <div>٢٠٠٦م</div>
+          <div>٢٠٠٧م</div>
+          <div>خدمات الاستثمار المصرفي</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member 3: Haytham bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">هيثم بن سليمان السيف</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">نائب الرئيس التنفيذي وعضو</span>
+        <span class="role-badge role-badge--secondary">تنفيذي</span>
+        <span class="role-badge role-badge--secondary">غير مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ١٢/٠٩/١٤٣٥هـ (٠٩/٠٧/٢٠١٤م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">ماجستير في السياسة الشرعية، المعهد العالي للقضاء، المملكة العربية السعودية، ٢٠١٢م<br>بكالوريوس في الشريعة، جامعة الإمام محمد بن سعود الإسلامية، المملكة العربية السعودية، ٢٠٠٨م</div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>نائب الرئيس التنفيذي وعضو مجلس الإدارة</div>
+          <div>٢٠١٤م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة نواة للاستثمار العقاري</div>
+          <div>مؤسس مشارك وعضو مجلس إدارة</div>
+          <div>٢٠١٧م</div>
+          <div>التطوير العقاري</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة ذكاء اليوم الطبية (ويكسانا)</div>
+          <div>مؤسس مشارك</div>
+          <div>٢٠١٩م</div>
+          <div>المعدات والمستلزمات الطبية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة رشوف التجارية</div>
+          <div>مؤسس مشارك وعضو مجلس إدارة</div>
+          <div>٢٠١٩م</div>
+          <div>تجزئة العسل</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة نسيلة التجارية (كلارا)</div>
+          <div>مؤسس مشارك</div>
+          <div>٢٠١٩م</div>
+          <div>أجهزة التجميل والمنزل</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>مدير التسويق</div>
+          <div>٢٠١٤م</div>
+          <div>٢٠٢٣م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 4: Muhannad bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">مهند بن سليمان السيف</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">عضو</span>
+        <span class="role-badge role-badge--secondary">غير تنفيذي</span>
+        <span class="role-badge role-badge--secondary">غير مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ١٢/٠٩/١٤٣٥هـ (٠٩/٠٧/٢٠١٤م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">بكالوريوس في الشريعة، جامعة الإمام محمد بن سعود الإسلامية، المملكة العربية السعودية، ٢٠١٢م<br>شهادة دورة إدارة الأعمال، جامعة إنديانا، الولايات المتحدة الأمريكية، ٢٠١٢م</div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>عضو مجلس الإدارة وعضو لجنة المراجعة</div>
+          <div>٢٠١٤م / ٢٠٢١م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة نواة للاستثمار العقاري</div>
+          <div>الرئيس التنفيذي وعضو مجلس الإدارة</div>
+          <div>٢٠١٧م</div>
+          <div>التطوير العقاري</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة مشكاتي للإنارة</div>
+          <div>عضو مجلس الإدارة</div>
+          <div>٢٠٢٣م</div>
+          <div>تجارة الجملة والتجزئة للإنارة</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة إسناد</div>
+          <div>مؤسس مشارك ومدير عام</div>
+          <div>٢٠١٩م</div>
+          <div>النقل والخدمات اللوجستية</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>مدير التطوير</div>
+          <div>٢٠١٤م</div>
+          <div>٢٠١٧م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة نواة للاستثمار العقاري</div>
+          <div>نائب الرئيس التنفيذي</div>
+          <div>٢٠١٧م</div>
+          <div>٢٠٢٣م</div>
+          <div>التطوير العقاري</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 5: Mohammed bin Saud Al-Zamil -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">محمد بن سعود الزامل</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">عضو</span>
+        <span class="role-badge role-badge--secondary">غير تنفيذي</span>
+        <span class="role-badge role-badge--secondary">مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ٢٣/٠٥/١٤٤٣هـ (٢٧/١٢/٢٠٢١م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">
+        • شهادة في إدارة الثروات والاستثمار الدولي (CME4)، ٢٠٢٤م<br>
+        • معتمد في الاستراتيجية وتحليل المنافسة (CSCA)، معهد المحاسبين الإداريين، الولايات المتحدة، ٢٠٢١م<br>
+        • محاسب إداري معتمد (CMA)، معهد المحاسبين الإداريين، الولايات المتحدة، ٢٠٢٠م<br>
+        • محترف إدارة المشاريع (PMP)، معهد إدارة المشاريع، الولايات المتحدة، ٢٠١٧م<br>
+        • رخصة برنامج الاستثمار التنفيذي، جامعة كاليفورنيا بيركلي، الولايات المتحدة، ٢٠١٦م<br>
+        • برنامج تسريع الإدارة (MAP)، كلية إنسياد للأعمال، فرنسا، ٢٠١٥م<br>
+        • ماجستير في هندسة وإدارة أنظمة التصنيع، جامعة وارويك، المملكة المتحدة، ٢٠١١م<br>
+        • بكالوريوس في الهندسة الكيميائية، جامعة الملك سعود، المملكة العربية السعودية، ٢٠٠٩م
+      </div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>عضو مجلس إدارة مستقل، رئيس لجنة الترشيحات والمكافآت، عضو لجنة المراجعة</div>
+          <div>٢٠٢١م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة العربية للعود</div>
+          <div>عضو لجنة المراجعة</div>
+          <div>٢٠٢٤م</div>
+          <div>العطور الشرقية والأدوات التصميمية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة أمنكو للحلول الأمنية والسلامة</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠٢٠م</div>
+          <div>الحلول الأمنية والسلامة</div>
+        </div>
+        <div class="data-table__row">
+          <div>الشركة السعودية للنقل والخدمات اللوجستية (مبرد)</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠٢١م</div>
+          <div>النقل البري والخدمات اللوجستية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة BATC العقارية</div>
+          <div>عضو مجلس الإدارة</div>
+          <div>٢٠٢٠م</div>
+          <div>الاستثمار العقاري</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة BATC للاستثمار والخدمات اللوجستية</div>
+          <div>عضو مجلس الإدارة والمدير التنفيذي</div>
+          <div>٢٠٢٠م</div>
+          <div>الاستثمار والأمن والنقل</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة أمنكو لإدارة المرافق</div>
+          <div>رئيس مجلس الإدارة</div>
+          <div>٢٠٢٠م</div>
+          <div>إدارة المرافق</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة إبراهيم محمد المانع وإخوانه</div>
+          <div>عضو مجلس الإدارة وعضو لجنة المراجعة</div>
+          <div>٢٠٢٥م</div>
+          <div>قطاع الرعاية الصحية</div>
+        </div>
+        <div class="data-table__row">
+          <div>جامعة الملك سعود — قسم الهندسة الكيميائية</div>
+          <div>عضو المجلس الاستشاري</div>
+          <div>٢٠٢٠م</div>
+          <div>التعليم العالي</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة سواتر لتصنيع الهياكل الظليلة</div>
+          <div>عضو مجلس الإدارة</div>
+          <div>٢٠٢٥م</div>
+          <div>البناء والتظليل</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة جزال للاستثمار</div>
+          <div>الرئيس التنفيذي</div>
+          <div>٢٠١٩م</div>
+          <div>٢٠٢١م</div>
+          <div>تصنيع وخدمات الطاقة</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة الوفاء للصناعات</div>
+          <div>الرئيس التنفيذي</div>
+          <div>٢٠١٧م</div>
+          <div>٢٠١٩م</div>
+          <div>تصنيع قطع غيار السيارات</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>صندوق التنمية الصناعية السعودي</div>
+          <div>مستشار أول ونائب المدير العام</div>
+          <div>٢٠٠٩م</div>
+          <div>٢٠١٧م</div>
+          <div>التنمية والدعم الصناعي</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 6: Abdulmajeed bin Suleiman Al-Dakheel -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">عبدالمجيد بن سليمان الدخيل</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">عضو</span>
+        <span class="role-badge role-badge--secondary">غير تنفيذي</span>
+        <span class="role-badge role-badge--secondary">مستقل</span>
+      </div>
+      <p class="member-info">الجنسية: سعودي | تاريخ التعيين: ٢٣/٠٥/١٤٤٣هـ (٢٧/١٢/٢٠٢١م)</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">بكالوريوس في علوم المحاسبة، جامعة جنوب يوتا، الولايات المتحدة الأمريكية، ٢٠١٢م</div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>منذ</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>عضو مجلس إدارة مستقل ورئيس لجنة المراجعة</div>
+          <div>٢٠٢٢م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة القهوة الخشبية التجارية</div>
+          <div>عضو لجنة المراجعة</div>
+          <div>٢٠٢٤م</div>
+          <div>إنتاج القهوة</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة أساسيات التنمية للزراعة والتجارة</div>
+          <div>رئيس لجنة المراجعة وعضو مجلس الإدارة</div>
+          <div>٢٠٢٣م</div>
+          <div>الزراعة والتجارة</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة جازان للتنمية والاستثمار</div>
+          <div>عضو لجنة المراجعة</div>
+          <div>٢٠٢٢م</div>
+          <div>الزراعة</div>
+        </div>
+        <div class="data-table__row">
+          <div>شركة الاستثمار الجريء السعودية</div>
+          <div>عضو لجنة المراجعة</div>
+          <div>٢٠٢١م</div>
+          <div>الاستثمار الجريء</div>
+        </div>
+        <div class="data-table__row">
+          <div>ValuHub</div>
+          <div>شريك</div>
+          <div>٢٠٢٠م</div>
+          <div>الخدمات التقنية</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>الجهة</div>
+          <div>المنصب</div>
+          <div>من</div>
+          <div>إلى</div>
+          <div>القطاع</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة متاجر السيف للتنمية والاستثمار</div>
+          <div>عضو لجنة الترشيحات والمكافآت</div>
+          <div>مارس ٢٠٢٢م</div>
+          <div>سبتمبر ٢٠٢٥م</div>
+          <div>تجزئة السلع المنزلية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>شركة BKF البسام وشركاه</div>
+          <div>شريك</div>
+          <div>٢٠١٨م</div>
+          <div>٢٠٢٠م</div>
+          <div>المحاسبة القانونية</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>إرنست ويونغ وشركاه</div>
+          <div>مستشار مالي</div>
+          <div>٢٠١٤م</div>
+          <div>٢٠١٨م</div>
+          <div>المراجعة والتأكيد</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>مصفاة أرامكو السعودية (الجبيل)</div>
+          <div>محاسب مالي</div>
+          <div>٢٠١٣م</div>
+          <div>٢٠١٤م</div>
+          <div>تكرير النفط الخام</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    // Close button handler - using postMessage for reliable communication
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.close-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Send message to parent window
+        window.parent.postMessage({ type: 'closeLeadershipDialog' }, '*');
+      });
+    });
+  </script>
+</body>
+</html>

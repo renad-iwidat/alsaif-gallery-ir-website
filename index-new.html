@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Saif Gallery | Saudi Arabia's Home & Kitchen Retail Leader</title>
+    <meta name="description" content="Al Saif Gallery - Saudi Arabia's specialist in household essentials and kitchen appliances since 1993. 73 showrooms, proprietary brands, and commitment to lasting customer value.">
+    <meta name="theme-color" content="#C62030">
+    
+    <!-- Shared Layout CSS -->
+    <link rel="stylesheet" href="css/shared-layout.css">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Main Content */
+        .main-content {
+            background-color: #F8FAFB;
+        }
+        
+        /* Hero Section - بالضبط نفس Flutter */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 550px; /* قللت الارتفاع لقص من الأسفل */
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top; /* نركز على الأعلى */
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(139, 21, 32, 0.7); /* نفس Flutter */
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 calc(10% - 8px);
+            color: white;
+            max-width: 1000px; /* حد أقصى للعرض */
+        }
+        
+        .hero-title {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin: 0 0 24px 0;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.7;
+            margin: 0 0 20px 0;
+            color: white;
+            letter-spacing: 0.3px;
+        }
+        
+        .hero-desc {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.8;
+            margin: 0 0 16px 0;
+            color: white;
+            letter-spacing: 0.2px;
+            text-align: justify; /* محاذاة النص */
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            align-items: stretch; /* الأزرار بنفس الارتفاع */
+        }
+        
+        .hero-btn {
+            flex: 1; /* الأزرار بنفس العرض */
+            max-width: 200px; /* حد أقصى للعرض */
+            height: 48px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-btn.primary {
+            background-color: white;
+            color: #C62030;
+        }
+        
+        .hero-btn.secondary {
+            background-color: #8B0000;
+            color: white;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Stats Section - بالضبط نفس Flutter */
+        .stats-section {
+            width: 100%;
+            padding: 35px calc(10% - 8px) 60px; /* زيادة padding من تحت */
+            background-color: #F8FAFB; /* نفس Flutter */
+        }
+        
+        .stats-container {
+            display: flex;
+            gap: 24px; /* نفس Flutter */
+        }
+        
+        .stat-card {
+            flex: 1;
+            height: 100px; /* نفس Flutter */
+            background-color: white;
+            border: 1px solid #E5E7EB; /* نفس Flutter */
+            border-radius: 10px; /* نفس Flutter */
+            box-shadow: 
+                0 1px 2px -1px rgba(0, 0, 0, 0.1),
+                0 1px 3px 0 rgba(0, 0, 0, 0.1); /* نفس Flutter */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .stat-number {
+            color: #C62030; /* اللون الأصلي من Flutter */
+            font-size: 17px; /* أصغر شوي */
+            font-weight: 800; /* أغمق */
+            line-height: 1.15; /* نفس Flutter */
+            margin-bottom: 6px; /* نفس Flutter بالضبط */
+        }
+        
+        .stat-title {
+            color: #101727; /* نفس Flutter بالضبط */
+            font-size: 11px; /* نفس Flutter بالضبط */
+            font-weight: 800; /* أغمق */
+            line-height: 1.48; /* نفس Flutter */
+            margin-bottom: 3px; /* نفس Flutter بالضبط */
+        }
+        
+        .stat-subtitle {
+            color: #495565; /* نفس Flutter بالضبط */
+            font-size: 9px; /* نفس Flutter بالضبط */
+            font-weight: 400; /* نفس Flutter بالضبط */
+            line-height: 1.40; /* نفس Flutter */
+        }
+        
+        /* Brands Section - بالضبط نفس Flutter */
+        .brands-section {
+            position: relative;
+            width: 100%;
+            background-color: white;
+            padding: 3px 0; /* نفس Flutter */
+        }
+        
+        .brands-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.08; /* نفس Flutter بالضبط - على خلفية بيضاء يعطي مظهر وردي فاتح */
+            z-index: 1;
+        }
+        
+        .jug-icon {
+            width: 700px;
+            height: 700px;
+            fill: #D91F36;
+            color: #D91F36; /* عشان currentColor يشتغل */
+        }
+        
+        .brands-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .brands-header {
+            padding: 51px calc(10% - 8px) 16px; /* تقليل padding من تحت */
+            text-align: center;
+        }
+        
+        .brands-title {
+            color: #C62030; /* اللون الأصلي من Flutter */
+            font-size: 32px; /* نفس Flutter بالضبط */
+            font-weight: 700; /* نفس Flutter بالضبط */
+            line-height: 1.25; /* نفس Flutter */
+            margin: 0 0 24px 0; /* نفس Flutter بالضبط */
+        }
+        
+        .brands-desc {
+            color: #495565; /* نفس Flutter بالضبط */
+            font-size: 15px; /* نفس Flutter بالضبط */
+            font-weight: 400; /* نفس Flutter بالضبط */
+            line-height: 1.68; /* نفس Flutter */
+            margin: 0 0 12px 0; /* تقليل المسافة بين الفقرتين */
+            max-width: 1200px; /* نفس Flutter */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: justify;
+        }
+        
+        .service-cards {
+            display: flex;
+            gap: 24px;
+            padding: 8px calc(10% - 8px) 130px;
+            align-items: stretch;
+        }
+
+        .service-card {
+            flex: 1;
+            min-height: 240px;
+            padding: 24px;
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-self: stretch; /* كل كارد يمتد لنفس الارتفاع */
+        }
+        
+        /* في العربي، عكس اتجاه السهم في الكروت */
+        body.ar .service-link svg {
+            transform: scaleX(-1);
+        }
+        
+        .service-card {
+            flex: 1;
+            min-height: 240px;
+            padding: 24px;
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-icon {
+            width: 32px; /* نفس Flutter */
+            height: 32px; /* نفس Flutter */
+            margin-bottom: 16px; /* نفس Flutter */
+        }
+        
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #C62030;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* عشان الأيقونات اللي فيها fill بدل stroke */
+        .service-icon svg path[fill="currentColor"],
+        .service-icon svg path:not([stroke]) {
+            fill: #C62030;
+            stroke: none;
+        }
+
+        /* خلي currentColor يساوي الأحمر */
+        .service-icon {
+            color: #C62030;
+        }
+        
+        .service-title {
+            color: #111827; /* نفس Flutter بالضبط */
+            font-size: 15px; /* نفس Flutter بالضبط */
+            font-weight: 600; /* نفس Flutter بالضبط */
+            line-height: 1.4; /* نفس Flutter */
+            margin: 0 0 10px 0; /* نفس Flutter بالضبط */
+        }
+        
+        .service-desc {
+            color: #6B7280; /* نفس Flutter بالضبط */
+            font-size: 12px; /* نفس Flutter بالضبط */
+            font-weight: 400; /* نفس Flutter بالضبط */
+            line-height: 1.5; /* نفس Flutter */
+            margin: 0 0 12px 0; /* نفس Flutter بالضبط */
+            flex: 1;
+        }
+        
+        .service-link {
+            display: flex;
+            align-items: center;
+            gap: 6px; /* نفس Flutter */
+            color: #C62030; /* اللون الأصلي من Flutter */
+            font-size: 12px; /* نفس Flutter بالضبط */
+            font-weight: 500; /* نفس Flutter بالضبط */
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .service-link svg {
+            width: 14px; /* نفس Flutter بالضبط */
+            height: 14px; /* نفس Flutter بالضبط */
+            stroke: #C62030; /* اللون الأصلي من Flutter */
+            fill: none;
+            transition: transform 0.2s ease;
+        }
+        
+        /* في العربي، عكس اتجاه السهم */
+        body.ar .service-link svg {
+            transform: scaleX(-1);
+        }
+        
+        /* في العربي، عكس اتجاه السهم */
+        body.ar .service-link svg {
+            transform: scaleX(-1);
+        }
+        
+        .service-link:hover {
+            opacity: 0.8;
+        }
+        
+        .arrow-icon {
+            width: 14px; /* نفس Flutter */
+            height: 14px; /* نفس Flutter */
+            fill: #D91F36; /* أفتح شوي */
+        }
+        
+        /* Arabic RTL Support */
+        body.ar .hero-content {
+            text-align: right;
+        }
+        
+        body.ar .hero-desc {
+            text-align: justify;
+        }
+        
+        body.ar .brands-desc {
+            text-align: right;
+        }
+        
+        body.ar .service-cards {
+            direction: rtl; /* من اليمين لليسار */
+            flex-direction: row; /* عادي */
+        }
+        
+        body.ar .service-card {
+            text-align: right; /* الكلام محاذي لليمين */
+            direction: rtl; /* اتجاه الكارد من اليمين لليسار */
+        }
+        
+        /* في العربي، الأسهم تكون باتجاه اليسار */
+        body.ar .service-link svg {
+            transform: scaleX(-1);
+        }
+        
+        /* في العربي، ترتيب النص والسهم */
+        body.ar .service-link {
+            flex-direction: row; /* الأيقونة أول، النص ثاني */
+            justify-content: flex-start;
+            direction: rtl; /* من اليمين لليسار */
+        }
+        
+        /* كروت الإحصائيات في العربي */
+        body.ar .stats-container {
+            direction: rtl; /* من اليمين لليسار */
+            flex-direction: row-reverse; /* عكس الترتيب */
+        }
+        
+        body.ar .stat-card {
+            text-align: center; /* الأرقام في الوسط */
+            direction: rtl;
+        }
+
+        /* Mobile Responsive - نفس Flutter */
+        @media (max-width: 599px) {
+            .hero-section {
+                height: 400px; /* أقل للموبايل */
+            }
+            
+            .hero-content {
+                padding: 40px 24px 32px;
+                justify-content: flex-start;
+                max-width: 100%;
+            }
+            
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                font-size: 14px;
+            }
+            
+            .hero-desc {
+                font-size: 13px;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+                gap: 12px;
+            }
+            
+            .hero-btn {
+                flex: 1;
+                max-width: none;
+                height: 48px;
+                font-size: 14px;
+                font-weight: 700;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .stat-number {
+                font-size: 24px; /* أصغر للموبايل بس ما زال كبير */
+            }
+            
+            .stat-title {
+                font-size: 13px; /* أصغر للموبايل */
+            }
+            
+            .stat-subtitle {
+                font-size: 11px; /* أصغر للموبايل */
+            }
+            
+            .brands-title {
+                font-size: 32px; /* أصغر للموبايل */
+            }
+            
+            .brands-desc {
+                font-size: 16px; /* أصغر للموبايل */
+            }
+            
+            .service-cards {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .service-title {
+                font-size: 15px; /* أصغر للموبايل */
+            }
+            
+            .service-desc {
+                font-size: 12px; /* أصغر للموبايل */
+            }
+            
+            .service-link {
+                font-size: 12px; /* أصغر للموبايل */
+            }
+            
+            .jug-icon {
+                width: 500px;
+                height: 500px;
+            }
+        }
+        
+        @media (min-width: 600px) and (max-width: 899px) {
+            .stats-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            
+            .service-cards {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body data-page="home">
+    <div class="container">
+        <!-- Top Bar -->
+        <div id="top-bar-container"></div>
+        
+        <!-- Navigation Bar -->
+        <div id="nav-bar-container"></div>
+        
+        <!-- Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-background">
+                    <img src="assets/images/modern_kitchen.jpeg" alt="Modern Kitchen" />
+                    <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-content">
+                    <h1 class="hero-title" id="hero-title">Saudi Arabia's Home<br>Since 1993.</h1>
+                    <p class="hero-subtitle" id="hero-subtitle">Thirty years of serving Saudi households. One purpose: trusted quality, every day.</p>
+                    <p class="hero-desc" id="hero-desc1">Al Saif Gallery is Saudi Arabia's specialist in household essentials and kitchen appliances, built from a single Riyadh showroom into a national retail platform of 73 locations across the Kingdom and the GCC. Listed on Tadawul since 2022, we combine the scale of a public company with the discipline of an operator that has earned household trust for three decades.</p>
+                    <p class="hero-desc" id="hero-desc2">Our model is powered by proprietary and exclusive brands, including Edison, Tornado, Robust, and Rocky, designed and specified for Saudi homes, Saudi kitchens, and Saudi hospitality traditions. Every product we carry reflects a deliberate choice: quality that earns loyalty, value that respects the customer.</p>
+                    <div class="hero-buttons">
+                        <button class="hero-btn primary" id="hero-btn1" onclick="goToAbout()">Explore Our Story</button>
+                        <button class="hero-btn secondary" id="hero-btn2" onclick="goToInvestors()">Investor Relations</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="73">0</div>
+                        <div class="stat-title" id="stat-title1">Showrooms</div>
+                        <div class="stat-subtitle" id="stat-subtitle1">Saudi Arabia & 4 GCC countries</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="758.8" data-decimal="true" data-prefix="SAR " data-suffix="M">SAR 0M</div>
+                        <div class="stat-title" id="stat-title2">Revenue</div>
+                        <div class="stat-subtitle" id="stat-subtitle2">FY 2025 Performance</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="88" data-prefix="~" data-suffix="%">~0%</div>
+                        <div class="stat-title" id="stat-title3">Proprietary Revenue</div>
+                        <div class="stat-subtitle" id="stat-subtitle3">Owned & exclusive brands</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="37" data-suffix="%">0%</div>
+                        <div class="stat-title" id="stat-title4">E-Commerce Growth</div>
+                        <div class="stat-subtitle" id="stat-subtitle4">SAR 94M digital sales</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brands Section -->
+            <section class="brands-section">
+                <div class="brands-background">
+                    <svg class="jug-icon" xmlns="http://www.w3.org/2000/svg" width="608" height="868" fill="none" viewBox="0 0 608 868">
+                        <path fill="currentColor" d="m53.296 654.239 3.218 2.048c-2.409 4.595-4.784 9.189-7.365 13.853-11.598 20.719-26.036 46.514-23.214 84.096 2.582 34.107 22.32 68.696 50.3 88.158C98.141 857.675 134.777 868 171.242 868c20.064 0 40.112-3.132 57.613-10.256 12.682 3.923 43.881 11.925 72.773 5.885 20.031-4.233 36.344-16.158 44.311-22.904 28.015-23.627 39.218-58.835 32.421-101.821-5.042-31.594-18.052-60.883-30.648-89.225-16.382-36.894-33.332-75.01-33.745-119.683-.431-41.145 14.265-71.965 43.691-91.599 34.124-22.698 96.349-16.262 142.863.172 36.086 12.785 69.297 33.676 104.557 65.701l2.289-2.186c-34.262-41.85-78.556-87.452-147.303-108.463-37.858-11.564-74.58-10.015-106.157 4.526-29.289 13.491-51.659 37.238-62.982 66.871-15.746 41.093-3.476 95.987.654 111.836 5.833 22.199 14.334 41.73 22.56 60.625 4.766 10.944 9.258 21.269 13.078 31.732 15.591 43.209 19.893 78.435 13.13 107.723-8.088 35.828-31.457 56.942-65.77 59.472-20.942 1.548-39.613-5.146-51.814-10.325-41.317-17.363-71.294-44.845-100.892-73.875-.757-.723-1.497-1.635-2.22-2.495-2.133-2.53-4.525-5.438-7.193-3.734l-1.239.791.689 1.291c28.187 52.743 61.966 86.557 105.899 105.882-81.619 2.202-138.388-22.233-156.302-67.405-13.354-34.003 4.526-77.643 10.342-90.188 4.767-10.205 10.204-20.03 15.453-29.529 7.847-14.145 15.952-28.755 22.353-45.533 12.339-32.593 20.323-72.206 21.39-106.003 1.342-43.709-8.621-76.749-28.806-95.557-.31-.637-.93-1.102-1.635-1.17-.809-.086-1.876.413-2.134 1.738l-.103.516.24.482c13.888 28.548 10.067 70.829 6.54 93.492-7.28 46.617-22.663 91.548-47.873 140.092l-1.773-2.805c-30.39-48.183-38.065-117.532-19.067-172.512 6.643-19.222 14.971-36.344 23.472-48.252 14.077-19.704 46.359-33.814 70.967-42.177 23.679-8.054 52.468-14.834 85.611-20.168 3.201-.517 6.35-1.016 9.516-1.515 27.396-4.336 53.26-8.432 74.684-21.166 19.135-11.426 41.472-32.782 39.235-69.607-1.635-24.178-10.188-48.923-25.434-73.514-13.078-21.045-29.788-35.982-51.005-45.602 11.065-23.265 8.432-60.349-10.429-71.878 7.366-17.897 7.159-40.061-.619-58.233-5.816-13.56-15.057-23.214-26.053-27.223l-.62-.224-.585.275c-12.338 5.627-23.059 18.327-28.703 33.987-6.057 16.812-5.507 34.399 1.549 49.61-14.318 15.953-23.283 46.067-14.232 70.537-47.064 17.725-72.463 62.587-73.479 129.836l-.172 12.39 3.287-11.942c14.644-52.915 34.003-105.332 94.869-114.297l2.03-.293-.791-1.893c-8.707-20.615-12.786-49.49-2.254-67.542 1.858-3.218 4.009-5.455 6.332-7.847 1.824-1.876 3.734-3.855 5.386-6.28l.499-.74-.912-1.98c-4.147-9.086-9.292-20.374-7.485-34.726.963-8.38 8.191-24.126 14.851-24.126h.395c5.834.568 10.325 16.21 11.203 24.797 1.566 15.952-3.442 26.81-8.708 36.55l-.585 1.085.912.843c8.57 7.847 14.559 23.764 15.247 40.525.637 15.66-3.304 29.306-10.858 37.462l-1.704 1.859 2.409.74c21.459 6.625 37.893 19.29 51.676 39.837 8.605 12.803 22.973 38.908 22.698 69.521-.103 3.184-1.205 11.719-2.908 15.952-12.906 33.35-62.586 41.162-106.399 48.08-8.724 1.359-16.984 2.667-24.848 4.147l-8.57 1.6c-23.472 4.371-45.671 8.501-65.649 17.26-23.834 10.308-44.26 23.455-57.493 37.015C13.924 431.462-.841 476.685.037 532.99c.826 55.979 20.237 100.169 53.26 121.232"/>
+                    </svg>
+                </div>
+                <div class="brands-content">
+                    <div class="brands-header">
+                        <h2 class="brands-title" id="brands-title">Built on Brands Customers Return To</h2>
+                        <p class="brands-desc" id="brands-desc1">We source, design, and deliver household essentials across categories customers buy repeatedly and rely on daily. Our platform is structured around three reinforcing strengths: a proprietary brand portfolio with specifications tailored to Saudi households; a national showroom network supported by centralized warehousing and a Jeddah fulfillment center; and integrated service infrastructure covering warranty, repair, and spare parts that transforms a purchase into a lasting relationship.</p>
+                        <p class="brands-desc" id="brands-desc2">This is not generic retail. Al Saif Gallery operates in a carefully defined niche: the household goods and kitchen appliances categories where we hold a leading position in Saudi Arabia, delivering dependable quality at competitive value. Our Edison brand has grown from the country's most recognized small appliance label into a full home ecosystem, including refrigerators, washing machines, air conditioning, and built-in kitchen solutions.</p>
+                    </div>
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M26.667 11.667h10v10"/>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M36.666 11.667 22.5 25.833 14.166 17.5 3.333 28.333"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title" id="service-title1">Strategy & Operations</h3>
+                            <p class="service-desc" id="service-desc1">How we grow with discipline: store network, brand portfolio, digital channels, and after-sales capabilities.</p>
+                            <a href="strategy.html" class="service-link" id="service-link1">
+                                <span>Explore Strategy</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333" d="M6 3.333 10.667 8 6 12.667"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M16.667 20h6.667m-6.667-6.667h6.667m0 21.667v-5a3.333 3.333 0 0 0-6.667 0v5"/>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M10 16.667H6.666A3.333 3.333 0 0 0 3.333 20v11.667A3.333 3.333 0 0 0 6.666 35h26.667a3.333 3.333 0 0 0 3.333-3.333V15a3.333 3.333 0 0 0-3.333-3.333H30"/>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M10 35V8.333A3.333 3.333 0 0 1 13.333 5h13.334A3.333 3.333 0 0 1 30 8.333V35"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title" id="service-title2">Investors & Governance</h3>
+                            <p class="service-desc" id="service-desc2">Financial results, regulatory disclosures, board structure, and shareholder services for Tadawul investors.</p>
+                            <a href="investors.html" class="service-link" id="service-link2">
+                                <span>Investor Center</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333" d="M6 3.333 10.667 8 6 12.667"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="m20.636 17.187 2.02 11.368a.667.667 0 0 1-1.08.626L16.802 25.6a1.333 1.333 0 0 0-1.596 0l-4.781 3.581a.666.666 0 0 1-1.08-.625l2.019-11.368"/>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667" d="M16 18.667a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title" id="service-title3">Our Brands</h3>
+                            <p class="service-desc" id="service-desc3">Edison, Tornado, Robust, Rocky, and more. Proprietary and exclusive brands engineered for Saudi homes and hospitality.</p>
+                            <a href="brands.html" class="service-link" id="service-link3" onclick="goToBrands(); return false;">
+                                <span>Brand Portfolio</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333" d="M6 3.333 10.667 8 6 12.667"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 40 40">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M26.666 35v-3.333A6.667 6.667 0 0 0 20 25H10a6.667 6.667 0 0 0-6.667 6.667V35M26.667 5.213a6.667 6.667 0 0 1 0 12.907m10 16.88v-3.333a6.667 6.667 0 0 0-5-6.45M15 18.333A6.667 6.667 0 1 0 15 5a6.667 6.667 0 0 0 0 13.333Z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title" id="service-title4">Careers & Culture</h3>
+                            <p class="service-desc" id="service-desc4">Join a team serving Saudi households across 73 locations. Explore opportunities in retail, logistics, digital, and corporate functions.</p>
+                            <a href="news-careers.html#careers" class="service-link" id="service-link4">
+                                <span>Explore Roles</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.333" d="M6 3.333 10.667 8 6 12.667"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div id="footer-container"></div>
+        </div>
+    </div>
+    
+    <!-- Brands Modal -->
+    <div id="brands-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; align-items: center; justify-content: center; overflow-y: auto; padding: 20px;">
+        <div id="brands-modal-content" style="background: white; border-radius: 8px; max-width: 1200px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; direction: ltr;">
+            <!-- Header -->
+            <div style="background-color: #C62030; padding: 20px 24px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;">
+                <h2 id="modal-title" style="color: white; font-size: 20px; font-weight: 700; margin: 0;">Brand Portfolio</h2>
+                <button onclick="closeBrandsModal()" style="background: none; border: none; color: white; font-size: 28px; cursor: pointer; padding: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; line-height: 1;">&times;</button>
+            </div>
+            
+            <!-- Content -->
+            <div style="padding: 24px; text-align: left;">
+                <!-- Introduction -->
+                <p id="modal-intro" style="color: #6B7280; font-size: 14px; line-height: 1.6; margin-bottom: 32px; text-align: left;">
+                    The Company holds a diversified portfolio of brands comprising both proprietary and international brands distributed through its showroom network. This portfolio covers multiple categories, including household essentials and kitchen appliances. During the fiscal year 2025, the Company added major kitchen appliances to its product range, supported by delivery, installation, warranty, and spare parts availability services.
+                </p>
+                
+                <!-- Proprietary Brands -->
+                <h3 id="modal-prop-title" style="color: #E7000B; font-size: 24px; font-weight: 700; margin-bottom: 8px; text-align: left;">Proprietary Brands</h3>
+                <p id="modal-prop-subtitle" style="color: #6B7280; font-size: 13px; margin-bottom: 20px; text-align: left;">Home Appliances and Kitchen Tools</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 32px;">
+                    <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; text-align: left;">
+                        <img src="assets/images/EDISON.jpeg" alt="Edison" style="height: 40px; margin-bottom: 12px;">
+                        <p id="modal-edison" style="color: #6B7280; font-size: 13px; line-height: 1.5; margin: 0; text-align: left;">Small and large home appliances designed to meet everyday household usage requirements, including products dedicated to traditional cuisine preparation.</p>
+                    </div>
+                    
+                    <div style="background-color: white; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; text-align: left;">
+                        <img src="assets/images/TORNADO.jpeg" alt="Tornado" style="height: 40px; margin-bottom: 12px;">
+                        <p id="modal-tornado" style="color: #6B7280; font-size: 13px; line-height: 1.5; margin: 0; text-align: left;">A diverse range of kitchen tools designed for daily food preparation and cooking.</p>
+                    </div>
+                    
+                    <div style="background-color: white; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; text-align: left;">
+                        <img src="assets/images/ROCKY.jpeg" alt="Rocky" style="height: 40px; margin-bottom: 12px;">
+                        <p id="modal-rocky" style="color: #6B7280; font-size: 13px; line-height: 1.5; margin: 0; text-align: left;">Cookware and preparation tools engineered for safe use, distinguished by their durability.</p>
+                    </div>
+                    
+                    <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; text-align: left;">
+                        <img src="assets/images/ROBUST.jpeg" alt="Robust" style="height: 40px; margin-bottom: 12px;">
+                        <p id="modal-robust" style="color: #6B7280; font-size: 13px; line-height: 1.5; margin: 0; text-align: left;">Serving and kitchen tools designed for home use, with an emphasis on durability and practical functionality.</p>
+                    </div>
+                </div>
+                
+                <!-- Two Columns -->
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-bottom: 24px;">
+                    <!-- Storage Brands -->
+                    <div style="text-align: left;">
+                        <h4 id="modal-storage-title" style="color: #1A1A1A; font-size: 18px; font-weight: 700; margin-bottom: 8px; text-align: left;">Storage, Serving, and Hospitality Accessory Brands</h4>
+                        <p id="modal-storage-text" style="color: #6B7280; font-size: 14px; line-height: 1.6; margin-bottom: 16px; text-align: left;">The Company's portfolio includes a number of branded lines specialized in vacuum flasks, serving ware, and beverage accessories for domestic hospitality use. These brands include:</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Everest</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Timeless</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Elegance</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Royal</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Lima</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Falcon</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Rain</div>
+                            <div style="background-color: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 6px; padding: 12px 16px; font-size: 14px; font-weight: 700; color: #101828; text-align: center;">Glory</div>
+                        </div>
+                    </div>
+                    
+                    <!-- International Brands -->
+                    <div style="text-align: left;">
+                        <h4 id="modal-intl-title" style="color: #1A1A1A; font-size: 18px; font-weight: 700; margin-bottom: 8px; text-align: left;">International Partnerships and Brands</h4>
+                        <p id="modal-intl-text" style="color: #6B7280; font-size: 14px; line-height: 1.6; margin-bottom: 16px; text-align: left;">The product portfolio additionally includes international brands distributed through the Company's showrooms.</p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="background-color: #E7000B; border-radius: 6px; padding: 12px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; color: white; font-size: 13px; font-weight: 600;">
+                                <div id="modal-table-brand" style="text-align: left;">Brand</div>
+                                <div id="modal-table-country" style="text-align: left;">Country of Origin</div>
+                            </div>
+                            <div style="background-color: #F9FAFB; border-radius: 6px; padding: 12px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; font-size: 13px;">
+                                <div style="font-weight: 700; color: #101828; text-align: left;">Markutec</div>
+                                <div id="modal-germany1" style="color: #364153; text-align: left;">Germany</div>
+                            </div>
+                            <div style="background-color: #F9FAFB; border-radius: 6px; padding: 12px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; font-size: 13px;">
+                                <div style="font-weight: 700; color: #101828; text-align: left;">Helios</div>
+                                <div id="modal-germany2" style="color: #364153; text-align: left;">Germany</div>
+                            </div>
+                            <div style="background-color: #F9FAFB; border-radius: 6px; padding: 12px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; font-size: 13px;">
+                                <div style="font-weight: 700; color: #101828; text-align: left;">Hascevher</div>
+                                <div id="modal-turkey1" style="color: #364153; text-align: left;">Turkey</div>
+                            </div>
+                            <div style="background-color: #F9FAFB; border-radius: 6px; padding: 12px 16px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; font-size: 13px;">
+                                <div style="font-weight: 700; color: #101828; text-align: left;">Falez</div>
+                                <div id="modal-turkey2" style="color: #364153; text-align: left;">Turkey</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Note -->
+                <div style="background-color: #efddcd; border-left: 4px solid #C62030; border-radius: 6px; padding: 12px 16px; font-size: 12px; line-height: 1.5; color: #364153; text-align: left;">
+                    <strong id="modal-note-label">Note: </strong>
+                    <span id="modal-note-text">All proprietary brands (Edison, Tornado, Rocky, Robust) are designed and specified for Saudi households, with approximately 88% of our revenue flowing through brands we own or exclusively distribute.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* Modal Responsive Styles */
+        @media (max-width: 768px) {
+            #brands-modal-content {
+                max-width: 95% !important;
+                margin: 10px !important;
+            }
+            
+            #brands-modal-content > div:first-child {
+                padding: 20px !important;
+            }
+            
+            #brands-modal-content > div:last-child {
+                padding: 20px !important;
+            }
+            
+            #brands-modal-content [style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            #brands-modal-content table {
+                font-size: 12px !important;
+            }
+            
+            #brands-modal-content table th,
+            #brands-modal-content table td {
+                padding: 8px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #brands-modal {
+                padding: 10px !important;
+            }
+            
+            #brands-modal-content {
+                max-width: 100% !important;
+            }
+            
+            #brands-modal-content h2 {
+                font-size: 20px !important;
+            }
+            
+            #brands-modal-content h3 {
+                font-size: 18px !important;
+            }
+            
+            #brands-modal-content h4 {
+                font-size: 14px !important;
+            }
+        }
+    </style>
+    
+    <script>
+        // Language system - determine language from page location, not localStorage
+        const isInArFolder = window.location.pathname.includes('/ar/');
+        let currentLanguage = isInArFolder ? 'ar' : 'en';
+        
+        // Save to localStorage for consistency
+        localStorage.setItem('lang', currentLanguage);
+        
+        // Force update on page load
+        function initializeLanguage() {
+            console.log('Initializing language:', currentLanguage);
+            updateLanguage();
+        }
+        
+        const translations = {
+            ar: {
+                documents: 'مكتبة الوثائق',
+                contact: 'تواصل معنا',
+                search: 'بحث',
+                language: 'عربي / EN',
+                
+                // Hero Section
+                heroTitle: 'بيت الأسرة السعودية\nمنذ ١٩٩٣.',
+                heroSubtitle: 'ثلاثة عقود في خدمة الأسرة السعودية. هدفنا واحد: جودة تُبنى عليها الثقة، كل يوم',
+                heroDesc1: 'السيف غاليري وجهة متخصصة في المملكة العربية السعودية لمستلزمات المنزل وأجهزة المطبخ، انطلقت من معرض واحد في الرياض لتصبح اليوم منصة تجزئة وطنية تضم ٧٣ صالة عرض عبر المملكة ودول مجلس التعاون الخليجي. ومنذ إدراجها في السوق المالية السعودية (تداول) عام ٢٠٢٢، تجمع السيف غاليري بين مزايا الشركة المدرجة وانضباط التشغيل الذي بنى ثقة الأسر السعودية على مدى ثلاثة عقود.',
+                heroDesc2: 'يقوم نموذج أعمالنا على علامات تجارية مملوكة وحصرية، في مقدمتها إيدسون وتورنادو وروبست وروكي، صُمّمت ووُضّعت مواصفاتها للبيت السعودي ومطبخه وضيافته. وكل منتج نقدمه هو اختيار مدروس: جودة تكسب الولاء، وقيمة تحترم العميل.',
+                heroBtn1: 'اكتشف قصتنا',
+                heroBtn2: 'علاقات المستثمرين',
+                
+                // Stats Section
+                statTitle1: 'صالة عرض',
+                statSubtitle1: 'في المملكة و٤ دول خليجية',
+                statTitle2: 'الإيرادات',
+                statSubtitle2: 'الأداء المالي لعام ٢٠٢٥',
+                statTitle3: 'إيرادات العلامات الخاصة',
+                statSubtitle3: 'علامات مملوكة وحصرية',
+                statTitle4: 'نمو التجارة الإلكترونية',
+                statSubtitle4: '٩٤ مليون ريال سعودي مبيعات رقمية',
+                
+                // Brands Section
+                brandsTitle: 'علامات تجارية يثق بها العملاء ويعودون إليها',
+                brandsDesc1: 'نقوم بتصميم وتوريد وتقديم مستلزمات المنزل عبر فئات يعتمد عليها العملاء في حياتهم اليومية ويعودون لشرائها باستمرار. ويقوم نموذج أعمالنا على ثلاث ركائز رئيسية متكاملة: محفظة من العلامات التجارية المملوكة المصممة خصيصًا لتلبية احتياجات الأسر السعودية، وشبكة وطنية من صالات العرض مدعومة بمستودع مركزي ومركز توزيع في جدة، ومنظومة متكاملة لخدمات ما بعد البيع تشمل الضمان والصيانة وتوفير قطع الغيار؛ بما يحوّل عملية الشراء إلى علاقة طويلة الأمد مع العميل.',
+                brandsDesc2: 'هذا ليس نموذج تجارة تجزئة تقليدي، إذ تعمل السيف غاليري في قطاع متخصص محدد المعالم، في فئات الأدوات المنزلية وأجهزة المطبخ حيث نتمتع بموقع ريادي في المملكة العربية السعودية، ونقدم فيها جودة موثوقة بقيمة تنافسية. وتطورت علامة إديسون -من أكثر العلامات شهرة في الأجهزة المنزلية الصغيرة في المملكة- إلى منظومة متكاملة للأجهزة المنزلية، تشمل الثلاجات والغسالات وأنظمة التكييف وحلول المطابخ المدمجة.',
+                
+                // Service Cards
+                serviceTitle1: 'الاستراتيجية والعمليات',
+                serviceDesc1: 'كيف ننمو بانضباط: شبكة الفروع، محفظة العلامات التجارية، القنوات الرقمية، وخدمات ما بعد البيع.',
+                serviceLink1: 'اكتشف الاستراتيجية',
+                
+                serviceTitle2: 'المستثمرون والحوكمة',
+                serviceDesc2: 'النتائج المالية، والإفصاحات التنظيمية، وهيكل مجلس الإدارة، وخدمات المساهمين لمستثمري تداول.',
+                serviceLink2: 'مركز المستثمرين',
+                
+                serviceTitle3: 'علاماتنا التجارية',
+                serviceDesc3: 'إيدسون، تورنادو، روبست، روكي وغيرها. علامات خاصة وحصرية صُمّمت للبيت السعودي والضيافة الخليجية.',
+                serviceLink3: 'محفظة العلامات التجارية',
+                
+                // Brands Modal
+                modalTitle: 'محفظة العلامات التجارية',
+                modalIntro: 'تمتلك الشركة محفظة متنوعة من العلامات التجارية تضم علامات ملكية وعلامات دولية موزعة عبر شبكة صالات العرض. تغطي المحفظة فئات متعددة، بما في ذلك الأجهزة المنزلية وأدوات المطبخ. خلال السنة المالية 2025، أضافت الشركة علامات تجارية رئيسية لمجموعة الأجهزة المنزلية الصغيرة في نطاقها المتميز، مدعومة بالموثوقية والضمان وتوافر قطع الغيار.',
+                modalPropTitle: 'العلامات التجارية الملكية',
+                modalPropSubtitle: 'الأجهزة المنزلية وأدوات المطبخ',
+                modalEdison: 'أجهزة منزلية صغيرة وكبيرة مصممة لتلبية متطلبات الاستخدام المنزلي اليومي، بما في ذلك منتجات مخصصة لتحضير المأكولات التقليدية.',
+                modalTornado: 'مجموعة متنوعة من أدوات المطبخ المصممة لتحضير الطعام والطهي اليومي.',
+                modalRocky: 'أدوات الطهي والتحضير المصممة للاستخدام الآمن، وتتميز بمتانتها.',
+                modalRobust: 'أدوات التقديم والمطبخ المصممة للاستخدام المنزلي، مع التركيز على المتانة والوظائف العملية.',
+                modalStorageTitle: 'علامات التخزين والتقديم وإكسسوارات الضيافة',
+                modalStorageText: 'تشمل محفظة الشركة عدداً من العلامات التجارية المتخصصة في التخزين والتقديم وإكسسوارات الضيافة المنزلية. وتشمل هذه العلامات:',
+                modalIntlTitle: 'الشراكات والعلامات الدولية',
+                modalIntlText: 'تشمل محفظة المنتجات بالإضافة إلى ذلك علامات تجارية دولية موزعة من خلال صالات عرض الشركة.',
+                modalTableBrand: 'العلامة التجارية',
+                modalTableCountry: 'بلد المنشأ',
+                modalGermany: 'ألمانيا',
+                modalTurkey: 'تركيا',
+                modalNoteLabel: 'ملاحظة: ',
+                modalNoteText: 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 80٪ من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.',
+                
+                serviceTitle4: 'الوظائف والثقافة المؤسسية',
+                serviceDesc4: 'انضم إلى فريق يخدم الأسرة السعودية عبر ٧٣ صالة عرض. فرص في التجزئة واللوجستيات والرقمي والوظائف المؤسسية.',
+                serviceLink4: 'استكشف الوظائف',
+
+                // Footer Section
+                footerCtaTitle: 'تبحث عن تسوّق من أكثر من ١٥,٠٠٠ منتج؟',
+                footerCtaSubtitle: 'زُر متجر السيف غاليري الإلكتروني للتوصيل السريع في المملكة ودول الخليج.',
+                footerCtaButton: 'تسوق الآن',
+                footerEstablished: 'تأسست عام ١٩٩٣',
+                footerCompanyTitle: 'الشركة',
+                footerAboutLink: 'من نحن',
+                footerStrategyLink: 'الاستراتيجية',
+                footerCareersLink: 'الوظائف',
+                footerInvestorsTitle: 'المستثمرون',
+                footerReportsLink: 'التقارير السنوية',
+                footerGovernanceLink: 'الحوكمة',
+                footerFilingsLink: 'التقارير والإفصاحات',
+                footerContactTitle: 'تواصل معنا',
+                footerIrLink: 'علاقات المستثمرين',
+                footerCopyright: '© ٢٠٢٥ معرض السيف للأجهزة المنزلية. جميع الحقوق محفوظة.',
+                footerPrivacy: 'سياسة الخصوصية',
+                footerTerms: 'الشروط والأحكام',
+                footerGovernance: 'حوكمة الشركات'
+            },
+            en: {
+                documents: 'Documents Library',
+                contact: 'Contact',
+                search: 'Search',
+                language: 'عربي / EN',
+                
+                // Hero Section
+                heroTitle: "Saudi Arabia's Home\nSince 1993.",
+                heroSubtitle: 'Thirty years of serving Saudi households. One purpose: trusted quality, every day.',
+                heroDesc1: "Al Saif Gallery is Saudi Arabia's specialist in household essentials and kitchen appliances, built from a single Riyadh showroom into a national retail platform of 73 locations across the Kingdom and the GCC. Listed on Tadawul since 2022, we combine the scale of a public company with the discipline of an operator that has earned household trust for three decades.",
+                heroDesc2: 'Our model is powered by proprietary and exclusive brands, including Edison, Tornado, Robust, and Rocky, designed and specified for Saudi homes, Saudi kitchens, and Saudi hospitality traditions. Every product we carry reflects a deliberate choice: quality that earns loyalty, value that respects the customer.',
+                heroBtn1: 'Explore Our Story',
+                heroBtn2: 'Investor Relations',
+                
+                // Stats Section
+                statTitle1: 'Showrooms',
+                statSubtitle1: 'Saudi Arabia & 4 GCC countries',
+                statTitle2: 'Revenue',
+                statSubtitle2: 'FY 2025 Performance',
+                statTitle3: 'Proprietary Revenue',
+                statSubtitle3: 'Owned & exclusive brands',
+                statTitle4: 'E-Commerce Growth',
+                statSubtitle4: 'SAR 94M digital sales',
+                
+                // Brands Section
+                brandsTitle: 'Built on Brands Customers Return To',
+                brandsDesc1: 'We source, design, and deliver household essentials across categories customers buy repeatedly and rely on daily. Our platform is structured around three reinforcing strengths: a proprietary brand portfolio with specifications tailored to Saudi households; a national showroom network supported by centralized warehousing and a Jeddah fulfillment center; and integrated service infrastructure covering warranty, repair, and spare parts that transforms a purchase into a lasting relationship.',
+                brandsDesc2: "This is not generic retail. Al Saif Gallery operates in a carefully defined niche: the household goods and kitchen appliances categories where we hold a leading position in Saudi Arabia, delivering dependable quality at competitive value. Our Edison brand has grown from the country's most recognized small appliance label into a full home ecosystem, including refrigerators, washing machines, air conditioning, and built-in kitchen solutions.",
+                
+                // Service Cards
+                serviceTitle1: 'Strategy & Operations',
+                serviceDesc1: 'How we grow with discipline: store network, brand portfolio, digital channels, and after-sales capabilities.',
+                serviceLink1: 'Explore Strategy',
+                
+                serviceTitle2: 'Investors & Governance',
+                serviceDesc2: 'Financial results, regulatory disclosures, board structure, and shareholder services for Tadawul investors.',
+                serviceLink2: 'Investor Center',
+                
+                serviceTitle3: 'Our Brands',
+                serviceDesc3: 'Edison, Tornado, Robust, Rocky, and more. Proprietary and exclusive brands engineered for Saudi homes and hospitality.',
+                serviceLink3: 'Brand Portfolio',
+                
+                // Brands Modal
+                modalTitle: 'Brand Portfolio',
+                modalIntro: 'The Company holds a diversified portfolio of brands comprising both proprietary and international brands distributed through its showroom network. This portfolio covers multiple categories, including household essentials and kitchen appliances. During the fiscal year 2025, the Company added major kitchen appliances to its product range, supported by delivery, installation, warranty, and spare parts availability services.',
+                modalPropTitle: 'Proprietary Brands',
+                modalPropSubtitle: 'Home Appliances and Kitchen Tools',
+                modalEdison: 'Small and large home appliances designed to meet everyday household usage requirements, including products dedicated to traditional cuisine preparation.',
+                modalTornado: 'A diverse range of kitchen tools designed for daily food preparation and cooking.',
+                modalRocky: 'Cookware and preparation tools engineered for safe use, distinguished by their durability.',
+                modalRobust: 'Serving and kitchen tools designed for home use, with an emphasis on durability and practical functionality.',
+                modalStorageTitle: 'Storage, Serving, and Hospitality Accessory Brands',
+                modalStorageText: 'The Company\'s portfolio includes a number of branded lines specialized in vacuum flasks, serving ware, and beverage accessories for domestic hospitality use. These brands include:',
+                modalIntlTitle: 'International Partnerships and Brands',
+                modalIntlText: 'The product portfolio additionally includes international brands distributed through the Company\'s showrooms.',
+                modalTableBrand: 'Brand',
+                modalTableCountry: 'Country of Origin',
+                modalGermany: 'Germany',
+                modalTurkey: 'Turkey',
+                modalNoteLabel: 'Note: ',
+                modalNoteText: 'All proprietary brands (Edison, Tornado, Rocky, Robust) are designed and specified for Saudi households, with approximately 80% of our revenue flowing through brands we own or exclusively distribute.',
+                
+                serviceTitle4: 'Careers & Culture',
+                serviceDesc4: 'Join a team serving Saudi households across 73 locations. Explore opportunities in retail, logistics, digital, and corporate functions.',
+                serviceLink4: 'Explore Roles',
+
+                // Footer Section
+                footerCtaTitle: 'Looking to shop our full range of 15,000+ products?',
+                footerCtaSubtitle: 'Visit the Al Saif Gallery online store for fast delivery across the Kingdom and the GCC.',
+                footerCtaButton: 'Visit the Online Store',
+                footerEstablished: 'Established in 1993',
+                footerCompanyTitle: 'Company',
+                footerAboutLink: 'About Us',
+                footerStrategyLink: 'Strategy',
+                footerCareersLink: 'Careers',
+                footerInvestorsTitle: 'Investors',
+                footerReportsLink: 'Annual Reports',
+                footerGovernanceLink: 'Governance',
+                footerFilingsLink: 'Reports & Filings',
+                footerContactTitle: 'Contact',
+                footerIrLink: 'Investor Relations',
+                footerCopyright: '© 2025 Al Saif Gallery. All rights reserved.',
+                footerPrivacy: 'Privacy Policy',
+                footerTerms: 'Terms of Service',
+                footerGovernance: 'Corporate Governance'
+            }
+        };
+        
+        function updateLanguage() {
+            const isArabic = currentLanguage === 'ar';
+            const lang = translations[currentLanguage];
+            
+            // Update document attributes
+            document.documentElement.lang = currentLanguage;
+            document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+            document.body.className = isArabic ? 'ar' : '';
+            
+            // Update top bar - check if elements exist
+            const documentsText = document.getElementById('documents-text');
+            const contactText = document.getElementById('contact-text');
+            const searchText = document.getElementById('search-text');
+            const languageText = document.getElementById('language-text');
+            
+            if (documentsText) documentsText.textContent = lang.documents;
+            if (contactText) contactText.textContent = lang.contact;
+            if (searchText) searchText.textContent = lang.search;
+            if (languageText) languageText.textContent = lang.language;
+            
+            // Update nav
+            updateNavigationMenu(isArabic);
+            
+            // Update all page content
+            const ids = [
+                ['hero-title',        null, lang.heroTitle],
+                ['hero-subtitle',     lang.heroSubtitle],
+                ['hero-desc1',        lang.heroDesc1],
+                ['hero-desc2',        lang.heroDesc2],
+                ['hero-btn1',         lang.heroBtn1],
+                ['hero-btn2',         lang.heroBtn2],
+                ['stat-title1',       lang.statTitle1],    ['stat-subtitle1',    lang.statSubtitle1],
+                ['stat-title2',       lang.statTitle2],    ['stat-subtitle2',    lang.statSubtitle2],
+                ['stat-title3',       lang.statTitle3],    ['stat-subtitle3',    lang.statSubtitle3],
+                ['stat-title4',       lang.statTitle4],    ['stat-subtitle4',    lang.statSubtitle4],
+                ['brands-title',      lang.brandsTitle],
+                ['brands-desc1',      lang.brandsDesc1],   ['brands-desc2',      lang.brandsDesc2],
+                ['service-title1',    lang.serviceTitle1], ['service-desc1',     lang.serviceDesc1],
+                ['service-title2',    lang.serviceTitle2], ['service-desc2',     lang.serviceDesc2],
+                ['service-title3',    lang.serviceTitle3], ['service-desc3',     lang.serviceDesc3],
+                ['service-title4',    lang.serviceTitle4], ['service-desc4',     lang.serviceDesc4],
+                ['footer-cta-title',       lang.footerCtaTitle],
+                ['footer-cta-subtitle',    lang.footerCtaSubtitle],
+                ['footer-cta-button',      lang.footerCtaButton],
+                ['footer-established',     lang.footerEstablished],
+                ['footer-company-title',   lang.footerCompanyTitle],
+                ['footer-about-link',      lang.footerAboutLink],
+                ['footer-strategy-link',   lang.footerStrategyLink],
+                ['footer-careers-link',    lang.footerCareersLink],
+                ['footer-investors-title', lang.footerInvestorsTitle],
+                ['footer-reports-link',    lang.footerReportsLink],
+                ['footer-governance-link', lang.footerGovernanceLink],
+                ['footer-filings-link',    lang.footerFilingsLink],
+                ['footer-contact-title',   lang.footerContactTitle],
+                ['footer-ir-link',         lang.footerIrLink],
+                ['footer-copyright',       lang.footerCopyright],
+                ['footer-privacy',         lang.footerPrivacy],
+                ['footer-terms',           lang.footerTerms],
+                ['footer-governance',      lang.footerGovernance],
+            ];
+            ids.forEach(([id, text, html]) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (html !== undefined) el.innerHTML = html.replace(/\n/g, '<br>');
+                else if (text) el.textContent = text;
+            });
+            
+            // Update service links
+            [['service-link1', lang.serviceLink1], ['service-link2', lang.serviceLink2],
+             ['service-link3', lang.serviceLink3], ['service-link4', lang.serviceLink4]].forEach(([id, text]) => {
+                const el = document.getElementById(id);
+                if (el && el.querySelector('span')) el.querySelector('span').textContent = text;
+            });
+            
+            // DON'T update stat numbers here - let animation handle it
+            
+            localStorage.setItem('lang', currentLanguage);
+        }
+        
+        function updateNavigationMenu(isArabic) {
+            const items = {
+                'nav-home':     isArabic ? 'الرئيسية' : 'Home',
+                'nav-about':    isArabic ? 'من نحن' : 'About Us',
+                'nav-strategy': isArabic ? 'الاستراتيجية والعمليات' : 'Strategy & Operations',
+                'nav-investors':isArabic ? 'علاقات المستثمرين' : 'Investor Relations',
+                'nav-newsroom': isArabic ? 'الأخبار والوظائف' : 'Newsroom & Careers',
+                'nav-dd-news':  isArabic ? 'آخر الأخبار' : 'Latest News',
+                'nav-dd-careers':isArabic ? 'الوظائف' : 'Careers',
+                'nav-dd-contact':isArabic ? 'تواصل معنا' : 'Contact Us',
+            };
+            Object.keys(items).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = items[id];
+            });
+        }
+        
+        function toggleLanguage() {
+            // Navigate to the other language page instead of just changing language
+            const currentPath = window.location.pathname;
+            const isArabic = currentLanguage === 'ar';
+            
+            if (isArabic) {
+                // من العربي للإنجليزي
+                window.location.href = '../index-new.html';
+            } else {
+                // من الإنجليزي للعربي
+                window.location.href = 'ar/index-new.html';
+            }
+        }
+        
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const isArabic = currentLanguage === 'ar';
+            
+            statNumbers.forEach((el, index) => {
+                const target = parseFloat(el.dataset.target);
+                const isDecimal = el.dataset.decimal === 'true';
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                let current = 0;
+                const increment = target / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                        
+                        // Set final value based on language
+                        if (isArabic) {
+                            if (index === 0) el.textContent = '٧٣';
+                            else if (index === 1) el.textContent = '٧٥٨.٨ مليون ريال سعودي';
+                            else if (index === 2) el.textContent = '~٨٨٪';
+                            else if (index === 3) el.textContent = '٣٧٪';
+                        } else {
+                            const display = isDecimal ? current.toFixed(1) : Math.floor(current).toString();
+                            el.textContent = `${prefix}${display}${suffix}`;
+                        }
+                    } else {
+                        // Show animation
+                        const display = isDecimal ? current.toFixed(1) : Math.floor(current).toString();
+                        el.textContent = `${prefix}${display}${suffix}`;
+                    }
+                }, 20);
+            });
+        }
+        
+        function goToAbout() { 
+            window.location.href = 'about-us.html'; 
+        }
+        function goToInvestors() { 
+            window.location.href = 'investors.html'; 
+        }
+        function goToDocuments() { alert('Documents Library clicked!'); }
+        function goToContact() { alert('Contact clicked!'); }
+        function showSearch() { alert('Search clicked!'); }
+        function goToStore() { window.open('https://alsaifgallery.com/', '_blank'); }
+        function goToBrands() { showBrandsModal(); }
+        
+        function showBrandsModal() {
+            const modal = document.getElementById('brands-modal');
+            const modalContent = document.getElementById('brands-modal-content');
+            const isArabic = currentLanguage === 'ar';
+            modalContent.style.direction = isArabic ? 'rtl' : 'ltr';
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            updateBrandsModal();
+        }
+        
+        function closeBrandsModal() {
+            document.getElementById('brands-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function updateBrandsModal() {
+            const isArabic = currentLanguage === 'ar';
+            const modalContent = document.getElementById('brands-modal-content');
+            
+            // Update direction and alignment
+            if (modalContent) {
+                modalContent.style.direction = isArabic ? 'rtl' : 'ltr';
+                
+                // Update all text alignments
+                const elements = modalContent.querySelectorAll('*');
+                elements.forEach(el => {
+                    if (el.style.textAlign) {
+                        el.style.textAlign = isArabic ? 'right' : 'left';
+                    }
+                });
+                
+                // Update note border
+                const noteBox = modalContent.querySelector('[style*="border-left"], [style*="border-right"]');
+                if (noteBox) {
+                    if (isArabic) {
+                        noteBox.style.borderLeft = 'none';
+                        noteBox.style.borderRight = '4px solid #c0202a';
+                    } else {
+                        noteBox.style.borderRight = 'none';
+                        noteBox.style.borderLeft = '4px solid #c0202a';
+                    }
+                }
+                
+                // Update image alignment
+                const images = modalContent.querySelectorAll('img');
+                images.forEach(img => {
+                    if (isArabic) {
+                        img.style.marginRight = '0';
+                        img.style.marginLeft = 'auto';
+                    } else {
+                        img.style.marginLeft = '0';
+                        img.style.marginRight = 'auto';
+                    }
+                });
+                
+                // Update brand list layout for Arabic
+                const brandListContainer = modalContent.querySelector('[style*="flex-direction: column"]');
+                if (brandListContainer) {
+                    const brandItems = brandListContainer.querySelectorAll('div');
+                    brandItems.forEach(item => {
+                        item.style.textAlign = isArabic ? 'right' : 'left';
+                    });
+                }
+            }
+            
+            const t = {
+                title:        isArabic ? 'محفظة العلامات التجارية' : 'Brand Portfolio',
+                intro:        isArabic ? 'تمتلك الشركة محفظة متنوعة من العلامات التجارية تضم علامات ملكية وعلامات دولية موزعة عبر شبكة صالات العرض. تغطي المحفظة فئات متعددة، بما في ذلك الأجهزة المنزلية وأدوات المطبخ. خلال السنة المالية 2025، أضافت الشركة علامات تجارية رئيسية لمجموعة الأجهزة المنزلية الصغيرة في نطاقها المتميز، مدعومة بالموثوقية والضمان وتوافر قطع الغيار.' : 'The Company holds a diversified portfolio of brands comprising both proprietary and international brands distributed through its showroom network. This portfolio covers multiple categories, including household essentials and kitchen appliances. During the fiscal year 2025, the Company added major kitchen appliances to its product range, supported by delivery, installation, warranty, and spare parts availability services.',
+                propTitle:    isArabic ? 'العلامات التجارية الملكية' : 'Proprietary Brands',
+                propSubtitle: isArabic ? 'الأجهزة المنزلية وأدوات المطبخ' : 'Home Appliances and Kitchen Tools',
+                edison:       isArabic ? 'أجهزة منزلية صغيرة وكبيرة مصممة لتلبية متطلبات الاستخدام المنزلي اليومي، بما في ذلك منتجات مخصصة لتحضير المأكولات التقليدية.' : 'Small and large home appliances designed to meet everyday household usage requirements, including products dedicated to traditional cuisine preparation.',
+                tornado:      isArabic ? 'مجموعة متنوعة من أدوات المطبخ المصممة لتحضير الطعام والطهي اليومي.' : 'A diverse range of kitchen tools designed for daily food preparation and cooking.',
+                rocky:        isArabic ? 'أدوات الطهي والتحضير المصممة للاستخدام الآمن، وتتميز بمتانتها.' : 'Cookware and preparation tools engineered for safe use, distinguished by their durability.',
+                robust:       isArabic ? 'أدوات التقديم والمطبخ المصممة للاستخدام المنزلي، مع التركيز على المتانة والوظائف العملية.' : 'Serving and kitchen tools designed for home use, with an emphasis on durability and practical functionality.',
+                storageTitle: isArabic ? 'علامات التخزين والتقديم وإكسسوارات الضيافة' : 'Storage, Serving, and Hospitality Accessory Brands',
+                storageText:  isArabic ? 'تشمل محفظة الشركة عدداً من العلامات التجارية المتخصصة في التخزين والتقديم وإكسسوارات الضيافة المنزلية. وتشمل هذه العلامات:' : 'The Company\'s portfolio includes a number of branded lines specialized in vacuum flasks, serving ware, and beverage accessories for domestic hospitality use. These brands include:',
+                intlTitle:    isArabic ? 'الشراكات والعلامات الدولية' : 'International Partnerships and Brands',
+                intlText:     isArabic ? 'تشمل محفظة المنتجات بالإضافة إلى ذلك علامات تجارية دولية موزعة من خلال صالات عرض الشركة.' : 'The product portfolio additionally includes international brands distributed through the Company\'s showrooms.',
+                tableBrand:   isArabic ? 'العلامة التجارية' : 'Brand',
+                tableCountry: isArabic ? 'بلد المنشأ' : 'Country of Origin',
+                germany:      isArabic ? 'ألمانيا' : 'Germany',
+                turkey:       isArabic ? 'تركيا' : 'Turkey',
+                noteLabel:    isArabic ? 'ملاحظة: ' : 'Note: ',
+                noteText:     isArabic ? 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 88٪ من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.' : 'All proprietary brands (Edison, Tornado, Rocky, Robust) are designed and specified for Saudi households, with approximately 88% of our revenue flowing through brands we own or exclusively distribute.'
+            };
+            const ids = {
+                'modal-title': t.title, 'modal-intro': t.intro,
+                'modal-prop-title': t.propTitle, 'modal-prop-subtitle': t.propSubtitle,
+                'modal-edison': t.edison, 'modal-tornado': t.tornado,
+                'modal-rocky': t.rocky, 'modal-robust': t.robust,
+                'modal-storage-title': t.storageTitle, 'modal-storage-text': t.storageText,
+                'modal-intl-title': t.intlTitle, 'modal-intl-text': t.intlText,
+                'modal-table-brand': t.tableBrand, 'modal-table-country': t.tableCountry,
+                'modal-germany1': t.germany, 'modal-germany2': t.germany,
+                'modal-turkey1': t.turkey, 'modal-turkey2': t.turkey,
+                'modal-note-label': t.noteLabel, 'modal-note-text': t.noteText
+            };
+            Object.keys(ids).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = ids[id];
+            });
+        }
+        
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('brands-modal');
+            if (e.target === modal) closeBrandsModal();
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize language first
+            updateLanguage();
+            
+            // Setup stats animation observer
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Small delay to ensure DOM is ready
+                        setTimeout(() => {
+                            animateStats();
+                        }, 100);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.3 // Trigger when 30% of element is visible
+            });
+            
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+    </script>
+    
+    <!-- Shared Components -->
+    <script src="js/shared-components.js"></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المستثمرون والحوكمة | مجموعة السيف | تداول: 4192</title>
+  <meta name="description" content="علاقات المستثمرين، النتائج المالية، هيكل الحوكمة، وخدمات المساهمين لمجموعة السيف (تداول: 4192).">
+  <meta name="theme-color" content="#C62030">
+  
+  <link rel="stylesheet" href="../css/shared-layout.css">
+  <script src="https://irp.atnmo.com/v3/widget/widget-loader.js"></script>
+  <style>
+    /* Investors & Governance Page Specific Styles */
+    .ig-hero {
+      width: 100%;
+      height: 300px;
+      background: url('../assets/images/ig_hero.jpeg') center / cover no-repeat;
+      background-color: #8B1520;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 60px 192px;
+      position: relative;
+      transform: scaleX(-1);
+    }
+    
+    .ig-hero__content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+      text-align: right;
+      transform: scaleX(-1);
+    }
+    
+    .ig-hero h1 {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    
+    .ig-hero p {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    
+    .section {
+      padding: 60px 192px;
+      max-width: 1880px;
+      margin: 0 auto;
+    }
+    
+    .section--white {
+      background: white;
+    }
+    
+    .section--light {
+      background: #F8FAFB;
+    }
+    
+    .intro-content {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    
+    .intro-text {
+      color: #4B5563;
+      font-family: "Alexandria", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      text-align: right;
+    }
+    
+    /* Investment Case Section */
+    .section__title {
+      text-align: right;
+      color: #101727;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    
+    .section__subtitle {
+      text-align: right;
+      color: #4B5563;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+    
+    .investment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+      direction: rtl;
+    }
+    
+    .investment-card {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+    
+    .investment-card__number {
+      color: #C62030;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .investment-card__title {
+      color: #101727;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+    
+    .investment-card__desc {
+      color: #4B5563;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: right;
+    }
+    
+    @media (max-width: 1199px) {
+      .ig-hero,
+      .section {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+      }
+    }
+    
+    @media (max-width: 899px) {
+      .ig-hero,
+      .section {
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      
+      .investment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .ig-hero {
+        height: 160px;
+        padding: 32px 12px;
+      }
+      
+      .ig-hero h1 {
+        font-size: 20px;
+      }
+      
+      .ig-hero p {
+        font-size: 12px;
+      }
+      
+      .section {
+        padding: 35px 12px;
+      }
+    }
+    
+    /* Stock Ticker Section */
+    .stock-ticker-section {
+      background: white;
+      padding: 16px 192px 8px;
+    }
+    
+    .stock-ticker-wrapper {
+      border-top: 2px solid #E53935;
+      border-bottom: 2px solid #E53935;
+      height: 70px;
+      background: white;
+      overflow: hidden;
+    }
+    
+    /* IR Widgets Section */
+    .ir-widgets-section {
+      background: #F8FAFB;
+      padding: 0;
+    }
+    
+    .ir-widget-item {
+      background: white;
+      padding: 16px 192px 0;
+      border-bottom: 1px solid #E5E7EB;
+      text-align: right;
+    }
+    
+    .ir-widget-item h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+      text-align: right;
+    }
+    
+    /* Widget Loading Skeleton */
+    .widget-skeleton {
+      min-height: 300px;
+      background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .ir-widget-item > div {
+      min-height: 300px;
+    }
+    
+    @media (max-width: 1199px) {
+      .stock-ticker-section,
+      .ir-widget-item {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+      }
+    }
+    
+    @media (max-width: 899px) {
+      .stock-ticker-section,
+      .ir-widget-item {
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      
+      .stock-ticker-wrapper {
+        height: 50px;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .stock-ticker-section,
+      .ir-widget-item {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    }
+  </style>
+</head>
+<body data-page="investors">
+  <div class="container">
+    <!-- Top Bar -->
+    <div id="top-bar-container"></div>
+    
+    <!-- Navigation Bar -->
+    <div id="nav-bar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="ig-hero">
+      <div class="ig-hero__content">
+        <h1>المستثمرون والحوكمة</h1>
+        <p>إفصاح شفاف. رقابة فعّالة. وقيمة مستدامة لجميع المساهمين.</p>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section section--white">
+      <div class="intro-content">
+        <p class="intro-text">تلتزم السيف غاليري بأعلى معايير الإفصاح والتواصل مع المستثمرين الذين وضعوا ثقتهم في الشركة. يتيح هذا القسم وصولاً كاملاً إلى نتائجنا المالية وهيكل الحوكمة والإفصاحات التنظيمية وخدمات المساهمين والسياسات المؤسسية، باللغتين العربية والإنجليزية، انسجاماً مع التزاماتنا بوصفنا شركة مدرجة في السوق المالية السعودية.</p>
+        <p class="intro-text">ندرك أن الثقة بين الشركة المدرجة ومساهميها تُبنى بالاتساق والوضوح والمساءلة، لا بالوعود. هدفنا أن تكون كل المعلومات التي يحتاجها المستثمر متاحة بوضوح وسهولة، ومطابقة تمامًا لمتطلبات هيئة السوق المالية.</p>
+      </div>
+    </section>
+
+    <!-- Investment Case Section -->
+    <section class="section section--light">
+      <h2 class="section__title">مقومات الاستثمار في السيف غاليري</h2>
+      <p class="section__subtitle">أبرز مقومات الاستثمار</p>
+      
+      <div class="investment-grid">
+        <div class="investment-card">
+          <div class="investment-card__number">١</div>
+          <h3 class="investment-card__title">قطاع متخصص نقوده</h3>
+          <p class="investment-card__desc">نحتل مكانة متقدمة في أدوات المطبخ وأدوات التقديم والأجهزة المنزلية الصغيرة المتخصصة في المملكة العربية السعودية، مدعومين بشبكة توزيع وطنية وقدرة كاملة على التحكم في مواصفات المنتجات. هذا ليس قطاع تجزئة واسع المنافسة؛ بل قطاع متخصص محدد المعالم تُشكّل فيه خبرتنا على مدى ثلاثة عقود وبنيتنا في العلامات الخاصة وعمق خدمتنا حواجز دخول يصعب تجاوزها.</p>
+        </div>
+        
+        <div class="investment-card">
+          <div class="investment-card__number">٢</div>
+          <h3 class="investment-card__title">جودة الأرباح مصدرها العمليات</h3>
+          <p class="investment-card__desc">حقّقت السيف غاليري صافي ربح قدره ‎٥٨‏ مليون ريال في عام ‎٢٠٢٥‏ بنمو ‎٥٤,٦٪‏ على أساس سنوي، مدفوعاً كلياً بتحسينات تشغيلية. لم يعتمد هذا الانتعاش على مبيعات أصول أو بنود استثنائية. وتعكس إيرادات بلغت ‎٧٥٨,٨‏ مليون ريال وهامش مجمل ربح بنسبة ‎٢٣,٥٪‏ وتدفق نقدي تشغيلي بقيمة ‎٧٨,٧‏ مليون ريال؛ القوة الربحية الكامنة للنموذج التشغيلي للشركة. وأنهت الشركة عام ‎٢٠٢٥‏ بصافي نقد ‎٢٥,٩‏ مليون ريال بعد السداد الكامل لجميع التزامات الدين قصير الأجل.</p>
+        </div>
+        
+        <div class="investment-card">
+          <div class="investment-card__number">٣</div>
+          <h3 class="investment-card__title">ميزة هوامش العلامات التجارية الخاصة</h3>
+          <p class="investment-card__desc">تأتي نحو ‎٨٨٪‏ من الإيرادات من علامات تجارية نملكها أو نمتلك توزيعها الحصري. ويُتيح التوريد المباشر من شركاء التصنيع هوامش ربح على المنتجات الخاصة تتفوق هيكلياً على نموذج البيع بالجملة والتجزئة التقليدي. كما يرفع التوسع المستمر لعلامة إيدسون نحو الأجهزة الكبيرة من فرص الإيرادات ويُحسّن مزيج الهوامش معاً.</p>
+        </div>
+      </div>
+      
+      <div class="investment-grid">
+        <div class="investment-card">
+          <div class="investment-card__number">٤</div>
+          <h3 class="investment-card__title">رؤية ٢٠٣٠ رافعة نمو هيكلية</h3>
+          <p class="investment-card__desc">تُولّد طفرة الإسكان في المملكة العربية السعودية، ارتفاع نسبة تملّك المسكن من ‎٤٧٪‏ عام ‎٢٠١٦‏ إلى ‎٦٥,٤٪‏ عام ‎٢٠٢٤‏ مع أكثر من ‎٦٦٠,٠٠٠+‏ وحدة سكنية قيد التطوير وبرنامج سكني دعم أكثر من ‎١٢٢,٠٠٠+‏ أسرة عام ‎٢٠٢٤‏، طلباً متيناً ومستداماً على مستلزمات المنزل. كل منزل سعودي جديد يحتاج إلى تجهيز مطبخ متكامل.</p>
+        </div>
+        
+        <div class="investment-card">
+          <div class="investment-card__number">٥</div>
+          <h3 class="investment-card__title">تسارع التجارة الإلكترونية مع الرافعة التشغيلية</h3>
+          <p class="investment-card__desc">نمت التجارة الإلكترونية ‎٣٧٪‏ في ‎٢٠٢٥‏ مُسهِمةً بـ ‎٩٤‏ مليون ريال، أي ‎١٢,٤٪‏ من الإيرادات، عبر تطبيق يتجاوز عدد تنزيلاته ‎٥٠٠,٠٠٠+‏. وتعمل القناة الرقمية بالاعتماد على البنية اللوجستية المشتركة وخدمة ما بعد البيع مع الشبكة المادية، مما يُنشئ رافعة تشغيلية حقيقية مع نمو الإيرادات الرقمية ضمن شبكة الفروع والبنية التشغيلية القائمة.</p>
+        </div>
+        
+        <div class="investment-card">
+          <div class="investment-card__number">٦</div>
+          <h3 class="investment-card__title">قيادة محترفة في لحظة محورية</h3>
+          <p class="investment-card__desc">تم تعيين أحمد بن صالح آل سلطان رئيساً تنفيذياً في ديسمبر ‎٢٠٢٤‏، ويمثّل ذلك خطوة نضوج حوكمي مقصودة. إطاره الاستراتيجي ثلاثي المحاور، تجربة العميل وجودة الأرباح والتوسع المدروس، يتجلى بالفعل في نتائج ‎٢٠٢٥‏.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stock Ticker Section -->
+    <section class="stock-ticker-section">
+      <div class="stock-ticker-wrapper">
+        <div id="stock-ticker-widget">
+          <script>loadWidget('stock-ticker', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+    </section>
+
+    <!-- IR Widgets Section -->
+    <section class="ir-widgets-section">
+      <!-- Company Snapshot -->
+      <div class="ir-widget-item">
+        <h3>نظرة عامة عن الشركة</h3>
+        <div id="company-snapshot-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Announcements -->
+      <div class="ir-widget-item">
+        <h3>الإعلانات</h3>
+        <div id="corporate-news-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Fact Sheet -->
+      <div class="ir-widget-item">
+        <h3>نشرة المعلومات</h3>
+        <div id="fact-sheet-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Stock Activity -->
+      <div class="ir-widget-item">
+        <h3>نشاط السهم</h3>
+        <div id="stock-activity-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Corporate Actions -->
+      <div class="ir-widget-item">
+        <h3>الإجراءات النظامية</h3>
+        <div id="corporate-actions-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Company Financials -->
+      <div class="ir-widget-item">
+        <h3>البيانات المالية</h3>
+        <div id="company-financials-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Share Price -->
+      <div class="ir-widget-item">
+        <h3>سعر السهم</h3>
+        <div id="share-price-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Performance -->
+      <div class="ir-widget-item">
+        <h3>الأداء</h3>
+        <div id="performance-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Investment Calculator -->
+      <div class="ir-widget-item">
+        <h3>حاسبة الاستثمار</h3>
+        <div id="investment-calculator-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Share Series -->
+      <div class="ir-widget-item">
+        <h3>سلسلة الأسهم</h3>
+        <div id="share-series-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Share View -->
+      <div class="ir-widget-item">
+        <h3>عرض الأسهم</h3>
+        <div id="share-view-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Price Lookup -->
+      <div class="ir-widget-item">
+        <h3>البحث عن السعر</h3>
+        <div id="price-lookup-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Peer Group Analysis -->
+      <div class="ir-widget-item">
+        <h3>تحليل المجموعة المماثلة</h3>
+        <div id="peer-group-analysis-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+      
+      <!-- Email Subscription -->
+      <div class="ir-widget-item">
+        <h3>الاشتراك</h3>
+        <div id="email-subscription-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+  </div>
+
+  <script src="../js/shared-components.js"></script>
+  <script>
+    // Hide skeleton loaders when widgets load
+    document.addEventListener('DOMContentLoaded', function() {
+      const widgets = document.querySelectorAll('[id$="-widget"]');
+      widgets.forEach(widget => {
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length > 0) {
+              const skeleton = widget.querySelector('.widget-skeleton');
+              if (skeleton && widget.children.length > 1) {
+                skeleton.style.display = 'none';
+              }
+            }
+          });
+        });
+        observer.observe(widget, { childList: true, subtree: true });
+      });
+    });
+  </script>
+</body>
+</html>

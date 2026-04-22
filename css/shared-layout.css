@@ -1,0 +1,426 @@
+/* Shared Layout Styles - Top Bar, Navigation, Footer */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Alexandria', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #F8FAFB;
+    color: #101727;
+    direction: ltr;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.ar {
+    direction: rtl;
+}
+
+/* Container */
+.container {
+    max-width: 1880px;
+    margin: 0 auto;
+    background-color: #F8FAFB;
+}
+
+/* Top Bar */
+.top-bar {
+    width: 100%;
+    height: 26px;
+    background-color: #F8FAFB;
+}
+
+.top-bar-wrapper {
+    height: 25px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.top-bar-content {
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* في الإنجليزي: Top Bar على اليمين فوق القائمة */
+    direction: ltr;
+    padding-bottom: 1px;
+    padding-left: 192px;
+    padding-right: 192px;
+}
+
+body.ar .top-bar-content {
+    justify-content: flex-start; /* في العربي: Top Bar على اليسار فوق القائمة */
+}
+
+.top-bar-items {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    direction: ltr;
+}
+
+.top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: #495565;
+    font-size: 12px;
+    font-weight: 400;
+    height: 14px;
+    line-height: 1.0;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    user-select: none;
+    white-space: nowrap;
+    flex-direction: row;
+}
+
+body.ar .top-bar-item {
+    flex-direction: row-reverse;
+}
+
+.top-bar-item:hover {
+    color: #C62030;
+}
+
+.top-bar-item svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    border-bottom: 1px solid #E5E7EB;
+    box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: ltr;
+    padding-left: 192px;
+    padding-right: 192px;
+    flex-direction: row; /* الإنجليزي: اللوقو يسار، القائمة يمين */
+}
+
+/* في العربي: نعكس - اللوقو يمين والقائمة يسار */
+body.ar .nav-content {
+    direction: ltr;
+    flex-direction: row-reverse;
+}
+
+.nav-logo {
+    width: 144px;
+    height: 59px;
+}
+
+.nav-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    direction: ltr; /* الإنجليزي: Home على اليسار من القائمة */
+}
+
+/* في العربي: القائمة على اليسار والرئيسية تبدأ من اليمين */
+body.ar .nav-menu {
+    direction: rtl;
+}
+
+.nav-item {
+    color: #495565;
+    font-size: 13.1px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.53;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: #101727;
+}
+
+.nav-item::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background-color: transparent;
+    margin-top: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.nav-item.active::after {
+    background-color: #C62030;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+}
+
+body.ar .dropdown-content {
+    right: auto;
+    left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #101727;
+    font-size: 13px;
+    text-decoration: none;
+    border-bottom: 1px solid #f1f1f1;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #FFF5F5;
+    color: #C62030;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+.footer {
+    background-color: #1A1A1A;
+    color: white;
+    padding: 48px 192px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+}
+
+.footer-about h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.footer-about p {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-bottom: 8px;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-link {
+    display: block;
+    color: #D1D5DB;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-bottom p {
+    color: #6B7280;
+    font-size: 12px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.footer-bottom-links li {
+    color: #6B7280;
+    font-size: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+    .top-bar-content,
+    .nav-content,
+    .footer {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+    }
+}
+
+@media (max-width: 899px) {
+    .top-bar-content,
+    .nav-content,
+    .footer {
+        padding-left: 52px;
+        padding-right: 52px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 599px) {
+    .top-bar-content,
+    .nav-content,
+    .footer {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .top-bar-items {
+        gap: 16px;
+    }
+    
+    .top-bar-item span:not(.language-item span) {
+        display: none;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Footer CTA Section (Red) - نفس Flutter بالضبط */
+.footer-cta {
+    width: 100%;
+    background-color: #C62030; /* AppColors.primary */
+    padding: 28px calc(10% - 8px);
+    text-align: center;
+}
+
+.footer-cta-content {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-cta-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 10px;
+}
+
+.footer-cta-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+}
+
+.footer-cta-title {
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 4px 0;
+    text-align: center;
+}
+
+.footer-cta-subtitle {
+    color: white;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0 0 14px 0;
+    text-align: center;
+}
+
+.footer-cta-button {
+    display: inline-block;
+    background-color: white;
+    color: #C62030;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 9px 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.footer-cta-button:hover {
+    opacity: 0.9;
+}
+
+/* Arabic RTL Support for CTA */
+body.ar .footer-cta-content {
+    direction: rtl;
+}
+
+/* Mobile Responsive for CTA */
+@media (max-width: 599px) {
+    .footer-cta {
+        padding: 28px 24px;
+    }
+}

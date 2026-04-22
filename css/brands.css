@@ -1,0 +1,232 @@
+/* Brands Page Styles */
+
+.brands-dialog-container {
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.brands-dialog-header {
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.brands-dialog-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.brands-dialog-content {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Introduction */
+.brands-intro {
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+/* Brands Section */
+.brands-section {
+    margin-bottom: 32px;
+}
+
+.brands-section-title {
+    color: #E7000B;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.brands-section-subtitle {
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Brand Cards Grid */
+.brand-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.brand-card {
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-card:nth-child(2),
+.brand-card:nth-child(4) {
+    background-color: white;
+}
+
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+
+.brand-description {
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Two Column Layout */
+.brands-two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.brands-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.brands-column-title {
+    color: #1A1A1A;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.brands-column-text {
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Brands List Grid */
+.brands-list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.brand-list-item {
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #101828;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* International Brands Table */
+.international-brands-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.table-header {
+    background-color: #E7000B;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.table-header .table-cell {
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.table-row {
+    background-color: #F9FAFB;
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.table-cell {
+    color: #364153;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.table-cell.brand-name {
+    font-weight: 700;
+    color: #101828;
+}
+
+/* Note Box */
+.brands-note {
+    background-color: #efddcd;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #364153;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.brands-note strong {
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .brand-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .brands-two-column {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .brands-dialog-content {
+        padding: 16px;
+    }
+    
+    .brands-dialog-header {
+        padding: 16px;
+    }
+    
+    .brands-dialog-title {
+        font-size: 18px;
+    }
+    
+    .brands-section-title {
+        font-size: 20px;
+    }
+    
+    .brands-column-title {
+        font-size: 16px;
+    }
+    
+    .brands-list-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاستراتيجية والعمليات | مجموعة السيف | نمو منضبط في قطاع التجزئة السعودي</title>
+  <meta name="description" content="استراتيجية السيف غاليري ثلاثية المراحل: ملكية العلامات التجارية، والانتشار الوطني، والتكامل الرقمي، وعمق خدمة ما بعد البيع. نموذج تشغيلي منضبط بُني لخلق قيمة مستدامة.">
+  <meta name="theme-color" content="#C62030">
+  
+  <link rel="stylesheet" href="../css/shared-layout.css">
+  <style>
+    /* Strategy Page Specific Styles */
+    .strategy-hero {
+      width: 100%;
+      height: 350px;
+      background: url('../assets/images/strategy_background.jpeg') center top / cover no-repeat;
+      background-color: #C62030;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 60px 192px;
+      position: relative;
+      transform: scaleX(-1);
+    }
+    
+    .strategy-hero__content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+      text-align: right;
+      transform: scaleX(-1);
+    }
+    
+    .strategy-hero h1 {
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .strategy-hero p {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .section {
+      padding: 56px 192px;
+      max-width: 1880px;
+      margin: 0 auto;
+    }
+    
+    .section--white {
+      background: white;
+    }
+    
+    .section--light {
+      background: #F8FAFB;
+    }
+    
+    .section__title {
+      text-align: center;
+      color: #101727;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .section__text {
+      color: #4B5563;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+    
+    .intro-content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #E5E7EB;
+      margin: 0 48px;
+    }
+    
+    /* Pillars Section */
+    .pillar-card {
+      background: white;
+      border: 1px solid #E8E8E8;
+      border-radius: 10px;
+      padding: 28px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 28px;
+      direction: rtl;
+    }
+    
+    .pillar-card__icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    
+    .pillar-card__icon img {
+      width: 100%;
+      height: 100%;
+      filter: brightness(0) saturate(100%) invert(17%) sepia(86%) saturate(4521%) hue-rotate(346deg) brightness(95%) contrast(94%);
+    }
+    
+    .pillar-card__content {
+      flex: 1;
+      text-align: right;
+    }
+    
+    .pillar-card__label {
+      font-size: 12px;
+      color: #C62030;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    
+    .pillar-card__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 14px;
+    }
+    
+    .pillar-card__text {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    
+    /* Roadmap Section */
+    .roadmap-connector {
+      height: 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 24px;
+      direction: rtl;
+    }
+    
+    .roadmap-connector__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .roadmap-connector__circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    
+    .roadmap-connector__circle svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    
+    .roadmap-connector__label {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .roadmap-connector__line {
+      flex: 1;
+      height: 3px;
+      margin-bottom: 24px;
+      opacity: 0.4;
+    }
+    
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      direction: rtl;
+    }
+    
+    .phase-card {
+      background: white;
+      border: 1.5px solid;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: right;
+    }
+    
+    .phase-card__badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    
+    .phase-card__phase {
+      font-size: 21px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 2px;
+    }
+    
+    .phase-card__title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+    
+    .phase-card__desc {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    
+    .phase-card__kpi-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+    }
+    
+    .phase-card__kpi {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+      align-items: flex-start;
+      direction: rtl;
+    }
+    
+    .phase-card__kpi svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .phase-card__kpi-text {
+      font-size: 13px;
+      color: #4B5563;
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    /* Risk Section */
+    .risk-note {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      border-radius: 6px;
+      display: flex;
+      gap: 8px;
+      direction: rtl;
+    }
+    
+    .risk-note svg {
+      width: 15px;
+      height: 15px;
+      fill: #0284C7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .risk-note__text {
+      font-size: 12px;
+      color: #0369A1;
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    .risk-table {
+      width: 100%;
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      direction: rtl;
+    }
+    
+    .risk-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .risk-table th {
+      background: #F9FAFB;
+      padding: 12px 16px;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .risk-table td {
+      padding: 14px 16px;
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.55;
+      border-bottom: 1px solid #E5E7EB;
+      text-align: right;
+    }
+    
+    .risk-table td:first-child {
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    
+    .risk-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .risk-statement {
+      font-size: 11px;
+      color: #9CA3AF;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: right;
+    }
+    
+    @media (max-width: 1199px) {
+      .strategy-hero,
+      .section {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+      }
+    }
+    
+    @media (max-width: 899px) {
+      .strategy-hero {
+        padding-left: 52px;
+        padding-right: 52px;
+        justify-content: center;
+        transform: none;
+      }
+      
+      .strategy-hero__content {
+        text-align: center;
+        transform: none;
+      }
+      
+      .section {
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .roadmap-connector {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .strategy-hero {
+        height: 240px;
+        padding: 32px 12px;
+        justify-content: center;
+        transform: none;
+      }
+      
+      .strategy-hero h1 {
+        font-size: 24px;
+      }
+      
+      .strategy-hero p {
+        font-size: 13px;
+      }
+      
+      .strategy-hero__content {
+        text-align: center;
+        transform: none;
+      }
+      
+      .section {
+        padding: 35px 12px;
+      }
+      
+      .pillar-card {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .divider {
+        margin: 0 12px;
+      }
+      
+      .risk-table {
+        display: none;
+      }
+      
+      .risk-mobile {
+        display: block !important;
+      }
+    }
+    
+    .risk-mobile {
+      display: none;
+    }
+    
+    .risk-mobile-card {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 14px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      text-align: right;
+    }
+    
+    .risk-mobile-card__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 6px;
+    }
+    
+    .risk-mobile-card__text {
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    
+    .risk-mobile-card__label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body data-page="strategy">
+  <div class="container">
+    <!-- Top Bar -->
+    <div id="top-bar-container"></div>
+    
+    <!-- Navigation Bar -->
+    <div id="nav-bar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="strategy-hero">
+      <div class="strategy-hero__content">
+        <h1>الاستراتيجية والعمليات</h1>
+        <p>تنفيذ منضبط. نمو مدروس.</p>
+        <p>نموذج يُراكم قيمة حقيقية عبر الزمن.</p>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section section--white">
+      <div class="intro-content">
+        <p class="section__text">استراتيجيتنا ليست معقدة، بل واضحة: تعميق مكانتنا في سوق مستلزمات المنزل السعودي، وتعزيز مزايا علاماتنا التجارية الخاصة، ودمج قنواتنا التقليدية والرقمية في تجربة عميل سلسة، والتوسع الانتقائي في دول مجلس التعاون الخليجي. ويكمن الانضباط في تنفيذ هذه الاستراتيجية دون توسع يتجاوز ما تبرره الأسس التشغيلية والعوائد: ننمو حيث تبرر العوائد هذا النمو، ونُحكم الأساس قبل التوسع في المجالات أو الأسواق الطرفية.</p>
+        <p class="section__text">تتألف الخارطة الاستراتيجية من ثلاث مراحل. المرحلة الأولى (بناء الأساس) مكتملة. المرحلة الثانية (التوسع المدروس) قيد التنفيذ حتى ‎٢٠٢٦‏. تليها المرحلة الثالثة (الإمكانات المثلى) بالتكامل الكامل للقنوات وعمق العلامات التجارية وتوليد نقدي مستدام.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Strategic Pillars -->
+    <section class="section section--light">
+      <h2 class="section__title">ركائز استراتيجيتنا</h2>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="../assets/images/brands.svg" alt="العلامات التجارية">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">الركيزة الأولى</div>
+          <h3 class="pillar-card__title">الريادة عبر العلامات التجارية الخاصة</h3>
+          <p class="pillar-card__text">تأتي نحو ٨٨٪ من إيراداتنا من علامات تجارية نملكها أو نوزّعها حصرياً. ليس ذلك نتاج مصادفة تاريخية، بل خيار استراتيجي مقصود حافظنا عليه بانضباط على مدى عقود. علاماتنا المملوكة، إيدسون وتورنادو وروبست وروكي وإيفرست وإيليغانس وليما وراين وتايم ليس ورويال وفالكون وغلوري، تطورت من خلال علاقات مباشرة مع المصنّعين في الصين وكوريا وأسواق التوريد الأخرى. نُحكم المواصفة ونُحكم معايير الجودة ونُحكم شروط الضمان. هذا التحكم يُنتج هوامش ربح على المنتجات الخاصة تتفوق على نموذج البيع بالتجزئة التقليدي، ويخلق ميزة تنافسية يصعب تقليدها.</p>
+          <p class="pillar-card__text">في عام ٢٠٢٥، وسعنا علامة إيدسون إلى فئة الأجهزة المطبخية الكبيرة، مرسّخةً مكانتها بوصفها العلامة الأكثر شهرة في مجال الأجهزة المنزلية بالمملكة، وصانعةً ولاءً متعدد الفئات. ويركّز مسار الابتكار المستمر لدينا على تطويع مواصفات المنتجات لتقاليد الطبخ السعودي، بما في ذلك المعدات المصمّمة للتجمعات العائلية وموسم رمضان والضيافة الأصيلة.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="../assets/images/investors.svg" alt="شبكة الفروع">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">الركيزة الثانية</div>
+          <h3 class="pillar-card__title">جودة شبكة الفروع وإنتاجيتها</h3>
+          <p class="pillar-card__text">‎٧٣‏ صالة عرض هي العمود الفقري المادي لنموذجنا. لا نقيس كل موقع بالإيرادات وحدها، بل بجودة تقديم الخدمة وتوافر المنتجات والتجربة التي يصنعها لعميل يختارنا شريكاً لمنزله. في ‎٢٠٢٤‏ و‎٢٠٢٥‏ افتتحنا مواقع جديدة وأعدنا تموضع فروع أخرى، وجدّدنا مواقع مختارة حيث برّر العائد الاستثمار. التوسع انتقائي قائم على العوائد، لا مجرد استهداف عدد فروع.</p>
+          <p class="pillar-card__text">تدعم هذه الشبكة بنية لوجستية متكاملة: مستودعان مركزيان في الرياض تتجاوز مساحتهما ‎٥٠,٠٠٠‏ متر مربع، ومركز توزيع في جدة، وشركاء لوجستيون مؤهّلون يعملون وفق اتفاقيات مستوى خدمة محددة. انضباط إعادة التزويد يُقلّص نفاد المخزون في مواسم الذروة، وإدارة المخزون المركزية تُعزز معدل دورانه. وهذا هو التميز التشغيلي في خدمة ثقة العميل.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="../assets/images/digital_channel.svg" alt="القنوات الرقمية">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">الركيزة الثالثة</div>
+          <h3 class="pillar-card__title">التكامل الرقمي</h3>
+          <p class="pillar-card__text">في عام ٢٠٢٥ أسهمت قنواتنا الرقمية بـ ‎٩٤‏ مليون ريال من الإيرادات، أي ‎١٢,٤٪‏ من الإجمالي، بنمو ‎٣٧٪‏ على أساس سنوي. يتمتع تطبيقنا بأكثر من ‎٥٠٠,٠٠٠‏ تنزيل وتقييم ‎٤,٢‏ نجمة، ويُقدّم أكثر من ‎١٥,٠٠٠‏ منتج. لكن الرقم الأهم ليس نسبة الإيرادات الرقمية في حد ذاتها، بل عمق التكامل: طلبات الاستلام من المعرض، ومعالجة الإرجاع وطلبات الضمان في المواقع الفعلية، وخيارات دفع موحّدة تشمل التقسيط والدفع الذكي عبر القناتين.</p>
+          <p class="pillar-card__text">لا نعدّ المسار الرقمي وحدة أعمال منفصلة. فالمعرض والشاشة منصة واحدة متكاملة. واستثماراتنا في سرعة المنصة وجودة البحث ووضوح حالة الطلب خلال ٢٠٢٥ قلصت نقاط التعثر في كل خطوة من رحلة العميل.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="../assets/images/headphone.svg" alt="خدمة ما بعد البيع">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">الركيزة الرابعة</div>
+          <h3 class="pillar-card__title">خدمة ما بعد البيع ميزة تنافسية</h3>
+          <p class="pillar-card__text">لا يقيس عميل الأجهزة المنزلية الجودة عند الشراء، بل يقيسها أول مرة يحتاج فيها خدمة. بنت السيف غاليري معالجة مركزية لخدمة منتجاتها الكهربائية، وضمانات متعددة السنوات، وتحسيناً متواصلاً في توافر قطع الغيار. ليس بوصفها مركز تكلفة للخدمة، بل بوصفها مُميّزاً استراتيجياً حقيقياً. في سوق تُحدّد فيه جودة الخدمة بعد البيع غالباً ولاء العلامة التجارية، تبني استثماراتنا علاقات متينة مع العملاء لا يستطيع المنافسون من دون بنية العلامات الخاصة مجاراتها.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="../assets/images/Customer.svg" alt="الكوادر">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">الركيزة الخامسة</div>
+          <h3 class="pillar-card__title">الكوادر والتميز التشغيلي</h3>
+          <p class="pillar-card__text">يمثّل موظفو صالات العرض والمستودعات ومراكز الخدمة أكثر من ‎١,٢٨٠‏ موظفاً في خمسة أسواق. أداؤهم اليومي هو الذي يُترجم الاستراتيجية إلى تجربة عميل حقيقية. نستثمر في التدريب المنظّم ومعايير الخدمة المحددة وإجراءات السلامة وأنظمة إدارة الأداء المصمّمة لمكافأة الاتساق والاهتمام والمساءلة. التميز التشغيلي ليس وثيقة تُحفظ في أدراج الإدارة، بل ما يحدث فعلياً حين يتبع المدرَّبون عمليات منضبطة في خدمة عملاء مُطالِبين.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Strategic Roadmap -->
+    <section class="section section--white">
+      <h2 class="section__title">الخارطة الاستراتيجية</h2>
+      
+      <!-- Roadmap Connector (Desktop only) -->
+      <div class="roadmap-connector">
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #DCFCE7; border-color: #16A34A; color: #16A34A;">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #16A34A;">المرحلة الأولى</div>
+        </div>
+        <div class="roadmap-connector__line" style="background: #16A34A;"></div>
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #FFE4E6; border-color: #C62030; color: #C62030;">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #C62030;">المرحلة الثانية</div>
+        </div>
+        <div class="roadmap-connector__line" style="background: #E5E7EB;"></div>
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #F3F4F6; border-color: #E5E7EB; color: #6B7280;">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #6B7280;">المرحلة الثالثة</div>
+        </div>
+      </div>
+      
+      <div class="roadmap-grid">
+        <!-- Phase 1 -->
+        <div class="phase-card" style="border-color: #16A34A;">
+          <div class="phase-card__badge" style="background: #DCFCE7; color: #16A34A;">مكتملة حتى ٢٠٢٤</div>
+          <div class="phase-card__phase">المرحلة الأولى</div>
+          <div class="phase-card__title">بناء الأساس</div>
+          <p class="phase-card__desc">ترسيخ محفظة العلامات التجارية مع التركيز على العلامات المملوكة والحصرية. اكتمال شبكة التجزئة الأولى في المملكة مع حضور خليجي انتقائي. إرساء البنية التحتية للتكامل متعدد القنوات بما يشمل وسائل الدفع الشائعة وأُطر اتفاقيات مستوى الخدمة للتوصيل. تعزيز المستودعات المركزية في الرياض بدعم مركز التوزيع في جدة. تطوير نموذج خدمة ما بعد البيع بضمانات متعددة السنوات ومعالجة مركزية للخدمة.</p>
+          <div class="phase-card__kpi-title">مؤشرات الأداء الرئيسية لمرحلة الأساس:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">‎٧٣‏ صالة عرض إجمالاً (‎٦٦‏ في المملكة، ‎٧‏ في دول الخليج)</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">مساهمة القنوات الرقمية في الإيرادات: ‎٩,٤٪‏ (مقارنة بـ ‎١,٤٪‏ في ‎٢٠١٩‏)</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">اتفاقيات مستوى الخدمة: ‎١‏ إلى ‎٣‏ أيام داخل الرياض، ‎٣‏ إلى ‎٥‏ أيام على مستوى المملكة، ‎٥‏ إلى ‎١٠‏ أيام دولياً</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">اكتمال هيكل العلامات المملوكة والحصرية عبر الفئات الأساسية</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">تشغيل المستودعات المركزية بوصفها المصدر الرئيسي للمخزون مع إعادة تزويد موحّدة</span>
+          </div>
+        </div>
+        
+        <!-- Phase 2 -->
+        <div class="phase-card" style="border-color: #C62030;">
+          <div class="phase-card__badge" style="background: #FFE4E6; color: #C62030;">٢٠٢٥ إلى ٢٠٢٦ — قيد التنفيذ</div>
+          <div class="phase-card__phase">المرحلة الثانية</div>
+          <div class="phase-card__title">التوسع المدروس</div>
+          <p class="phase-card__desc">توسع انتقائي في شبكة الفروع نحو المدن والمناطق السعودية ذات الاختراق المنخفض، مع مواقع خليجية إضافية حيث تثبت العوائد التجارية جدواها. توسيع المحفظة لتشمل أجهزة المطبخ الكبيرة المختارة وفئات المنزل المكمّلة. تسريع تكامل قنوات البيع. تعزيز إدارة سلسلة التوريد ودوران المخزون عبر منظومة اللوجستيات بين الرياض وجدة.</p>
+          <div class="phase-card__kpi-title">مؤشرات أداء المرحلة الثانية:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">حصة التجارة الإلكترونية من الإيرادات ومقاييس استخدام التطبيق</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">معدلات الامتثال لاتفاقيات مستوى خدمة التوصيل</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">مزيج المنتجات: مساهمة الأجهزة الصغيرة مقابل الكبيرة</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">مزيج إيرادات العلامات المملوكة والحصرية وهامش مجمل الربح</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">معدل دوران المخزون ودورة رأس المال العامل</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">مؤشرات معدل الشراء المتكرر وعودة العميل</span>
+          </div>
+        </div>
+        
+        <!-- Phase 3 -->
+        <div class="phase-card" style="border-color: #E5E7EB;">
+          <div class="phase-card__badge" style="background: #F3F4F6; color: #6B7280;">٢٠٢٦ وما بعدها</div>
+          <div class="phase-card__phase">المرحلة الثالثة</div>
+          <div class="phase-card__title">الإمكانات المثلى</div>
+          <p class="phase-card__desc">أفضل تغطية جغرافية في المدن السعودية ذات الأولوية. نضج تكامل القنوات: مخزون موحّد وتوصيل وخدمة ما بعد البيع تمتد عبر المادية والرقمية معاً. ابتكار عميق في العلامات الخاصة والحصرية. إطار منضبط لتوليد النقد وتخصيص رأس المال يدعم كلاً من النمو والعوائد للمساهمين. تقييم الفرص غير العضوية الانتقائية على أساس مرتكز على العائد المحقق.</p>
+          <div class="phase-card__kpi-title">مؤشرات الأداء الرئيسية:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">توليد نقدي منضبط</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">إطار منضبط لتخصيص رأس المال</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">النمو والعوائد للمساهمين</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">تقييم الفرص غير العضوية الانتقائية</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">أساس مرتكز على العائد المحقق</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Risk Management -->
+    <section class="section section--light">
+      <h2 class="section__title">إدارة المخاطر</h2>
+      <div style="max-width: 680px; margin: 0 auto 36px;">
+        <p style="text-align: center; font-size: 14px; color: #6B7280; line-height: 1.7;">تُدير السيف غاليري المخاطر عبر إطار عملي وشفاف مصمّم لحماية موظفينا وعملائنا ومساهمينا واستمرارية أعمالنا. بوصفنا شركة مدرجة في تداول، مُلزَمون بالحفاظ على منظومة فعّالة لإدارة المخاطر والإفصاح عنها وفق اللوائح التنظيمية المعمول بها. ونهجنا استباقي لا ردّ فعل دفاعي: نُحدّد المخاطر بوضوح، نُعيّن المسؤولية، ونُطبّق ضوابط متناسبة مع مستوى كل خطر.</p>
+      </div>
+      
+      <div class="risk-note">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <div class="risk-note__text">يلخّص الجدول التالي فئات المخاطر الرئيسية. تُضمَّن الإفصاحات الكاملة للمخاطر في التقرير السنوي والبيانات المالية الفصلية.</div>
+      </div>
+      
+      <!-- Desktop Table -->
+      <div class="risk-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 20%;">فئة المخاطر</th>
+              <th style="width: 40%;">الوصف</th>
+              <th style="width: 40%;">الضوابط الرئيسية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>الطلب السوقي وسلوك المستهلك</td>
+              <td>التذبذبات الموسمية والدورية في الإنفاق على المنزل، وضغوط التسعير التنافسي، والتحولات في تفضيلات المستهلكين.</td>
+              <td>محفظة منتجات متنوعة عبر شرائح الأسعار، مرونة في تسعير العلامات الخاصة، تخطيط الطلب وإدارة المخزون.</td>
+            </tr>
+            <tr>
+              <td>جودة العلامة التجارية والمنتج</td>
+              <td>عيوب المنتج أو إخفاقات التوريد التي قد تضر بسمعة العلامة أو تستدعي سحب منتجات من السوق.</td>
+              <td>بروتوكولات تأهيل الموردين، اختبار العينات، معايير صارمة للتوسيم والسلامة، إجراءات محددة للسحب.</td>
+            </tr>
+            <tr>
+              <td>القناة الرقمية والتقنية</td>
+              <td>مشكلات أداء المنصة أو مخاطر الأمن السيبراني المؤثرة على عمليات التجارة الإلكترونية وبيانات العملاء.</td>
+              <td>الاستثمار في متانة المنصة، برنامج أساسيات الأمن السيبراني، إطار حوكمة البيانات.</td>
+            </tr>
+            <tr>
+              <td>سلسلة التوريد واللوجستيات</td>
+              <td>التركز لدى الموردين، واضطرابات لوجستيات الاستيراد، أو اختلالات المخزون المؤثرة على توافر المنتجات.</td>
+              <td>سياسة الموردَين للعناصر عالية الطلب، إدارة مركزية للمخزون، شركاء لوجستيون مؤهّلون باتفاقيات مستوى خدمة محددة.</td>
+            </tr>
+            <tr>
+              <td>التنظيم والامتثال</td>
+              <td>التغييرات في اشتراطات الإدراج لدى هيئة السوق المالية، أو لوائح حماية المستهلك، أو معايير الاستيراد.</td>
+              <td>وظيفة قانونية وامتثال مخصصة، رصد منتظم للمتطلبات التنظيمية، إشراف مجلس الإدارة على الامتثال.</td>
+            </tr>
+            <tr>
+              <td>استمرارية الأعمال</td>
+              <td>تعطّل المعرض أو مركز التوزيع جراء أحداث طارئة.</td>
+              <td>خطط استمرارية الأعمال، جهات الاتصال للطوارئ، ترتيبات لوجستية بديلة.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Mobile Cards -->
+      <div class="risk-mobile">
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">الطلب السوقي وسلوك المستهلك</div>
+          <p class="risk-mobile-card__text">التذبذبات الموسمية والدورية في الإنفاق على المنزل، وضغوط التسعير التنافسي، والتحولات في تفضيلات المستهلكين.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">محفظة منتجات متنوعة عبر شرائح الأسعار، مرونة في تسعير العلامات الخاصة، تخطيط الطلب وإدارة المخزون.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">جودة العلامة التجارية والمنتج</div>
+          <p class="risk-mobile-card__text">عيوب المنتج أو إخفاقات التوريد التي قد تضر بسمعة العلامة أو تستدعي سحب منتجات من السوق.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">بروتوكولات تأهيل الموردين، اختبار العينات، معايير صارمة للتوسيم والسلامة، إجراءات محددة للسحب.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">القناة الرقمية والتقنية</div>
+          <p class="risk-mobile-card__text">مشكلات أداء المنصة أو مخاطر الأمن السيبراني المؤثرة على عمليات التجارة الإلكترونية وبيانات العملاء.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">الاستثمار في متانة المنصة، برنامج أساسيات الأمن السيبراني، إطار حوكمة البيانات.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">سلسلة التوريد واللوجستيات</div>
+          <p class="risk-mobile-card__text">التركز لدى الموردين، واضطرابات لوجستيات الاستيراد، أو اختلالات المخزون المؤثرة على توافر المنتجات.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">سياسة الموردَين للعناصر عالية الطلب، إدارة مركزية للمخزون، شركاء لوجستيون مؤهّلون باتفاقيات مستوى خدمة محددة.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">التنظيم والامتثال</div>
+          <p class="risk-mobile-card__text">التغييرات في اشتراطات الإدراج لدى هيئة السوق المالية، أو لوائح حماية المستهلك، أو معايير الاستيراد.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">وظيفة قانونية وامتثال مخصصة، رصد منتظم للمتطلبات التنظيمية، إشراف مجلس الإدارة على الامتثال.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">استمرارية الأعمال</div>
+          <p class="risk-mobile-card__text">تعطّل المعرض أو مركز التوزيع جراء أحداث طارئة.</p>
+          <div class="risk-mobile-card__label">الضوابط الرئيسية:</div>
+          <p class="risk-mobile-card__text">خطط استمرارية الأعمال، جهات الاتصال للطوارئ، ترتيبات لوجستية بديلة.</p>
+        </div>
+      </div>
+      
+      <p class="risk-statement">بيان الضوابط: بناءً على العمل المنجز خلال العام، ترى الإدارة أن ضوابط المخاطر وإطار إدارتها كانا فعّالَين في جميع الجوانب الجوهرية. تشمل مجالات التحسين المستمر: أساسيات الأمن السيبراني، وتنويع الموردين للعناصر الأعلى طلباً، وممارسات الحد من الفقد داخل شبكة صالات العرض.</p>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+  </div>
+
+  <script src="../js/shared-components.js"></script>
+</body>
+</html>

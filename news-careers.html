@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsroom & Careers | Al Saif Gallery | Corporate News & Press Releases</title>
+  <meta name="description" content="Latest corporate news, press releases, and regulatory announcements from Al Saif Gallery (Tadawul: 4192). Bilingual newsroom updated on every disclosure.">
+  <meta name="theme-color" content="#C62030">
+  
+  <link rel="stylesheet" href="css/shared-layout.css">
+  <style>
+    /* Newsroom & Careers Page Specific Styles */
+    .nc-hero {
+      width: 100%;
+      height: 300px;
+      background: url('assets/images/news.jpeg') center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 60px 192px;
+      position: relative;
+    }
+    
+    .nc-hero__content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .nc-hero h1 {
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    
+    .nc-hero p {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    
+    .section {
+      padding: 56px 192px;
+      max-width: 1880px;
+      margin: 0 auto;
+    }
+    
+    .section--white {
+      background: white;
+    }
+    
+    .section--light {
+      background: #F8FAFB;
+    }
+    
+    .section__title {
+      text-align: center;
+      color: #1A1A1A;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    
+    /* News Section */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .news-card {
+      background: white;
+      border: 1px solid #E8E8E8;
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.18s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .news-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+    }
+    
+    .news-card__tag-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 14px;
+    }
+    
+    .news-card__tag {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(229, 57, 53, 0.10);
+      color: #E53935;
+    }
+    
+    .news-card__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1A1A1A;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    
+    .news-card__desc {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    
+    .news-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #E53935;
+      text-decoration: none;
+      margin-top: auto;
+    }
+    
+    .news-card__link svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    
+    /* Careers Section */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .stat-card {
+      background: white;
+      border: 1px solid #E8E8E8;
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .stat-card__icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 10px;
+    }
+    
+    .stat-card__icon img {
+      width: 100%;
+      height: 100%;
+      filter: brightness(0) saturate(100%) invert(17%) sepia(86%) saturate(4521%) hue-rotate(346deg) brightness(95%) contrast(94%);
+    }
+    
+    .stat-card__value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 2px;
+    }
+    
+    .stat-card__label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 2px;
+    }
+    
+    .stat-card__sub {
+      font-size: 11px;
+      color: #888888;
+    }
+    
+    .section__subtitle {
+      text-align: center;
+      color: #555555;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    
+    .info-card {
+      background: white;
+      border: 1px solid #E8E8E8;
+      border-radius: 10px;
+      padding: 24px;
+    }
+    
+    .info-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 16px;
+    }
+    
+    .info-card__item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+    
+    .info-card__bullet {
+      width: 6px;
+      height: 6px;
+      background: #C62030;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    
+    .info-card__text {
+      font-size: 13px;
+      color: #444444;
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    .info-card__text strong {
+      font-weight: 700;
+    }
+    
+    .cta-banner {
+      background: #C62030;
+      border-radius: 12px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    
+    .cta-banner__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+    
+    .cta-banner__text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    .cta-banner__button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: transparent;
+      border: 1.5px solid white;
+      border-radius: 6px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .cta-banner__button:hover {
+      background: white;
+      color: #C62030;
+    }
+    
+    /* Contact Section */
+    .contact-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    
+    .contact-card {
+      background: #F8FAFB;
+      border-radius: 10px;
+      padding: 24px;
+      flex: 1;
+      max-width: 300px;
+    }
+    
+    .contact-card__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 16px;
+    }
+    
+    .contact-card__row {
+      margin-bottom: 10px;
+    }
+    
+    .contact-card__label {
+      font-weight: 700;
+      font-size: 13px;
+      color: #444444;
+    }
+    
+    .contact-card__value {
+      font-size: 13px;
+      color: #444444;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 1199px) {
+      .nc-hero,
+      .section {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+      }
+    }
+    
+    @media (max-width: 899px) {
+      .nc-hero,
+      .section {
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-grid {
+        flex-direction: column;
+        max-width: 100%;
+      }
+      
+      .contact-card {
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .nc-hero {
+        height: 160px;
+        padding: 32px 12px;
+      }
+      
+      .nc-hero h1 {
+        font-size: 20px;
+      }
+      
+      .nc-hero p {
+        font-size: 12px;
+      }
+      
+      .section {
+        padding: 35px 12px;
+      }
+      
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body data-page="news-careers">
+  <div class="container">
+    <!-- Top Bar -->
+    <div id="top-bar-container"></div>
+    
+    <!-- Navigation Bar -->
+    <div id="nav-bar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="nc-hero">
+      <div class="nc-hero__content">
+        <h1>Newsroom & Careers</h1>
+        <p>Join a team serving Saudi households across 73 locations.<br>Explore opportunities in retail, logistics, digital, and corporate functions.</p>
+      </div>
+    </section>
+
+
+    <!-- News Section -->
+    <section class="section section--white" id="news">
+      <h2 class="section__title">Latest News & Announcements</h2>
+      
+      <div class="news-grid">
+        <!-- News Card 1 -->
+        <div class="news-card">
+          <div class="news-card__tag-row">
+            <span class="news-card__tag">Leadership</span>
+          </div>
+          <h3 class="news-card__title">Alsaif Gallery CEO Expects Positive Momentum to Continue</h3>
+          <p class="news-card__desc">CEO Ahmed AlSultan expects continued positive momentum driven by enhanced customer experience, digital channel expansion, and measured growth.</p>
+          <a href="https://www.argaam.com/en/article/articledetail/id/1850328" target="_blank" class="news-card__link">
+            <span>Read More</span>
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <!-- News Card 2 -->
+        <div class="news-card">
+          <div class="news-card__tag-row">
+            <span class="news-card__tag">Leadership</span>
+          </div>
+          <h3 class="news-card__title">Alsaif Gallery Appoints Sulaiman Alsaif as Chairman and Mohammed Alsaif as Vice Chairman</h3>
+          <p class="news-card__desc">Alsaif Gallery announces new board leadership appointments.</p>
+          <a href="https://maaal.com/en/news/details/alsaif-gallery-appoints-s-a/" target="_blank" class="news-card__link">
+            <span>Read More</span>
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        
+        <!-- News Card 3 -->
+        <div class="news-card">
+          <div class="news-card__tag-row">
+            <span class="news-card__tag">Expansion</span>
+          </div>
+          <h3 class="news-card__title">Alsaif Gallery Opens First Branch in Qatar</h3>
+          <p class="news-card__desc">Alsaif Gallery opened its first branch in Doha, Qatar — its 73rd branch overall and 7th in the GCC — as part of its expansion strategy beyond Saudi Arabia.</p>
+          <a href="https://www.argaam.com/en/article/articledetail/id/1776359" target="_blank" class="news-card__link">
+            <span>Read More</span>
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="section section--light" id="careers">
+      <h2 class="section__title">Careers at Al Saif Gallery</h2>
+      <p class="section__subtitle">Build your career with Saudi Arabia's leading household essentials retailer. We're looking for talented individuals to join our growing team of 1,280+ employees across Saudi Arabia and 4 GCC countries.</p>
+      
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <img src="assets/images/Customer.svg" alt="Employees">
+          </div>
+          <div class="stat-card__value">1,280+</div>
+          <div class="stat-card__label">Employees</div>
+          <div class="stat-card__sub">Across 5 markets</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <img src="assets/images/location.svg" alt="Showrooms">
+          </div>
+          <div class="stat-card__value">73</div>
+          <div class="stat-card__label">Showrooms</div>
+          <div class="stat-card__sub">KSA & GCC</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <img src="assets/images/strategy.svg" alt="Years">
+          </div>
+          <div class="stat-card__value">30+</div>
+          <div class="stat-card__label">Years</div>
+          <div class="stat-card__sub">Of growth</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-card__icon">
+            <img src="assets/images/department.svg" alt="Departments">
+          </div>
+          <div class="stat-card__value">Multiple</div>
+          <div class="stat-card__label">Departments</div>
+          <div class="stat-card__sub">Diverse roles</div>
+        </div>
+      </div>
+      
+      <!-- Info Cards -->
+      <div class="info-cards">
+        <!-- Why Join Us -->
+        <div class="info-card">
+          <h3 class="info-card__title">Why Join Us</h3>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Work for a Tadawul-listed company with strong growth trajectory</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Be part of Saudi Arabia's household essentials leader</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Structured training and professional development programs</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Competitive compensation and benefits package</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Career advancement opportunities across multiple departments</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text">Inclusive, performance-oriented workplace culture</div>
+          </div>
+        </div>
+        
+        <!-- Our Departments -->
+        <div class="info-card">
+          <h3 class="info-card__title">Our Departments</h3>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>Retail Operations:</strong> Showroom management, customer service, sales</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>Logistics & Supply Chain:</strong> Warehouse, distribution, inventory management</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>Digital & E-Commerce:</strong> Platform development, digital marketing, analytics</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>After-Sales Service:</strong> Warranty processing, repairs, customer support</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>Corporate Functions:</strong> Finance, HR, legal, compliance, governance</div>
+          </div>
+          <div class="info-card__item">
+            <div class="info-card__bullet"></div>
+            <div class="info-card__text"><strong>Brand & Product Development:</strong> Sourcing, quality control, innovation</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- CTA Banner -->
+      <div class="cta-banner">
+        <h3 class="cta-banner__title">Ready to Build Your Career with Us?</h3>
+        <p class="cta-banner__text">We're always looking for talented individuals who share our commitment to quality, customer service, and operational excellence.</p>
+        <a href="#" class="cta-banner__button">View Open Positions</a>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="section section--white" id="contact">
+      <h2 class="section__title">Media & Investor Contact</h2>
+      <p class="section__subtitle">For media inquiries, investor relations questions, or general corporate information,<br>please contact our team:</p>
+      
+      <div class="contact-grid">
+        <!-- Investor Relations -->
+        <div class="contact-card">
+          <h3 class="contact-card__title">Investor Relations</h3>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Email: </span>
+            <span class="contact-card__value">ir@alsaifgallery.com</span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Phone: </span>
+            <span class="contact-card__value">+966 11 XXX XXXX</span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Address: </span>
+            <span class="contact-card__value">Riyadh, Saudi Arabia</span>
+          </div>
+        </div>
+        
+        <!-- Media Relations -->
+        <div class="contact-card">
+          <h3 class="contact-card__title">Media Relations</h3>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Email: </span>
+            <span class="contact-card__value">media@alsaifgallery.com</span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Phone: </span>
+            <span class="contact-card__value">+966 11 XXX XXXX</span>
+          </div>
+          <div class="contact-card__row">
+            <span class="contact-card__label">Press Kit: </span>
+            <span class="contact-card__value">Available upon request</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+  </div>
+
+  <script src="js/shared-components.js"></script>
+</body>
+</html>

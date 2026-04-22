@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senior Executive Management | Al Saif Gallery</title>
+  <link rel="stylesheet" href="css/shared-layout.css">
+  <style>
+    body {
+      background: white;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dialog-header {
+      background: #C62030;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dialog-header h1 {
+      color: white;
+      font-size: 21px;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .close-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .dialog-content {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .executive-profile {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .executive-profile__name {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 12px 0;
+      text-align: left;
+    }
+    
+    .executive-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      justify-content: flex-start;
+    }
+    
+    .role-badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .role-badge--primary {
+      background: rgba(220, 38, 38, 0.1);
+      color: #DC2626;
+    }
+    
+    .role-badge--secondary {
+      background: rgba(243, 244, 246, 1);
+      color: #6B7280;
+    }
+    
+    .executive-info {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .section-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 8px 0;
+      text-align: left;
+    }
+    
+    .section-content {
+      font-size: 14px;
+      color: #4B5563;
+      line-height: 1.5;
+      padding-left: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .position-card {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    
+    .position-card__row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .position-card__row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .position-card__field {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.5;
+      text-align: left;
+    }
+    
+    .position-card__label {
+      font-weight: 600;
+      color: #6B7280;
+    }
+    
+    .position-card__value {
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .position-card__value--light {
+      font-weight: 400;
+      color: #6B7280;
+    }
+    
+    .experience-card {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .experience-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+    
+    .experience-card__org {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1A1A1A;
+      text-align: left;
+    }
+    
+    .experience-card__date {
+      font-size: 13px;
+      font-weight: 400;
+      color: #6B7280;
+      white-space: nowrap;
+    }
+    
+    .experience-card__detail {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4B5563;
+      margin-bottom: 4px;
+      text-align: left;
+    }
+    
+    .experience-card__detail:last-child {
+      margin-bottom: 0;
+    }
+    
+    .experience-card__detail strong {
+      font-weight: 600;
+    }
+    
+    @media (max-width: 899px) {
+      .dialog-content {
+        padding: 16px;
+      }
+      
+      .position-card__row {
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .experience-card__header {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog-header">
+    <h1>Senior Executive Management</h1>
+    <button class="close-btn" title="Close">&times;</button>
+  </div>
+  
+  <div class="dialog-content">
+    
+    <!-- Executive 1: Ahmad Al-Sultan (CEO) -->
+    <div class="executive-profile">
+      <h3 class="executive-profile__name">Ahmad bin Saleh bin Mohammed Al-Sultan</h3>
+      <div class="executive-roles">
+        <span class="role-badge role-badge--primary">Chief Executive Officer (CEO)</span>
+        <span class="role-badge role-badge--secondary">Appointed: 2024G</span>
+      </div>
+      <p class="executive-info">Nationality: Saudi</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">
+        Master of Business Administration, Brunel University, United Kingdom, 2010G<br>
+        Bachelor's in Finance, Qassim University, Kingdom of Saudi Arabia, 2006G
+      </div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="position-card">
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">Organization: </span>
+            <span class="position-card__value">Cenomi Retail</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">Position: </span>
+            <span class="position-card__value">Board Member and Audit Committee Member</span>
+          </div>
+        </div>
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">Since: </span>
+            <span class="position-card__value--light">2023G</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">Sector: </span>
+            <span class="position-card__value--light">Wholesale & Retail of Clothing & Furniture</span>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Thob Al-Aseel Company</div>
+          <div class="experience-card__date">2018G — 2024G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Chief Executive Officer</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Premium Consumer Goods</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Al-Saif Stores for Development and Investment Company</div>
+          <div class="experience-card__date">2021G — 2024G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Executive Committee Member and Board Member</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Household Goods Retail</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Nusk Commercial Projects Company</div>
+          <div class="experience-card__date">2012G — 2018G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Executive Vice President</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> International Fashion</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Nusk Commercial Projects Company</div>
+          <div class="experience-card__date">2010G — 2012G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Operations Manager</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> International Fashion</div>
+      </div>
+    </div>
+
+
+    <!-- Executive 2: Mu'ataz Al-Ashqar (CFO) -->
+    <div class="executive-profile">
+      <h3 class="executive-profile__name">Mu'ataz Ali Al-Ashqar</h3>
+      <div class="executive-roles">
+        <span class="role-badge role-badge--primary">Chief Financial Officer (CFO)</span>
+        <span class="role-badge role-badge--secondary">Appointed: 2025G</span>
+      </div>
+      <p class="executive-info">Nationality: Jordanian</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">
+        Bachelor's in Accounting, Applied Sciences University, Hashemite Kingdom of Jordan, 2001
+      </div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="position-card">
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">Organization: </span>
+            <span class="position-card__value">Al Saif Gallery</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">Position: </span>
+            <span class="position-card__value">Chief Financial Officer</span>
+          </div>
+        </div>
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">Since: </span>
+            <span class="position-card__value--light">2021G — to date</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">Sector: </span>
+            <span class="position-card__value--light">Household Goods Retail</span>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Tri Spectrum Company</div>
+          <div class="experience-card__date">2019G — 2021G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> CFO</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Specialized in electrical building products</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Al-Mazraa Dairy Company</div>
+          <div class="experience-card__date">2018G — 2019G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> CFO</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Specialized in dairy and cheese products</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Abu Quffara Holding Group</div>
+          <div class="experience-card__date">2016G — 2018G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> CFO</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Operating in contracting and building materials</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">Freto Lays Pepsi</div>
+          <div class="experience-card__date">2014G — 2016G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> CFO</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Food Products Company</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">National Integrated Industries Complex</div>
+          <div class="experience-card__date">2009G — 2012G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Head of Accounting</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Specialized in manufacturing air conditioners, washing machines, and refrigerators</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">BASF</div>
+          <div class="experience-card__date">2001G — 2008G</div>
+        </div>
+        <div class="experience-card__detail"><strong>Position:</strong> Senior Accountant</div>
+        <div class="experience-card__detail"><strong>Sector:</strong> Global construction chemicals company</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    // Close button handler - using postMessage for reliable communication
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.close-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Send message to parent window
+        window.parent.postMessage({ type: 'closeLeadershipDialog' }, '*');
+      });
+    });
+  </script>
+</body>
+</html>

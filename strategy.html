@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategy & Operations | Al Saif Gallery | Disciplined Growth in Saudi Retail</title>
+  <meta name="description" content="Al Saif Gallery's three-phase strategy: brand ownership, national reach, digital integration, and after-sales depth. A disciplined operating model built for sustainable value.">
+  <meta name="theme-color" content="#C62030">
+  
+  <link rel="stylesheet" href="css/shared-layout.css">
+  <style>
+    /* Strategy Page Specific Styles */
+    .strategy-hero {
+      width: 100%;
+      height: 350px;
+      background: url('assets/images/strategy_background.jpeg') center top / cover no-repeat;
+      background-color: #C62030;
+      display: flex;
+      align-items: center;
+      padding: 60px 192px;
+      position: relative;
+    }
+    
+    .strategy-hero__content {
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .strategy-hero h1 {
+      color: white;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .strategy-hero p {
+      color: white;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    
+    .section {
+      padding: 56px 192px;
+      max-width: 1880px;
+      margin: 0 auto;
+    }
+    
+    .section--white {
+      background: white;
+    }
+    
+    .section--light {
+      background: #F8FAFB;
+    }
+    
+    .section__title {
+      text-align: center;
+      color: #101727;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .section__text {
+      color: #4B5563;
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .intro-content {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #E5E7EB;
+      margin: 0 48px;
+    }
+    
+    /* Pillars Section */
+    .pillar-card {
+      background: white;
+      border: 1px solid #E8E8E8;
+      border-radius: 10px;
+      padding: 28px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 28px;
+    }
+    
+    .pillar-card__icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    
+    .pillar-card__icon img {
+      width: 100%;
+      height: 100%;
+      filter: brightness(0) saturate(100%) invert(17%) sepia(86%) saturate(4521%) hue-rotate(346deg) brightness(95%) contrast(94%);
+    }
+    
+    .pillar-card__content {
+      flex: 1;
+    }
+    
+    .pillar-card__label {
+      font-size: 12px;
+      color: #C62030;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    
+    .pillar-card__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 14px;
+    }
+    
+    .pillar-card__text {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    
+    /* Roadmap Section */
+    .roadmap-connector {
+      height: 60px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 24px;
+    }
+    
+    .roadmap-connector__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .roadmap-connector__circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+    }
+    
+    .roadmap-connector__circle svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    
+    .roadmap-connector__label {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .roadmap-connector__line {
+      flex: 1;
+      height: 3px;
+      margin-bottom: 24px;
+      opacity: 0.4;
+    }
+    
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    
+    .phase-card {
+      background: white;
+      border: 1.5px solid;
+      border-radius: 10px;
+      padding: 24px;
+    }
+    
+    .phase-card__badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    
+    .phase-card__phase {
+      font-size: 21px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 2px;
+    }
+    
+    .phase-card__title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+    
+    .phase-card__desc {
+      font-size: 14px;
+      color: #6B7280;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    
+    .phase-card__kpi-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+    }
+    
+    .phase-card__kpi {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+      align-items: flex-start;
+    }
+    
+    .phase-card__kpi svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .phase-card__kpi-text {
+      font-size: 13px;
+      color: #4B5563;
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    /* Risk Section */
+    .risk-note {
+      width: 100%;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      background: #F0F9FF;
+      border: 1px solid #BAE6FD;
+      border-radius: 6px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    .risk-note svg {
+      width: 15px;
+      height: 15px;
+      fill: #0284C7;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .risk-note__text {
+      font-size: 12px;
+      color: #0369A1;
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    .risk-table {
+      width: 100%;
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    
+    .risk-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .risk-table th {
+      background: #F9FAFB;
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .risk-table td {
+      padding: 14px 16px;
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.55;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .risk-table td:first-child {
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+    
+    .risk-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .risk-statement {
+      font-size: 11px;
+      color: #9CA3AF;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: left;
+    }
+    
+    @media (max-width: 1199px) {
+      .strategy-hero,
+      .section {
+        padding-left: calc(10% - 8px);
+        padding-right: calc(10% - 8px);
+      }
+    }
+    
+    @media (max-width: 899px) {
+      .strategy-hero,
+      .section {
+        padding-left: 52px;
+        padding-right: 52px;
+      }
+      
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .roadmap-connector {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .strategy-hero {
+        height: 240px;
+        padding: 32px 12px;
+      }
+      
+      .strategy-hero h1 {
+        font-size: 24px;
+      }
+      
+      .strategy-hero p {
+        font-size: 13px;
+      }
+      
+      .section {
+        padding: 35px 12px;
+      }
+      
+      .pillar-card {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .divider {
+        margin: 0 12px;
+      }
+      
+      .risk-table {
+        display: none;
+      }
+      
+      .risk-mobile {
+        display: block !important;
+      }
+    }
+    
+    .risk-mobile {
+      display: none;
+    }
+    
+    .risk-mobile-card {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 14px;
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+    }
+    
+    .risk-mobile-card__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 6px;
+    }
+    
+    .risk-mobile-card__text {
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    
+    .risk-mobile-card__label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body data-page="strategy">
+  <div class="container">
+    <!-- Top Bar -->
+    <div id="top-bar-container"></div>
+    
+    <!-- Navigation Bar -->
+    <div id="nav-bar-container"></div>
+
+    <!-- Hero Section -->
+    <section class="strategy-hero">
+      <div class="strategy-hero__content">
+        <h1>Strategy & Operations</h1>
+        <p>Disciplined execution. Measured growth.</p>
+        <p>A model built to compound value over time.</p>
+      </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="section section--white">
+      <div class="intro-content">
+        <p class="section__text">Our strategy is not complex. It is clear: deepen our position in the Saudi household essentials market, extend our proprietary brand advantage, integrate our physical and digital channels into a seamless customer experience, and expand selectively into the GCC. The discipline lies in executing this strategy without overreaching, growing where the returns justify growth, and strengthening the core before scaling the edges.</p>
+        <p class="section__text">The roadmap is structured in three phases. Phase One (Foundation) is complete. Phase Two (Measured Expansion) is underway through 2026. Phase Three (Optimal Potential) follows with full channel integration, mature brand depth, and sustained cash generation.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Strategic Pillars -->
+    <section class="section section--light">
+      <h2 class="section__title">Our Strategic Pillars</h2>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="assets/images/brands.svg" alt="Brands">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">Pillar 1</div>
+          <h3 class="pillar-card__title">Proprietary Brand Leadership</h3>
+          <p class="pillar-card__text">Approximately 88% of our revenue flows through brands we own or exclusively distribute. This is not an accident of history. It is a deliberate strategic choice, maintained over decades of discipline. Our owned brands (Edison, Tornado, Robust, Thunder, Elegance, Lorena, Növ, Tolmeta, Royal Falcon, and Glory) are designed through direct relationships with manufacturing partners in China, Korea, and other sourcing markets. We control the specification. We control the quality standards. We control the post-sale warranty terms. That control produces gross margins on proprietary products that outperform the standard wholesale retail model and builds a competitive moat that cannot be easily copied.</p>
+          <p class="pillar-card__text">In 2025, we extended the Edison brand into large kitchen appliances, reinforcing its position as Saudi Arabia's most recognized household name and creating cross-category customer loyalty. Our ongoing innovation pipeline focuses on localizing product specifications for Saudi cooking traditions, including equipment designed for large-family gatherings, Ramadan seasonality, and the hospitality customs central to Saudi culture.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="assets/images/investors.svg" alt="Store Network">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">Pillar 2</div>
+          <h3 class="pillar-card__title">Store Network Quality and Productivity</h3>
+          <p class="pillar-card__text">73 showrooms are the physical backbone of our model. We measure each location not just by revenue but by service delivery quality, product availability, and the experience it creates for customers who choose us as their household partner. In 2024 and 2025, we opened new locations, repositioned underperforming branches, and closed selected sites where the return justified the investment. Expansion is selective and return-driven, not a number target.</p>
+          <p class="pillar-card__text">Our logistics infrastructure supports this network: two central warehouses in Riyadh with a combined area exceeding 50,000 m², a Jeddah fulfillment center, and qualified logistics partners operating to defined service level agreements. Replenishment discipline reduces stockouts in peak seasons; centralized inventory management enables faster turns. This is operational excellence in service of customer trust.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="assets/images/digital_channel.svg" alt="Digital">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">Pillar 3</div>
+          <h3 class="pillar-card__title">Digital Channel Integration</h3>
+          <p class="pillar-card__text">In 2025, our digital channels contributed SAR 94 million in revenue, 12.4% of the total, up 37% for the full year. Our app has 500,000+ downloads and a 4.2-star rating, serving over 15,000 products. But the number that matters most is not the digital revenue percentage. It is the integration depth: click-and-collect orders fulfilled from the showroom network; returns and warranty claims processed at physical locations; unified payment options including installment and smart device payment across both channels.</p>
+          <p class="pillar-card__text">We do not regard digital as a separate business unit. The showroom and the screen are one platform. Our investment in platform speed, search quality, and order status transparency during 2025 reduced friction at every step of the customer journey, particularly during peak seasons where delivery reliability most directly determines customer confidence.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="assets/images/headphone.svg" alt="After-Sales">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">Pillar 4</div>
+          <h3 class="pillar-card__title">After-Sales as Competitive Advantage</h3>
+          <p class="pillar-card__text">The household appliance customer does not measure quality at the point of purchase. They measure it the first time something needs fixing. Al Saif Gallery has built centralized service processing for its own-brand electrical products, multi-year warranty coverage, and improving spare parts availability. Not as a customer service cost center, but as a strategic differentiator. In a market where service quality after the sale is often the deciding factor in brand loyalty, our investment in after-sales depth builds durable customer relationships that competitors without owned-brand infrastructure cannot match.</p>
+        </div>
+      </div>
+      
+      <div class="pillar-card">
+        <div class="pillar-card__icon">
+          <img src="assets/images/Customer.svg" alt="People">
+        </div>
+        <div class="pillar-card__content">
+          <div class="pillar-card__label">Pillar 5</div>
+          <h3 class="pillar-card__title">People and Operational Excellence</h3>
+          <p class="pillar-card__text">Our showroom teams, warehouse operations, and service centers represent over 1,280 employees across Saudi Arabia and 4 GCC countries. Their daily performance is what translates strategy into customer experience. We invest in structured training, defined service standards, safety procedures, and performance management systems designed to reward consistency, care, and accountability. Operational excellence is not a management document. It is what happens when trained people follow disciplined processes in service of demanding customers.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Strategic Roadmap -->
+    <section class="section section--white">
+      <h2 class="section__title">Strategic Roadmap</h2>
+      
+      <!-- Roadmap Connector (Desktop only) -->
+      <div class="roadmap-connector">
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #DCFCE7; border-color: #16A34A; color: #16A34A;">
+            <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #16A34A;">Phase 1</div>
+        </div>
+        <div class="roadmap-connector__line" style="background: #16A34A;"></div>
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #FFE4E6; border-color: #C62030; color: #C62030;">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #C62030;">Phase 2</div>
+        </div>
+        <div class="roadmap-connector__line" style="background: #E5E7EB;"></div>
+        <div class="roadmap-connector__item">
+          <div class="roadmap-connector__circle" style="background: #F3F4F6; border-color: #E5E7EB; color: #6B7280;">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <div class="roadmap-connector__label" style="color: #6B7280;">Phase 3</div>
+        </div>
+      </div>
+      
+      <div class="roadmap-grid">
+        <!-- Phase 1 -->
+        <div class="phase-card" style="border-color: #16A34A;">
+          <div class="phase-card__badge" style="background: #DCFCE7; color: #16A34A;">Completed through 2024</div>
+          <div class="phase-card__phase">Phase 1</div>
+          <div class="phase-card__title">Foundation (Completed through 2024)</div>
+          <p class="phase-card__desc">Rationalized and deepened the brand portfolio with focus on owned and exclusive labels. Completed the KSA-first retail network with selective GCC presence. Established omni-channel integration infrastructure including popular payment methods and delivery SLA frameworks. Strengthened Riyadh central warehouses supported by Jeddah fulfillment. Enhanced the after-sales model with multi-year warranties and centralized service processing.</p>
+          <div class="phase-card__kpi-title">Phase 1 KPIs:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">73 total showrooms (66 KSA, 7 GCC)</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Digital channel contribution: 9.4% of revenue (vs. 1.4% in 2019)</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Delivery SLAs: Riyadh 1–3 days | Nationwide 3–5 days | International 5–10 days</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Owned and exclusive brand structure complete across core categories</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #16A34A;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Central warehouse operations as primary inventory hub with unified replenishment</span>
+          </div>
+        </div>
+        
+        <!-- Phase 2 -->
+        <div class="phase-card" style="border-color: #C62030;">
+          <div class="phase-card__badge" style="background: #FFE4E6; color: #C62030;">2025 to 2026, Active</div>
+          <div class="phase-card__phase">Phase 2</div>
+          <div class="phase-card__title">Measured Expansion (2025 to 2026, Active)</div>
+          <p class="phase-card__desc">Selective expansion of the showroom network into lower-penetration Saudi cities and regions; additional GCC locations where commercial returns are established. Portfolio expansion to include selected large kitchen appliances and compatible home categories. Acceleration of omni-channel integration. Strengthening supply management and inventory turns through the Riyadh to Jeddah logistics system.</p>
+          <div class="phase-card__kpi-title">Phase 2 Performance Indicators:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">E-commerce share of revenue and app engagement</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Delivery SLA compliance rates</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Product mix: small vs. large appliances contribution</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Owned and exclusive brand revenue mix and gross margin</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Inventory turns and working capital cycle</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #C62030;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Repeat purchase and customer return rate indicators</span>
+          </div>
+        </div>
+        
+        <!-- Phase 3 -->
+        <div class="phase-card" style="border-color: #E5E7EB;">
+          <div class="phase-card__badge" style="background: #F3F4F6; color: #6B7280;">2026 onwards</div>
+          <div class="phase-card__phase">Phase 3</div>
+          <div class="phase-card__title">Optimal Potential (2026 onwards)</div>
+          <p class="phase-card__desc">Best-coverage position across priority Saudi cities. Full channel integration maturity: unified inventory, delivery, and after-sales infrastructure across physical and digital. Deep brand innovation under owned and exclusive labels. Disciplined cash generation and capital allocation framework supporting both growth and returns to shareholders. Selective inorganic growth opportunities evaluated on a return-focused basis.</p>
+          <div class="phase-card__kpi-title">Key Performance Indicators:</div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Disciplined cash generation</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Capital allocation framework</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Growth and returns to shareholders</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Selective inorganic growth opportunities</span>
+          </div>
+          <div class="phase-card__kpi">
+            <svg viewBox="0 0 24 24" style="fill: #6B7280;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span class="phase-card__kpi-text">Return-focused basis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Risk Management -->
+    <section class="section section--light">
+      <h2 class="section__title">Risk Management</h2>
+      <div style="max-width: 680px; margin: 0 auto 36px;">
+        <p style="text-align: center; font-size: 14px; color: #6B7280; line-height: 1.7;">Al Saif Gallery manages risk through a practical, transparent framework designed to protect our employees, customers, shareholders, and business continuity. As a Tadawul-listed company, we are required to maintain and disclose an effective risk management system. Our approach is active, not defensive: we identify risks clearly, assign ownership, and implement controls that are proportionate to the exposure.</p>
+      </div>
+      
+      <div class="risk-note">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <div class="risk-note__text">The following table summarizes principal risk categories. Full risk disclosures are included in the Annual Report and quarterly financial statements.</div>
+      </div>
+      
+      <!-- Desktop Table -->
+      <div class="risk-table">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 20%;">Risk Category</th>
+              <th style="width: 40%;">Description</th>
+              <th style="width: 40%;">Key Controls</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Market & Consumer Demand</td>
+              <td>Seasonal and cyclical fluctuations in household spending, competitive pricing pressure, and shifts in consumer preferences.</td>
+              <td>Diversified product portfolio across price points; owned-brand flexibility in pricing; demand planning and inventory management.</td>
+            </tr>
+            <tr>
+              <td>Brand & Product Quality</td>
+              <td>Product defects or sourcing failures that could damage brand reputation or require recalls.</td>
+              <td>Supplier qualification protocols, sample testing, clear labeling and safety standards, defined recall procedures.</td>
+            </tr>
+            <tr>
+              <td>Digital Channel & Technology</td>
+              <td>Platform performance issues or cybersecurity risks affecting e-commerce operations and customer data.</td>
+              <td>Platform resilience investment, cybersecurity fundamentals program, data governance framework.</td>
+            </tr>
+            <tr>
+              <td>Supply Chain & Logistics</td>
+              <td>Supplier concentration, import logistics disruption, or inventory imbalances affecting availability.</td>
+              <td>Dual-supplier framework for high-demand items; centralized inventory management; qualified logistics partners with defined SLAs.</td>
+            </tr>
+            <tr>
+              <td>Regulatory & Compliance</td>
+              <td>Changes in CMA listing requirements, consumer protection regulations, or import standards.</td>
+              <td>Dedicated legal and compliance function; regular regulatory horizon scanning; board-level compliance oversight.</td>
+            </tr>
+            <tr>
+              <td>Operational Continuity</td>
+              <td>Store or distribution center disruption from physical events.</td>
+              <td>Business continuity plans, emergency contacts, alternative logistics arrangements.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Mobile Cards -->
+      <div class="risk-mobile">
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Market & Consumer Demand</div>
+          <p class="risk-mobile-card__text">Seasonal and cyclical fluctuations in household spending, competitive pricing pressure, and shifts in consumer preferences.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Diversified product portfolio across price points; owned-brand flexibility in pricing; demand planning and inventory management.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Brand & Product Quality</div>
+          <p class="risk-mobile-card__text">Product defects or sourcing failures that could damage brand reputation or require recalls.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Supplier qualification protocols, sample testing, clear labeling and safety standards, defined recall procedures.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Digital Channel & Technology</div>
+          <p class="risk-mobile-card__text">Platform performance issues or cybersecurity risks affecting e-commerce operations and customer data.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Platform resilience investment, cybersecurity fundamentals program, data governance framework.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Supply Chain & Logistics</div>
+          <p class="risk-mobile-card__text">Supplier concentration, import logistics disruption, or inventory imbalances affecting availability.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Dual-supplier framework for high-demand items; centralized inventory management; qualified logistics partners with defined SLAs.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Regulatory & Compliance</div>
+          <p class="risk-mobile-card__text">Changes in CMA listing requirements, consumer protection regulations, or import standards.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Dedicated legal and compliance function; regular regulatory horizon scanning; board-level compliance oversight.</p>
+        </div>
+        
+        <div class="risk-mobile-card">
+          <div class="risk-mobile-card__title">Operational Continuity</div>
+          <p class="risk-mobile-card__text">Store or distribution center disruption from physical events.</p>
+          <div class="risk-mobile-card__label">Key Controls:</div>
+          <p class="risk-mobile-card__text">Business continuity plans, emergency contacts, alternative logistics arrangements.</p>
+        </div>
+      </div>
+      
+      <p class="risk-statement">Controls Statement: Based on work performed during the year, management considers that our risk controls and management framework were effective in all material respects. Areas of continuous improvement include cybersecurity fundamentals and supplier diversification for highest-demand items.</p>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+  </div>
+
+  <script src="js/shared-components.js"></script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board of Directors | Al Saif Gallery</title>
+  <link rel="stylesheet" href="css/shared-layout.css">
+  <style>
+    body {
+      background: white;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dialog-header {
+      background: #C62030;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dialog-header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .close-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .dialog-content {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .composition-section {
+      background: #F9FAFB;
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 48px;
+    }
+    
+    .composition-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 16px 0;
+      text-align: left;
+    }
+    
+    .composition-note {
+      font-size: 13px;
+      color: #6B7280;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .composition-note strong {
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .ratio-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    
+    .ratio-card {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #E5E7EB;
+    }
+    
+    .ratio-card__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #6B7280;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    
+    .ratio-card__value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #C62030;
+      text-align: left;
+    }
+    
+    .member-profile {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .member-profile__name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 12px 0;
+      text-align: left;
+    }
+    
+    .member-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      justify-content: flex-start;
+    }
+    
+    .role-badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    
+    .role-badge--primary {
+      background: rgba(220, 38, 38, 0.1);
+      color: #DC2626;
+    }
+    
+    .role-badge--secondary {
+      background: rgba(107, 114, 128, 0.1);
+      color: #6B7280;
+    }
+    
+    .member-info {
+      font-size: 13px;
+      color: #6B7280;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 8px 0;
+      text-align: left;
+    }
+    
+    .section-content {
+      font-size: 13px;
+      color: #4B5563;
+      line-height: 1.5;
+      padding-left: 16px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    
+    .data-table {
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    
+    .data-table__header {
+      background: #F3F4F6;
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 3fr 2fr 1fr 2fr;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #374151;
+      text-align: left;
+    }
+    
+    .data-table__row {
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 3fr 2fr 1fr 2fr;
+      gap: 12px;
+      font-size: 12px;
+      color: #1F2937;
+      border-top: 1px solid #E5E7EB;
+      text-align: left;
+    }
+    
+    .data-table__row:nth-child(even) {
+      background: #FAFAFA;
+    }
+    
+    .exp-table__header {
+      grid-template-columns: 4fr 3fr 2fr 2fr 3fr;
+    }
+    
+    .exp-table__row {
+      grid-template-columns: 4fr 3fr 2fr 2fr 3fr;
+    }
+    
+    @media (max-width: 899px) {
+      .dialog-content {
+        padding: 16px;
+      }
+      
+      .ratio-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .data-table__header,
+      .data-table__row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      
+      .exp-table__header,
+      .exp-table__row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog-header">
+    <h1>Board of Directors</h1>
+    <button class="close-btn" title="Close">&times;</button>
+  </div>
+  
+  <div class="dialog-content">
+    <!-- Board Composition -->
+    <div class="composition-section">
+      <h2>Board Composition and Member Classification</h2>
+      <p class="composition-note">
+        <strong>Note:</strong> Ahmad bin Suleiman Al-Saif and Ahmad bin Saleh Al-Sultan both declined to stand for re-election in the current term. Two seats have been allocated within the Board structure to complete the statutory quorum, and the required procedures are in progress.
+      </p>
+      <div class="ratio-cards">
+        <div class="ratio-card">
+          <div class="ratio-card__label">Independent Members Ratio</div>
+          <div class="ratio-card__value">2 out of 6 = 33.3%</div>
+        </div>
+        <div class="ratio-card">
+          <div class="ratio-card__label">Non-Executive Members Ratio</div>
+          <div class="ratio-card__value">4 out of 6 = 66.7%</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Member 1: Suleiman bin Mohammed Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Suleiman bin Mohammed Al-Saif</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Chairman of the Board</span>
+        <span class="role-badge role-badge--secondary">Non-Executive</span>
+        <span class="role-badge role-badge--secondary">Non-Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 12/09/1435H (09/07/2014G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">Certificate in Islamic Sciences, Scientific Institute, Riyadh, Kingdom of Saudi Arabia, 1974G</div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Chairman of the Board</div>
+          <div>2006G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Nuwaa Real Estate Investment Company</div>
+          <div>Chairman of the Board</div>
+          <div>2017G</div>
+          <div>Real Estate Development</div>
+        </div>
+        <div class="data-table__row">
+          <div>Bait Al-Tasne'a Al-Blastikia Company</div>
+          <div>Chairman of the Board</div>
+          <div>2015G</div>
+          <div>Plastic Manufacturing</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Commercial Agencies Company</div>
+          <div>Vice Chairman of the Board</div>
+          <div>2018G</div>
+          <div>2022G</div>
+          <div>Wholesale of Household Goods</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Commercial Agencies Company</div>
+          <div>General Manager</div>
+          <div>1982G</div>
+          <div>2017G</div>
+          <div>Wholesale of Household Goods</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>International Trade</div>
+          <div>—</div>
+          <div>1975G</div>
+          <div>Ongoing</div>
+          <div>General Trade (Asia / Europe)</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 2: Mohammed bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Mohammed bin Suleiman Al-Saif</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Vice Chairman / Managing Director</span>
+        <span class="role-badge role-badge--secondary">Executive</span>
+        <span class="role-badge role-badge--secondary">Non-Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 12/09/1435H (09/07/2014G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">Master of Science in Finance, University of Tampa, Florida, United States of America, 2011G<br>Bachelor's in Financial Management, King Saud University, Kingdom of Saudi Arabia, 2006G</div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Managing Director</div>
+          <div>2014G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Nuwaa Real Estate Investment Company</div>
+          <div>Co-Founder and Board Member</div>
+          <div>2017G</div>
+          <div>Real Estate Development</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Chief Executive Officer</div>
+          <div>2012G</div>
+          <div>2024G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Capital Market Authority (CMA)</div>
+          <div>Trainee</div>
+          <div>2008G</div>
+          <div>2011G</div>
+          <div>Capital Market Regulation</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Yaqeen Financial Services Company</div>
+          <div>Financial Analyst</div>
+          <div>2006G</div>
+          <div>2007G</div>
+          <div>Investment Banking Services</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 3: Haytham bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Haytham bin Suleiman Al-Saif</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Executive Vice Chairman and Member</span>
+        <span class="role-badge role-badge--secondary">Executive</span>
+        <span class="role-badge role-badge--secondary">Non-Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 12/09/1435H (09/07/2014G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">Master's in Islamic Policy, Higher Institute for the Judiciary, Kingdom of Saudi Arabia, 2012G<br>Bachelor's in Sharia, Imam Mohammed bin Saud Islamic University, Kingdom of Saudi Arabia, 2008G</div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Executive Vice Chairman and Board Member</div>
+          <div>2014G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Nuwaa Real Estate Investment Company</div>
+          <div>Co-Founder and Board Member</div>
+          <div>2017G</div>
+          <div>Real Estate Development</div>
+        </div>
+        <div class="data-table__row">
+          <div>Thakaa Al-Yawm Medical Company (Wixana)</div>
+          <div>Co-Founder</div>
+          <div>2019G</div>
+          <div>Medical Equipment & Supplies</div>
+        </div>
+        <div class="data-table__row">
+          <div>Rushouf Trading Company</div>
+          <div>Co-Founder and Board Member</div>
+          <div>2019G</div>
+          <div>Honey Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Naseelah Trading Company (Clara)</div>
+          <div>Co-Founder</div>
+          <div>2019G</div>
+          <div>Beauty & Home Appliances</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Marketing Director</div>
+          <div>2014G</div>
+          <div>2023G</div>
+          <div>Household Goods Retail</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 4: Muhannad bin Suleiman Al-Saif -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Muhannad bin Suleiman Al-Saif</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Member</span>
+        <span class="role-badge role-badge--secondary">Non-Executive</span>
+        <span class="role-badge role-badge--secondary">Non-Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 12/09/1435H (09/07/2014G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">Bachelor's in Sharia, Imam Mohammed bin Saud Islamic University, Kingdom of Saudi Arabia, 2012G<br>Business Administration Course Certificate, Indiana University, United States of America, 2012G</div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Board Member and Audit Committee Member</div>
+          <div>2014G / 2021G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Nuwaa Real Estate Investment Company</div>
+          <div>CEO and Board Member</div>
+          <div>2017G</div>
+          <div>Real Estate Development</div>
+        </div>
+        <div class="data-table__row">
+          <div>Mishkati Lighting Company</div>
+          <div>Board Member</div>
+          <div>2023G</div>
+          <div>Wholesale & Retail Lighting</div>
+        </div>
+        <div class="data-table__row">
+          <div>Isnad Company</div>
+          <div>Co-Founder and General Manager</div>
+          <div>2019G</div>
+          <div>Transport & Logistics</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Development Manager</div>
+          <div>2014G</div>
+          <div>2017G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Nuwaa Real Estate Investment Company</div>
+          <div>Deputy CEO</div>
+          <div>2017G</div>
+          <div>2023G</div>
+          <div>Real Estate Development</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 5: Mohammed bin Saud Al-Zamil -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Mohammed bin Saud Al-Zamil</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Member</span>
+        <span class="role-badge role-badge--secondary">Non-Executive</span>
+        <span class="role-badge role-badge--secondary">Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 23/05/1443H (27/12/2021G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">
+        Certificate in International Wealth & Investment Management (CME4), 2024G<br>
+        Certified in Strategy and Competitive Analysis (CSCA), Institute of Management Accountants, USA, 2021G<br>
+        Certified Management Accountant (CMA), Institute of Management Accountants, USA, 2020G<br>
+        Project Management Professional (PMP), Project Management Institute, USA, 2017G<br>
+        Executive Venture Investment Program License, UC Berkeley, USA, 2016G<br>
+        Management Acceleration Program (MAP), INSEAD Business School, France, 2015G<br>
+        Master's in Manufacturing Systems Engineering and Management, University of Warwick, United Kingdom, 2011G<br>
+        Bachelor's in Chemical Engineering, King Saud University, Kingdom of Saudi Arabia, 2009G
+      </div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Independent Board Member, Chairman of N&R Committee, Audit Committee Member</div>
+          <div>2021G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al Arabiya Lil Oud Company</div>
+          <div>Audit Committee Member</div>
+          <div>2024G</div>
+          <div>Oriental Perfumes & Designware</div>
+        </div>
+        <div class="data-table__row">
+          <div>Amnco Security & Safety Solutions Company</div>
+          <div>Chairman of the Board</div>
+          <div>2020G</div>
+          <div>Security & Safety Solutions</div>
+        </div>
+        <div class="data-table__row">
+          <div>Saudi Transport and Logistics Company (Mabrad)</div>
+          <div>Chairman of the Board</div>
+          <div>2021G</div>
+          <div>Land Transport & Logistics</div>
+        </div>
+        <div class="data-table__row">
+          <div>BATC Real Estate Company</div>
+          <div>Board Member</div>
+          <div>2020G</div>
+          <div>Real Estate Investment</div>
+        </div>
+        <div class="data-table__row">
+          <div>BATC Investment and Business Logistics Company</div>
+          <div>Board Member and Managing Director</div>
+          <div>2020G</div>
+          <div>Investment, Security & Transport</div>
+        </div>
+        <div class="data-table__row">
+          <div>Amnco Facilities Management Company</div>
+          <div>Chairman of the Board</div>
+          <div>2020G</div>
+          <div>Facilities Management</div>
+        </div>
+        <div class="data-table__row">
+          <div>Ibrahim Mohammed Al-Mana and Brothers Company</div>
+          <div>Board Member and Audit Committee Member</div>
+          <div>2025G</div>
+          <div>Healthcare Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>King Saud University — Chemical Engineering Dept.</div>
+          <div>Advisory Council Member</div>
+          <div>2020G</div>
+          <div>Higher Education</div>
+        </div>
+        <div class="data-table__row">
+          <div>Sawatir Shade Structures Manufacturing Company</div>
+          <div>Board Member</div>
+          <div>2025G</div>
+          <div>Construction & Shading</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Jazal Investment Company</div>
+          <div>Chief Executive Officer</div>
+          <div>2019G</div>
+          <div>2021G</div>
+          <div>Energy Manufacturing & Services</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Wafa Industries Company</div>
+          <div>Chief Executive Officer</div>
+          <div>2017G</div>
+          <div>2019G</div>
+          <div>Automotive Parts Manufacturing</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Saudi Industrial Development Fund (SIDF)</div>
+          <div>Senior Advisor and Deputy General Manager</div>
+          <div>2009G</div>
+          <div>2017G</div>
+          <div>Industrial Development & Support</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Member 6: Abdulmajeed bin Suleiman Al-Dakheel -->
+    <div class="member-profile">
+      <h3 class="member-profile__name">Abdulmajeed bin Suleiman Al-Dakheel</h3>
+      <div class="member-roles">
+        <span class="role-badge role-badge--primary">Member</span>
+        <span class="role-badge role-badge--secondary">Non-Executive</span>
+        <span class="role-badge role-badge--secondary">Independent</span>
+      </div>
+      <p class="member-info">Nationality: Saudi | Date of Appointment: 23/05/1443H (27/12/2021G)</p>
+      
+      <h4 class="section-title">Academic Qualifications:</h4>
+      <div class="section-content">Bachelor's in Accounting Sciences, Southern Utah University, United States of America, 2012G</div>
+      
+      <h4 class="section-title">Current Positions:</h4>
+      <div class="data-table">
+        <div class="data-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>Since</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Independent Board Member and Audit Committee Chairman</div>
+          <div>2022G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row">
+          <div>Al-Qahwa Al-Khashbiya Trading Company</div>
+          <div>Audit Committee Member</div>
+          <div>2024G</div>
+          <div>Coffee Production</div>
+        </div>
+        <div class="data-table__row">
+          <div>Asasiyyat Al-Tanmia for Agriculture and Trade Company</div>
+          <div>Audit Committee Chairman and Board Member</div>
+          <div>2023G</div>
+          <div>Agriculture & Trade</div>
+        </div>
+        <div class="data-table__row">
+          <div>Jazan Development and Investment Company</div>
+          <div>Audit Committee Member</div>
+          <div>2022G</div>
+          <div>Agriculture</div>
+        </div>
+        <div class="data-table__row">
+          <div>Saudi Venture Investment Company</div>
+          <div>Audit Committee Member</div>
+          <div>2021G</div>
+          <div>Venture Investment</div>
+        </div>
+        <div class="data-table__row">
+          <div>ValuHub</div>
+          <div>Partner</div>
+          <div>2020G</div>
+          <div>Technical Services</div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">Key Previous Professional Experience:</h4>
+      <div class="data-table">
+        <div class="data-table__header exp-table__header">
+          <div>Organization</div>
+          <div>Position</div>
+          <div>From</div>
+          <div>To</div>
+          <div>Sector</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Al-Saif Stores for Development and Investment Company</div>
+          <div>Nominations & Remuneration Committee Member</div>
+          <div>March 2022G</div>
+          <div>September 2025G</div>
+          <div>Household Goods Retail</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>BKF Al-Bassam & Partners Company</div>
+          <div>Partner</div>
+          <div>2018G</div>
+          <div>2020G</div>
+          <div>Legal Accounting</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Ernst & Young and Partners</div>
+          <div>Financial Advisor</div>
+          <div>2014G</div>
+          <div>2018G</div>
+          <div>Audit & Assurance</div>
+        </div>
+        <div class="data-table__row exp-table__row">
+          <div>Saudi Aramco Refinery (Jubail)</div>
+          <div>Financial Accountant</div>
+          <div>2013G</div>
+          <div>2014G</div>
+          <div>Crude Oil Refining</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    // Close button handler - using postMessage for reliable communication
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.close-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Send message to parent window
+        window.parent.postMessage({ type: 'closeLeadershipDialog' }, '*');
+      });
+    });
+  </script>
+</body>
+</html>

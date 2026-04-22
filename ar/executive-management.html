@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإدارة التنفيذية العليا | السيف غاليري</title>
+  <link rel="stylesheet" href="../css/shared-layout.css">
+  <style>
+    body {
+      background: white;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .dialog-header {
+      background: #C62030;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row-reverse;
+    }
+    
+    .dialog-header h1 {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .close-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .dialog-content {
+      padding: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .executive-profile {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .executive-profile__name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin: 0 0 12px 0;
+      text-align: right;
+    }
+    
+    .executive-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      justify-content: flex-end;
+    }
+    
+    .role-badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    
+    .role-badge--primary {
+      background: rgba(220, 38, 38, 0.1);
+      color: #DC2626;
+    }
+    
+    .role-badge--secondary {
+      background: rgba(107, 114, 128, 0.1);
+      color: #6B7280;
+    }
+    
+    .executive-info {
+      font-size: 13px;
+      color: #6B7280;
+      margin-bottom: 24px;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin: 0 0 8px 0;
+      text-align: right;
+    }
+    
+    .section-content {
+      font-size: 13px;
+      color: #4B5563;
+      line-height: 1.5;
+      padding-right: 16px;
+      margin-bottom: 24px;
+      text-align: right;
+    }
+    
+    .position-card {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    
+    .position-card__row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 8px;
+    }
+    
+    .position-card__row:last-child {
+      margin-bottom: 0;
+    }
+    
+    .position-card__field {
+      flex: 1;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .position-card__label {
+      font-weight: 600;
+      color: #6B7280;
+    }
+    
+    .position-card__value {
+      font-weight: 600;
+      color: #1F2937;
+    }
+    
+    .position-card__value--light {
+      font-weight: 400;
+      color: #6B7280;
+    }
+    
+    .experience-card {
+      background: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .experience-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 8px;
+      flex-direction: row-reverse;
+    }
+    
+    .experience-card__org {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1A1A1A;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .experience-card__date {
+      font-size: 12px;
+      font-weight: 400;
+      color: #6B7280;
+      white-space: nowrap;
+      direction: rtl;
+    }
+    
+    .experience-card__detail {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #4B5563;
+      margin-bottom: 4px;
+      text-align: right;
+      direction: rtl;
+    }
+    
+    .experience-card__detail:last-child {
+      margin-bottom: 0;
+    }
+    
+    .experience-card__detail strong {
+      font-weight: 600;
+    }
+    
+    @media (max-width: 899px) {
+      .dialog-content {
+        padding: 16px;
+      }
+      
+      .position-card__row {
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .experience-card__header {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog-header">
+    <h1>الإدارة التنفيذية العليا</h1>
+    <button class="close-btn" title="إغلاق">&times;</button>
+  </div>
+  
+  <div class="dialog-content">
+    
+    <!-- Executive 1: Ahmad Al-Sultan (CEO) -->
+    <div class="executive-profile">
+      <h3 class="executive-profile__name">أحمد بن صالح بن محمد السلطان</h3>
+      <div class="executive-roles">
+        <span class="role-badge role-badge--primary">الرئيس التنفيذي</span>
+        <span class="role-badge role-badge--secondary">تم التعيين: ٢٠٢٤م</span>
+      </div>
+      <p class="executive-info">الجنسية: سعودي</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">
+        ماجستير في إدارة الأعمال، جامعة برونيل، المملكة المتحدة، ٢٠١٠م<br>
+        بكالوريوس في المالية، جامعة القصيم، المملكة العربية السعودية، ٢٠٠٦م
+      </div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="position-card">
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">الجهة: </span>
+            <span class="position-card__value">سينومي ريتيل</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">المنصب: </span>
+            <span class="position-card__value">عضو مجلس الإدارة وعضو لجنة المراجعة</span>
+          </div>
+        </div>
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">منذ: </span>
+            <span class="position-card__value--light">٢٠٢٣م</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">القطاع: </span>
+            <span class="position-card__value--light">تجارة الجملة والتجزئة للملابس والأثاث</span>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة ثوب الأصيل</div>
+          <div class="experience-card__date">٢٠١٨م — ٢٠٢٤م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> الرئيس التنفيذي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> السلع الاستهلاكية الفاخرة</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة متاجر السيف للتنمية والاستثمار</div>
+          <div class="experience-card__date">٢٠٢١م — ٢٠٢٤م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> عضو اللجنة التنفيذية وعضو مجلس الإدارة</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> تجزئة السلع المنزلية</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة نسك للمشاريع التجارية</div>
+          <div class="experience-card__date">٢٠١٢م — ٢٠١٨م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> نائب الرئيس التنفيذي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> الأزياء العالمية</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة نسك للمشاريع التجارية</div>
+          <div class="experience-card__date">٢٠١٠م — ٢٠١٢م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> مدير العمليات</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> الأزياء العالمية</div>
+      </div>
+    </div>
+
+    <!-- Executive 2: Mu'ataz Al-Ashqar (CFO) -->
+    <div class="executive-profile">
+      <h3 class="executive-profile__name">معتز علي الأشقر</h3>
+      <div class="executive-roles">
+        <span class="role-badge role-badge--primary">المدير المالي التنفيذي</span>
+        <span class="role-badge role-badge--secondary">تم التعيين: ٢٠٢٥م</span>
+      </div>
+      <p class="executive-info">الجنسية: أردني</p>
+      
+      <h4 class="section-title">المؤهلات الأكاديمية:</h4>
+      <div class="section-content">
+        بكالوريوس في المحاسبة، جامعة العلوم التطبيقية، المملكة الأردنية الهاشمية، ٢٠٠١م
+      </div>
+      
+      <h4 class="section-title">المناصب الحالية:</h4>
+      <div class="position-card">
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">الجهة: </span>
+            <span class="position-card__value">السيف غاليري</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">المنصب: </span>
+            <span class="position-card__value">المدير المالي</span>
+          </div>
+        </div>
+        <div class="position-card__row">
+          <div class="position-card__field">
+            <span class="position-card__label">منذ: </span>
+            <span class="position-card__value--light">٢٠٢١م — حتى تاريخه</span>
+          </div>
+          <div class="position-card__field">
+            <span class="position-card__label">القطاع: </span>
+            <span class="position-card__value--light">تجزئة السلع المنزلية</span>
+          </div>
+        </div>
+      </div>
+      
+      <h4 class="section-title">الخبرات المهنية السابقة:</h4>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة تراي سبكتروم</div>
+          <div class="experience-card__date">٢٠١٩م — ٢٠٢١م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> المدير المالي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> متخصصة في بناء المنتجات الكهربائية</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة ألبان المزرعة</div>
+          <div class="experience-card__date">٢٠١٨م — ٢٠١٩م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> المدير المالي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> متخصصة في منتجات الألبان والأجبان</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">مجموعة أبو قفرة القابضة</div>
+          <div class="experience-card__date">٢٠١٦م — ٢٠١٨م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> المدير المالي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> تعمل في المقاولات ومواد البناء</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">شركة بيبسي</div>
+          <div class="experience-card__date">٢٠١٤م — ٢٠١٦م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> المدير المالي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> شركة منتجات غذائية</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">المجمع الوطني المتكامل للصناعات</div>
+          <div class="experience-card__date">٢٠٠٩م — ٢٠١٢م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> رئيس قسم المحاسبة</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> متخصص في تصنيع المكيفات وغسالات الملابس والثلاجات</div>
+      </div>
+      
+      <div class="experience-card">
+        <div class="experience-card__header">
+          <div class="experience-card__org">باسف</div>
+          <div class="experience-card__date">٢٠٠١م — ٢٠٠٨م</div>
+        </div>
+        <div class="experience-card__detail"><strong>المنصب:</strong> محاسب رئيسي</div>
+        <div class="experience-card__detail"><strong>القطاع:</strong> شركة عالمية في كيماويات البناء</div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    // Close button handler - using postMessage for reliable communication
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.close-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Send message to parent window
+        window.parent.postMessage({ type: 'closeLeadershipDialog' }, '*');
+      });
+    });
+  </script>
+</body>
+</html>
