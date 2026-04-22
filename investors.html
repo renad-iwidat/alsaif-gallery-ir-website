@@ -9,7 +9,11 @@
   
   <link rel="stylesheet" href="css/shared-layout.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <script src="https://irp.atnmo.com/v3/widget/widget-loader.js"></script>
+  <!-- Preconnect to external widget domain for faster loading -->
+  <link rel="preconnect" href="https://irp.atnmo.com">
+  <link rel="dns-prefetch" href="https://irp.atnmo.com">
+  <!-- Defer widget loader to not block page rendering -->
+  <script src="https://irp.atnmo.com/v3/widget/widget-loader.js" defer></script>
   <style>
     /* Investors & Governance Page Specific Styles */
     .ig-hero {
@@ -460,23 +464,105 @@
 
   <script src="js/shared-components.js"></script>
   <script>
-    // Hide skeleton loaders when widgets load
-    document.addEventListener('DOMContentLoaded', function() {
-      const widgets = document.querySelectorAll('[id$="-widget"]');
-      widgets.forEach(widget => {
-        const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            if (mutation.addedNodes.length > 0) {
+    // Lazy load widgets for better performance
+    (function() {
+      let widgetsLoaded = false;
+      
+      // Function to load a widget
+      function loadWidgetElement(widgetScript) {
+        if (typeof loadWidget === 'function') {
+          eval(widgetScript.textContent);
+        }
+      }
+      
+      // Function to load all widgets
+      function loadAllWidgets() {
+        if (widgetsLoaded) return;
+        widgetsLoaded = true;
+        
+        const widgetScripts = document.querySelectorAll('.ir-widget-item script[data-lazy="true"]');
+        widgetScripts.forEach((script, index) => {
+          // Stagger widget loading to reduce server load
+          setTimeout(() => {
+            script.removeAttribute('data-lazy');
+            loadWidgetElement(script);
+          }, index * 100); // 100ms delay between each widget
+        });
+      }
+      
+      // Intersection Observer for lazy loading
+      const observerOptions = {
+        root: null,
+        rootMargin: '200px', // Start loading 200px before widget is visible
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const widgetItem = entry.target;
+            const script = widgetItem.querySelector('script[data-lazy="true"]');
+            if (script) {
+              script.removeAttribute('data-lazy');
+              loadWidgetElement(script);
+            }
+          }
+        });
+      }, observerOptions);
+      
+      // Wait for DOM and widget loader to be ready
+      function initLazyLoading() {
+        // Mark all widget scripts as lazy
+        const widgetScripts = document.querySelectorAll('.ir-widget-item script');
+        widgetScripts.forEach(script => {
+          script.setAttribute('data-lazy', 'true');
+        });
+        
+        // Observe all widget items
+        const widgetItems = document.querySelectorAll('.ir-widget-item');
+        widgetItems.forEach(item => observer.observe(item));
+        
+        // Load first 3 widgets immediately for better perceived performance
+        const firstWidgets = Array.from(widgetScripts).slice(0, 3);
+        firstWidgets.forEach((script, index) => {
+          setTimeout(() => {
+            script.removeAttribute('data-lazy');
+            loadWidgetElement(script);
+          }, index * 150);
+        });
+      }
+      
+      // Initialize when everything is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          setTimeout(initLazyLoading, 500); // Small delay to let page render first
+        });
+      } else {
+        setTimeout(initLazyLoading, 500);
+      }
+      
+      // Hide skeleton loaders when widgets load
+      const widgetObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.addedNodes.length > 0) {
+            const widget = mutation.target.closest('[id$="-widget"]');
+            if (widget) {
               const skeleton = widget.querySelector('.widget-skeleton');
               if (skeleton && widget.children.length > 1) {
                 skeleton.style.display = 'none';
               }
             }
-          });
+          }
         });
-        observer.observe(widget, { childList: true, subtree: true });
       });
-    });
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgets = document.querySelectorAll('[id$="-widget"]');
+        widgets.forEach(widget => {
+          widgetObserver.observe(widget, { childList: true, subtree: true });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
