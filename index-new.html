@@ -406,7 +406,8 @@
         /* Mobile Responsive - نفس Flutter */
         @media (max-width: 599px) {
             .hero-section {
-                height: 400px; /* أقل للموبايل */
+                height: auto; /* تلقائي عشان يتمدد مع المحتوى */
+                min-height: 500px; /* حد أدنى */
             }
             
             .hero-content {
@@ -416,28 +417,39 @@
             }
             
             .hero-title {
-                font-size: 28px;
+                font-size: 24px; /* أصغر شوية */
+                line-height: 1.3;
+                margin-bottom: 16px;
             }
             
             .hero-subtitle {
-                font-size: 14px;
+                font-size: 13px; /* أصغر شوية */
+                line-height: 1.5;
+                margin-bottom: 16px;
             }
             
             .hero-desc {
-                font-size: 13px;
+                font-size: 12px; /* أصغر عشان يدخل */
+                line-height: 1.6;
+                margin-bottom: 12px;
             }
             
             .hero-buttons {
-                flex-direction: row;
+                flex-direction: row; /* جنب بعض زي العربي */
                 gap: 12px;
+                margin-top: 16px;
             }
             
             .hero-btn {
-                flex: 1;
+                flex: 1; /* يتقاسموا المساحة */
                 max-width: none;
                 height: 48px;
-                font-size: 14px;
+                font-size: 13px; /* أصغر شوية */
                 font-weight: 700;
+            }
+            
+            .stats-section {
+                padding: 35px 24px 60px; /* إضافة padding للموبايل */
             }
             
             .stats-container {
@@ -457,6 +469,10 @@
                 font-size: 11px; /* أصغر للموبايل */
             }
             
+            .brands-header {
+                padding: 51px 24px 16px; /* إضافة padding للموبايل */
+            }
+            
             .brands-title {
                 font-size: 32px; /* أصغر للموبايل */
             }
@@ -468,6 +484,7 @@
             .service-cards {
                 flex-direction: column;
                 gap: 16px;
+                padding: 8px 24px 130px; /* إضافة padding للموبايل */
             }
             
             .service-title {
