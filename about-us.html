@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#C62030">
   
   <link rel="stylesheet" href="css/shared-layout.css">
-  <link rel="stylesheet" href="css/responsive.css">
   <style>
     /* About Us Page Specific Styles */
     .about-hero {
@@ -174,36 +173,51 @@
     .heritage-timeline {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 20px 0; /* قللت الـ padding لرفع التايم لاين */
-      overflow: hidden;
+      padding: 20px 0;
+      overflow-x: auto;
+      overflow-y: hidden;
       position: relative;
-      margin-top: -20px; /* رفعت التايم لاين لفوق */
+      margin-top: -20px;
+      cursor: default;
+      /* NO smooth scrolling - for instant auto scroll */
+      scroll-behavior: auto;
+      /* Hide scrollbar completely */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      /* Enable momentum scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .heritage-timeline::-webkit-scrollbar {
+      display: none;
     }
     
     .timeline-track-container {
       position: relative;
-      height: 250px; /* قللت الارتفاع للمربعات الأصغر */
+      height: 230px; /* نفس الارتفاع الأصلي */
       padding-top: 40px; /* مساحة للخط في الأعلى */
     }
     
-    /* الخط الأفقي - مستمر من طرف لطرف */
+    /* الخط الأفقي - يمتد من أول كرة لنهاية آخر كرة بالضبط */
     .timeline-horizontal-line {
       position: absolute;
-      top: 0px; /* رفعت الخط أكثر لفوق */
-      left: 0;
-      right: 0;
-      height: 3px; /* زودت السماكة */
-      background: #000000; /* خط أسود */
-      z-index: 2; /* فوق النقاط - الخط يمر من فوق النقاط */
+      top: 0px;
+      left: 20px; /* نفس padding الـ scroll container */
+      height: 3px;
+      background: #000000;
+      z-index: 2;
+      /* 10 كروت × 240px عرض + 9 فراغات × 40px = 2760px */
+      width: 2760px;
     }
     
     /* الحاوية المتحركة */
     .timeline-scroll-container {
       display: flex;
-      gap: 60px; /* قربت المربعات أكثر */
-      padding: 0 80px;
-      animation: scrollTimeline 40s linear infinite;
+      gap: 40px; /* قللت المسافة بين المربعات */
+      padding: 0 20px; /* 20px من البداية والنهاية */
       width: fit-content;
+      /* Remove animation - will be controlled by JS */
     }
     
     /* تحريك التايم لاين تلقائياً */
@@ -221,18 +235,18 @@
       animation-play-state: paused;
     }
     
-    /* كل عنصر في التايم لاين - مربعات أصغر ومربعة الشكل */
+    /* كل عنصر في التايم لاين - عرض أكبر بس نفس الارتفاع */
     .timeline-item-box {
       display: flex;
       flex-direction: column;
       align-items: flex-start; /* النقطة في بداية المربع من اليسار */
-      min-width: 200px; /* صغرت المربعات أكثر */
-      max-width: 200px;
+      min-width: 240px; /* زودت العرض فقط */
+      max-width: 240px;
       position: relative;
       z-index: 2;
     }
     
-    /* النقطة الحمراء - الخط يمر من فوقها */
+    /* النقطة الحمراء - الخط يمر من وسطها بالضبط */
     .timeline-red-dot {
       width: 12px; /* حجم صغير مثل الصورة */
       height: 12px;
@@ -240,23 +254,23 @@
       border-radius: 50%;
       margin-bottom: 0px;
       position: absolute;
-      top: -6px; /* على الخط مباشرة */
+      top: -6px; /* نص حجم الكرة (12px / 2 = 6px) عشان الخط يمر من الوسط بالضبط */
       left: 0px;
-      z-index: 1; /* تحت الخط أو نفس المستوى */
+      z-index: 3; /* فوق الخط */
       border: none; /* بدون حدود */
-      transform: translateY(-40px);
+      transform: translateY(-38.5px); /* نعدل الموضع عشان الخط يمر من النص */
       box-shadow: none; /* بدون ظل */
     }
     
-    /* المربع الأبيض - مربع الشكل أصغر (الطول = العرض) */
+    /* المربع الأبيض - نفس الارتفاع الأصلي */
     .timeline-box {
       background: white;
       border: 1px solid #E5E7EB;
       border-radius: 6px;
-      padding: 16px 20px; /* قللت الـ padding أكثر */
+      padding: 16px 20px;
       text-align: left;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-      height: 200px; /* نفس العرض = مربع أصغر */
+      height: 200px; /* الارتفاع الأصلي */
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -766,31 +780,62 @@
 
   <script src="js/shared-components.js"></script>
   <script>
-    // Auto-Scrolling Timeline
+    // Auto-Scrolling Timeline - Simplified
     document.addEventListener('DOMContentLoaded', function() {
       const timelineContainer = document.querySelector('.heritage-timeline');
       const scrollContainer = document.getElementById('timelineScrollContainer');
       
-      // إيقاف الحركة عند الـ hover وإعادة تشغيلها عند المغادرة
       if (timelineContainer && scrollContainer) {
+        let autoScrollInterval = null;
+        let isMouseOver = false;
+        
+        // Auto scroll function - simple and fast
+        function startAutoScroll() {
+          if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+          }
+          
+          autoScrollInterval = setInterval(() => {
+            if (!isMouseOver) {
+              timelineContainer.scrollLeft += 1;
+              
+              // Reset when reaching end
+              if (timelineContainer.scrollLeft >= scrollContainer.scrollWidth - timelineContainer.clientWidth - 10) {
+                timelineContainer.scrollLeft = 0;
+              }
+            }
+          }, 30);
+        }
+        
+        function stopAutoScroll() {
+          if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+          }
+        }
+        
+        // Mouse enter - stop
         timelineContainer.addEventListener('mouseenter', () => {
-          scrollContainer.style.animationPlayState = 'paused';
+          isMouseOver = true;
+          stopAutoScroll();
         });
         
+        // Mouse leave - start immediately
         timelineContainer.addEventListener('mouseleave', () => {
-          scrollContainer.style.animationPlayState = 'running';
+          isMouseOver = false;
+          startAutoScroll();
         });
         
-        // إيقاف الحركة عند اللمس على الأجهزة المحمولة
-        timelineContainer.addEventListener('touchstart', () => {
-          scrollContainer.style.animationPlayState = 'paused';
-        });
+        // Wheel scroll - horizontal scroll only (deltaX)
+        timelineContainer.addEventListener('wheel', (e) => {
+          if (isMouseOver && e.deltaX !== 0) {
+            e.preventDefault();
+            timelineContainer.scrollLeft += e.deltaX;
+          }
+        }, { passive: false });
         
-        timelineContainer.addEventListener('touchend', () => {
-          setTimeout(() => {
-            scrollContainer.style.animationPlayState = 'running';
-          }, 3000); // إعادة التشغيل بعد 3 ثوان
-        });
+        // Start on load
+        startAutoScroll();
       }
     });
   </script>

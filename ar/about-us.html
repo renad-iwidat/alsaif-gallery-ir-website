@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#C62030">
   
   <link rel="stylesheet" href="../css/shared-layout.css">
-  <link rel="stylesheet" href="../css/responsive.css">
   <style>
     /* About Us Page Specific Styles */
     .about-hero {
@@ -225,37 +224,52 @@
     .heritage-timeline {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 20px 0; /* قللت الـ padding لرفع التايم لاين */
-      overflow: hidden;
+      padding: 20px 0;
+      overflow-x: auto;
+      overflow-y: hidden;
       position: relative;
-      direction: ltr; /* التايم لاين يتحرك من اليسار لليمين */
-      margin-top: -20px; /* رفعت التايم لاين لفوق */
+      direction: rtl; /* التايم لاين من اليمين لليسار في العربي */
+      margin-top: -20px;
+      cursor: default;
+      /* NO smooth scrolling - for instant auto scroll */
+      scroll-behavior: auto;
+      /* Hide scrollbar completely */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      /* Enable momentum scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .heritage-timeline::-webkit-scrollbar {
+      display: none;
     }
     
     .timeline-track-container {
       position: relative;
-      height: 250px; /* قللت الارتفاع للمربعات الأصغر */
+      height: 230px; /* نفس الارتفاع الأصلي */
       padding-top: 40px; /* مساحة للخط في الأعلى */
     }
     
-    /* الخط الأفقي - مستمر من طرف لطرف */
+    /* الخط الأفقي - يمتد من أول كرة لنهاية آخر كرة بالضبط */
     .timeline-horizontal-line {
       position: absolute;
-      top: 0px; /* رفعت الخط أكثر لفوق */
-      left: 0;
-      right: 0;
-      height: 3px; /* زودت السماكة */
-      background: #000000; /* خط أسود */
-      z-index: 2; /* فوق النقاط - الخط يمر من فوق النقاط */
+      top: 0px;
+      right: 20px; /* في RTL نستخدم right بدلاً من left */
+      height: 3px;
+      background: #000000;
+      z-index: 2;
+      /* 10 كروت × 240px عرض + 9 فراغات × 40px = 2760px */
+      width: 2760px;
     }
     
     /* الحاوية المتحركة */
     .timeline-scroll-container {
       display: flex;
-      gap: 60px; /* قربت المربعات أكثر */
-      padding: 0 80px;
-      animation: scrollTimeline 40s linear infinite;
+      gap: 40px; /* قللت المسافة بين المربعات */
+      padding: 0 20px; /* 20px من البداية والنهاية */
       width: fit-content;
+      /* Remove animation - will be controlled by JS */
     }
     
     /* تحريك التايم لاين تلقائياً */
@@ -273,19 +287,19 @@
       animation-play-state: paused;
     }
     
-    /* كل عنصر في التايم لاين - مربعات أصغر ومربعة الشكل */
+    /* كل عنصر في التايم لاين - عرض أكبر بس نفس الارتفاع */
     .timeline-item-box {
       display: flex;
       flex-direction: column;
       align-items: flex-start; /* النقطة في بداية المربع من اليسار */
-      min-width: 200px; /* صغرت المربعات أكثر */
-      max-width: 200px;
+      min-width: 240px; /* زودت العرض فقط */
+      max-width: 240px;
       position: relative;
       z-index: 2;
       direction: rtl; /* النص العربي من اليمين لليسار */
     }
     
-    /* النقطة الحمراء - الخط يمر من فوقها */
+    /* النقطة الحمراء - الخط يمر من وسطها بالضبط */
     .timeline-red-dot {
       width: 12px; /* حجم صغير مثل الصورة */
       height: 12px;
@@ -293,23 +307,23 @@
       border-radius: 50%;
       margin-bottom: 0px;
       position: absolute;
-      top: -6px; /* على الخط مباشرة */
+      top: -6px; /* نص حجم الكرة (12px / 2 = 6px) عشان الخط يمر من الوسط بالضبط */
       left: 0px;
-      z-index: 1; /* تحت الخط أو نفس المستوى */
+      z-index: 3; /* فوق الخط */
       border: none; /* بدون حدود */
-      transform: translateY(-40px);
+      transform: translateY(-38.5px); /* نعدل الموضع عشان الخط يمر من النص */
       box-shadow: none; /* بدون ظل */
     }
     
-    /* المربع الأبيض - مربع الشكل أصغر (الطول = العرض) */
+    /* المربع الأبيض - نفس الارتفاع الأصلي */
     .timeline-box {
       background: white;
       border: 1px solid #E5E7EB;
       border-radius: 6px;
-      padding: 16px 20px; /* قللت الـ padding أكثر */
+      padding: 16px 20px;
       text-align: right;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-      height: 200px; /* نفس العرض = مربع أصغر */
+      height: 200px; /* الارتفاع الأصلي */
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -686,7 +700,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">1993</div>
+                <div class="timeline-year-red">١٩٩٣</div>
                 <h4 class="timeline-title-black">التأسيس في الرياض</h4>
                 <p class="timeline-desc-gray">تأسيس السيف غاليري في الرياض.</p>
               </div>
@@ -695,7 +709,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2006</div>
+                <div class="timeline-year-red">٢٠٠٦</div>
                 <h4 class="timeline-title-black">أول صالة عرض بعلامة السيف غاليري</h4>
                 <p class="timeline-desc-gray">افتتاح أول صالة عرض تحمل علامة السيف غاليري التجارية.</p>
               </div>
@@ -704,7 +718,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2010</div>
+                <div class="timeline-year-red">٢٠١٠</div>
                 <h4 class="timeline-title-black">التوسع إلى 10 فروع</h4>
                 <p class="timeline-desc-gray">توسّع شبكة صالات العرض لتبلغ 10 فروع.</p>
               </div>
@@ -713,7 +727,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2014</div>
+                <div class="timeline-year-red">٢٠١٤</div>
                 <h4 class="timeline-title-black">التحوّل إلى شركة مساهمة مقفلة</h4>
                 <p class="timeline-desc-gray">تحويل الشركة إلى شركة مساهمة سعودية مقفلة.</p>
               </div>
@@ -722,7 +736,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2015</div>
+                <div class="timeline-year-red">٢٠١٥</div>
                 <h4 class="timeline-title-black">إطلاق علامة إيدسون</h4>
                 <p class="timeline-desc-gray">إطلاق العلامة التجارية الخاصة "إيدسون".</p>
               </div>
@@ -731,7 +745,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2016</div>
+                <div class="timeline-year-red">٢٠١٦</div>
                 <h4 class="timeline-title-black">منصة التجارة الإلكترونية وبرنامج الولاء</h4>
                 <p class="timeline-desc-gray">إطلاق منصة التجارة الإلكترونية وبرنامج الولاء.</p>
               </div>
@@ -740,7 +754,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2022</div>
+                <div class="timeline-year-red">٢٠٢٢</div>
                 <h4 class="timeline-title-black">الإدراج في السوق المالية السعودية</h4>
                 <p class="timeline-desc-gray">إدراج الشركة في السوق الرئيسية للسوق المالية السعودية (تداول).</p>
               </div>
@@ -749,7 +763,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2023</div>
+                <div class="timeline-year-red">٢٠٢٣</div>
                 <h4 class="timeline-title-black">التوسع الدولي الأول</h4>
                 <p class="timeline-desc-gray">افتتاح أول صالة عرض دولية في أبوظبي، ثم الثانية في عجمان، والثالثة في الكويت.</p>
               </div>
@@ -758,7 +772,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2024</div>
+                <div class="timeline-year-red">٢٠٢٤</div>
                 <h4 class="timeline-title-black">التوسع الخليجي</h4>
                 <p class="timeline-desc-gray">توسّع شبكة صالات العرض إلى 73 صالة في المملكة ودول الخليج.</p>
               </div>
@@ -767,7 +781,7 @@
             <div class="timeline-item-box">
               <div class="timeline-red-dot"></div>
               <div class="timeline-box">
-                <div class="timeline-year-red">2025</div>
+                <div class="timeline-year-red">٢٠٢٥</div>
                 <h4 class="timeline-title-black">تسارع التجارة الإلكترونية والمنصة الرقمية</h4>
                 <p class="timeline-desc-gray">توسّع إيرادات التجارة الإلكترونية وتحسين محفظة المنتجات وتطوير القنوات الرقمية.</p>
               </div>
@@ -804,31 +818,66 @@
 
   <script src="../js/shared-components.js"></script>
   <script>
-    // Auto-Scrolling Timeline (Arabic)
+    // Auto-Scrolling Timeline - Arabic RTL - Fixed
     document.addEventListener('DOMContentLoaded', function() {
       const timelineContainer = document.querySelector('.heritage-timeline');
       const scrollContainer = document.getElementById('timelineScrollContainer');
       
-      // إيقاف الحركة عند الـ hover وإعادة تشغيلها عند المغادرة
       if (timelineContainer && scrollContainer) {
+        let autoScrollInterval = null;
+        let isMouseOver = false;
+        
+        // Auto scroll function - RTL (move from right to left)
+        function startAutoScroll() {
+          if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+          }
+          
+          autoScrollInterval = setInterval(() => {
+            if (!isMouseOver) {
+              // In RTL, decreasing scrollLeft moves from right to left
+              timelineContainer.scrollLeft -= 1;
+              
+              // Get the minimum scroll position (most left in RTL)
+              const minScroll = -(scrollContainer.scrollWidth - timelineContainer.clientWidth);
+              
+              // Reset when reaching end (left side in RTL)
+              if (timelineContainer.scrollLeft <= minScroll + 10) {
+                timelineContainer.scrollLeft = 0; // Back to right side
+              }
+            }
+          }, 30);
+        }
+        
+        function stopAutoScroll() {
+          if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+          }
+        }
+        
+        // Mouse enter - stop
         timelineContainer.addEventListener('mouseenter', () => {
-          scrollContainer.style.animationPlayState = 'paused';
+          isMouseOver = true;
+          stopAutoScroll();
         });
         
+        // Mouse leave - start immediately
         timelineContainer.addEventListener('mouseleave', () => {
-          scrollContainer.style.animationPlayState = 'running';
+          isMouseOver = false;
+          startAutoScroll();
         });
         
-        // إيقاف الحركة عند اللمس على الأجهزة المحمولة
-        timelineContainer.addEventListener('touchstart', () => {
-          scrollContainer.style.animationPlayState = 'paused';
-        });
+        // Wheel scroll - horizontal scroll only (deltaX)
+        timelineContainer.addEventListener('wheel', (e) => {
+          if (isMouseOver && e.deltaX !== 0) {
+            e.preventDefault();
+            timelineContainer.scrollLeft += e.deltaX;
+          }
+        }, { passive: false });
         
-        timelineContainer.addEventListener('touchend', () => {
-          setTimeout(() => {
-            scrollContainer.style.animationPlayState = 'running';
-          }, 3000); // إعادة التشغيل بعد 3 ثوان
-        });
+        // Start on load
+        startAutoScroll();
       }
     });
   </script>
