@@ -506,75 +506,108 @@
         margin: 0 12px;
       }
       
-      /* Timeline Mobile */
+      /* Vertical Timeline for Mobile */
       .heritage-timeline {
-        max-width: 100%;
-        padding: 15px 0;
-        margin-top: -5px; /* رفعت التايم لاين */
+        overflow: visible !important;
+        padding: 0 !important;
+        margin-top: 0 !important;
       }
       
       .timeline-track-container {
-        height: 210px; /* قللت الارتفاع للموبايل */
-        padding-top: 30px; /* مساحة للخط في الأعلى */
+        height: auto !important;
+        padding: 0 !important;
       }
       
       .timeline-horizontal-line {
-        top: 0px; /* رفعت الخط للموبايل */
+        display: none !important;
       }
       
       .timeline-scroll-container {
-        gap: 30px; /* قربت المربعات أكثر */
-        padding: 0 40px;
-        animation-duration: 35s;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 0 !important;
+        animation: none !important;
+        width: 100% !important;
       }
       
       .timeline-item-box {
-        min-width: 140px; /* صغرت المربعات أكثر */
-        max-width: 140px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        min-width: 100%;
+        max-width: 100%;
+        gap: 12px;
+        position: relative;
+      }
+      
+      /* Vertical line container */
+      .timeline-item-box::before {
+        content: '';
+        display: block;
+        width: 32px;
+        min-width: 32px;
+        position: relative;
+        flex-shrink: 0;
+      }
+      
+      /* Vertical line behind dot */
+      .timeline-item-box::after {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: -16px;
+        width: 2px;
+        background: #6B7280;
+        z-index: 1;
+      }
+      
+      /* Hide line after last item */
+      .timeline-scroll-container .timeline-item-box:last-child::after {
+        bottom: 0; /* Line stops at the bottom of last card */
       }
       
       .timeline-red-dot {
-        width: 8px; /* صغير للموبايل */
-        height: 8px;
-        top: -4px;
-        left: 0px;
-        margin-bottom: 0px;
-        border: none;
-        transform: translateY(-30px);
-        box-shadow: none;
+        position: absolute;
+        left: 10px;
+        top: 14px;
+        width: 12px;
+        height: 12px;
+        transform: none;
+        z-index: 2;
       }
       
       .timeline-box {
-        padding: 12px 14px; /* قللت الـ padding أكثر */
-        height: 140px; /* مربع الشكل أصغر */
-        border-radius: 4px;
+        flex: 1;
+        height: auto;
+        min-height: auto;
+        padding: 14px;
+        text-align: left;
       }
       
       .timeline-year-red {
-        font-size: 14px; /* صغرت بنسبة ثابتة */
-        margin-bottom: 8px;
+        font-size: 16px;
+        margin-bottom: 4px;
       }
       
       .timeline-title-black {
-        font-size: 11px; /* صغرت بنسبة ثابتة */
-        margin-bottom: 10px;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 4px;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        display: block;
+        overflow: visible;
       }
       
       .timeline-desc-gray {
-        font-size: 9px; /* صغرت بنسبة ثابتة */
-        -webkit-line-clamp: 5; /* سطور أكثر للمربع الأكبر */
-        line-clamp: 5;
-      }
-      
-      @keyframes scrollTimeline {
-        0% {
-          transform: translateX(60px);
-        }
-        100% {
-          transform: translateX(-600px);
-        }
+        font-size: 12px;
+        line-height: 1.4;
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        display: block;
+        overflow: visible;
       }
     }
   </style>
@@ -780,12 +813,15 @@
 
   <script src="js/shared-components.js"></script>
   <script>
-    // Auto-Scrolling Timeline - Simplified
+    // Auto-Scrolling Timeline - Simplified (Desktop/Tablet only)
     document.addEventListener('DOMContentLoaded', function() {
       const timelineContainer = document.querySelector('.heritage-timeline');
       const scrollContainer = document.getElementById('timelineScrollContainer');
       
-      if (timelineContainer && scrollContainer) {
+      // Check if mobile (screen width < 600px)
+      const isMobile = window.innerWidth < 600;
+      
+      if (timelineContainer && scrollContainer && !isMobile) {
         let autoScrollInterval = null;
         let isMouseOver = false;
         
