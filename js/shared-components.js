@@ -82,16 +82,66 @@ function createNavBar(isArabic = false, activePage = 'home') {
     const texts = isArabic ? {
         home: 'الرئيسية',
         about: 'من نحن',
+        aboutPurpose: 'غايتنا',
+        aboutValues: 'قيمنا',
+        aboutHeritage: 'المسيرة والمحطات',
+        aboutLeadership: 'القيادة',
         strategy: 'الاستراتيجية والعمليات',
+        strategyPillars: 'الركائز الاستراتيجية',
+        strategyRoadmap: 'خارطة الطريق',
+        strategyRisk: 'إدارة المخاطر',
         investors: 'علاقات المستثمرين',
+        investorsCase: 'حالة الاستثمار',
+        investorsSnapshot: 'نظرة عامة عن الشركة',
+        investorsAnnouncements: 'الإعلانات',
+        investorsFactSheet: 'نشرة المعلومات',
+        investorsStockActivity: 'نشاط السهم',
+        investorsCorporateActions: 'الإجراءات النظامية',
+        investorsFinancials: 'البيانات المالية',
+        investorsSharePrice: 'سعر السهم',
+        investorsPerformance: 'الأداء',
+        investorsCalculator: 'حاسبة الاستثمار',
+        investorsShareSeries: 'سلسلة الأسهم',
+        investorsShareView: 'عرض الأسهم',
+        investorsPriceLookup: 'البحث عن السعر',
+        investorsPeerGroup: 'تحليل المجموعة المماثلة',
+        investorsSubscribe: 'الاشتراك',
         newsroom: 'الأخبار والوظائف',
+        newsroomNews: 'الأخبار',
+        newsroomCareers: 'الوظائف',
+        newsroomContact: 'تواصل معنا',
         menu: 'القائمة'
     } : {
         home: 'Home',
         about: 'About Us',
+        aboutPurpose: 'Our Purpose',
+        aboutValues: 'Our Values',
+        aboutHeritage: 'Heritage & Milestones',
+        aboutLeadership: 'Leadership',
         strategy: 'Strategy & Operations',
+        strategyPillars: 'Strategic Pillars',
+        strategyRoadmap: 'Strategic Roadmap',
+        strategyRisk: 'Risk Management',
         investors: 'Investor Relations',
+        investorsCase: 'Investment Case',
+        investorsSnapshot: 'Company Snapshot',
+        investorsAnnouncements: 'Announcements',
+        investorsFactSheet: 'Fact Sheet',
+        investorsStockActivity: 'Stock Activity',
+        investorsCorporateActions: 'Corporate Actions',
+        investorsFinancials: 'Company Financials',
+        investorsSharePrice: 'Share Price',
+        investorsPerformance: 'Performance',
+        investorsCalculator: 'Investment Calculator',
+        investorsShareSeries: 'Share Series',
+        investorsShareView: 'Share View',
+        investorsPriceLookup: 'Price Lookup',
+        investorsPeerGroup: 'Peer Group Analysis',
+        investorsSubscribe: 'Subscribe',
         newsroom: 'Newsroom & Careers',
+        newsroomNews: 'Latest News',
+        newsroomCareers: 'Careers',
+        newsroomContact: 'Contact',
         menu: 'Menu'
     };
     
@@ -114,10 +164,55 @@ function createNavBar(isArabic = false, activePage = 'home') {
                 </div>
                 <nav class="nav-menu">
                     <a href="${homeHref}" class="nav-item ${activePage === 'home' ? 'active' : ''}">${texts.home}</a>
-                    <a href="${aboutHref}" class="nav-item ${activePage === 'about' ? 'active' : ''}">${texts.about}</a>
-                    <a href="${strategyHref}" class="nav-item ${activePage === 'strategy' ? 'active' : ''}">${texts.strategy}</a>
-                    <a href="${investorsHref}" class="nav-item ${activePage === 'investors' ? 'active' : ''}">${texts.investors}</a>
-                    <a href="${newsCareersHref}" class="nav-item ${activePage === 'news-careers' ? 'active' : ''}">${texts.newsroom}</a>
+                    
+                    <div class="nav-item-dropdown ${activePage === 'about' ? 'active' : ''}">
+                        <a href="${aboutHref}" class="nav-item">${texts.about}</a>
+                        <div class="dropdown-menu">
+                            <a href="${aboutHref}#purpose" class="dropdown-item">${texts.aboutPurpose}</a>
+                            <a href="${aboutHref}#values" class="dropdown-item">${texts.aboutValues}</a>
+                            <a href="${aboutHref}#heritage" class="dropdown-item">${texts.aboutHeritage}</a>
+                            <a href="${aboutHref}#leadership" class="dropdown-item">${texts.aboutLeadership}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item-dropdown ${activePage === 'strategy' ? 'active' : ''}">
+                        <a href="${strategyHref}" class="nav-item">${texts.strategy}</a>
+                        <div class="dropdown-menu">
+                            <a href="${strategyHref}#pillars" class="dropdown-item">${texts.strategyPillars}</a>
+                            <a href="${strategyHref}#roadmap" class="dropdown-item">${texts.strategyRoadmap}</a>
+                            <a href="${strategyHref}#risk" class="dropdown-item">${texts.strategyRisk}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item-dropdown ${activePage === 'investors' ? 'active' : ''}">
+                        <a href="${investorsHref}" class="nav-item">${texts.investors}</a>
+                        <div class="dropdown-menu">
+                            <a href="${investorsHref}#investment-case" class="dropdown-item">${texts.investorsCase}</a>
+                            <a href="${investorsHref}#company-snapshot" class="dropdown-item">${texts.investorsSnapshot}</a>
+                            <a href="${investorsHref}#announcements" class="dropdown-item">${texts.investorsAnnouncements}</a>
+                            <a href="${investorsHref}#fact-sheet" class="dropdown-item">${texts.investorsFactSheet}</a>
+                            <a href="${investorsHref}#stock-activity" class="dropdown-item">${texts.investorsStockActivity}</a>
+                            <a href="${investorsHref}#corporate-actions" class="dropdown-item">${texts.investorsCorporateActions}</a>
+                            <a href="${investorsHref}#financials" class="dropdown-item">${texts.investorsFinancials}</a>
+                            <a href="${investorsHref}#share-price" class="dropdown-item">${texts.investorsSharePrice}</a>
+                            <a href="${investorsHref}#performance" class="dropdown-item">${texts.investorsPerformance}</a>
+                            <a href="${investorsHref}#calculator" class="dropdown-item">${texts.investorsCalculator}</a>
+                            <a href="${investorsHref}#share-series" class="dropdown-item">${texts.investorsShareSeries}</a>
+                            <a href="${investorsHref}#share-view" class="dropdown-item">${texts.investorsShareView}</a>
+                            <a href="${investorsHref}#price-lookup" class="dropdown-item">${texts.investorsPriceLookup}</a>
+                            <a href="${investorsHref}#peer-group" class="dropdown-item">${texts.investorsPeerGroup}</a>
+                            <a href="${investorsHref}#subscribe" class="dropdown-item">${texts.investorsSubscribe}</a>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item-dropdown ${activePage === 'news-careers' ? 'active' : ''}">
+                        <a href="${newsCareersHref}" class="nav-item">${texts.newsroom}</a>
+                        <div class="dropdown-menu">
+                            <a href="${newsCareersHref}#news" class="dropdown-item">${texts.newsroomNews}</a>
+                            <a href="${newsCareersHref}#careers" class="dropdown-item">${texts.newsroomCareers}</a>
+                            <a href="${newsCareersHref}#contact" class="dropdown-item">${texts.newsroomContact}</a>
+                        </div>
+                    </div>
                 </nav>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
                     <span></span>
@@ -320,3 +415,24 @@ function updateMobileMenuVisibility() {
 // Run on load and resize
 window.addEventListener('load', updateMobileMenuVisibility);
 window.addEventListener('resize', updateMobileMenuVisibility);
+
+
+// Smooth scroll for anchor links
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="#"]');
+    if (link && link.hash) {
+        const targetId = link.hash.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Update URL without jumping
+            history.pushState(null, null, link.hash);
+        }
+    }
+});

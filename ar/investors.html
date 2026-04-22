@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -210,25 +210,6 @@
       text-align: right;
     }
     
-    /* Widget Loading Skeleton */
-    .widget-skeleton {
-      min-height: 300px;
-      background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-    
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    
-    .ir-widget-item > div {
-      min-height: 300px;
-    }
-    
     @media (max-width: 1199px) {
       .stock-ticker-section,
       .ir-widget-item {
@@ -283,7 +264,7 @@
     </section>
 
     <!-- Investment Case Section -->
-    <section class="section section--light">
+    <section class="section section--light" id="investment-case">
       <h2 class="section__title">مقومات الاستثمار في السيف غاليري</h2>
       <p class="section__subtitle">أبرز مقومات الاستثمار</p>
       
@@ -338,129 +319,115 @@
     </section>
 
     <!-- IR Widgets Section -->
-    <section class="ir-widgets-section">
+    <section class="ir-widgets-section" id="widgets">
       <!-- Company Snapshot -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="company-snapshot">
         <h3>نظرة عامة عن الشركة</h3>
         <div id="company-snapshot-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Announcements -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="announcements">
         <h3>الإعلانات</h3>
         <div id="corporate-news-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Fact Sheet -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="fact-sheet">
         <h3>نشرة المعلومات</h3>
         <div id="fact-sheet-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Stock Activity -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="stock-activity">
         <h3>نشاط السهم</h3>
         <div id="stock-activity-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Corporate Actions -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="corporate-actions">
         <h3>الإجراءات النظامية</h3>
         <div id="corporate-actions-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Company Financials -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="financials">
         <h3>البيانات المالية</h3>
         <div id="company-financials-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Price -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="share-price">
         <h3>سعر السهم</h3>
         <div id="share-price-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Performance -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="performance">
         <h3>الأداء</h3>
         <div id="performance-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Investment Calculator -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="calculator">
         <h3>حاسبة الاستثمار</h3>
         <div id="investment-calculator-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Series -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="share-series">
         <h3>سلسلة الأسهم</h3>
         <div id="share-series-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share View -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="share-view">
         <h3>عرض الأسهم</h3>
         <div id="share-view-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Price Lookup -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="price-lookup">
         <h3>البحث عن السعر</h3>
         <div id="price-lookup-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Peer Group Analysis -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="peer-group">
         <h3>تحليل المجموعة المماثلة</h3>
         <div id="peer-group-analysis-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Email Subscription -->
-      <div class="ir-widget-item">
+      <div class="ir-widget-item" id="subscribe">
         <h3>الاشتراك</h3>
         <div id="email-subscription-widget">
-          <div class="widget-skeleton"></div>
           <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>

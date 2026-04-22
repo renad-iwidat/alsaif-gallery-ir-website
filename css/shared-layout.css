@@ -600,3 +600,73 @@ body.ar .mobile-nav-item.active {
         display: none !important;
     }
 }
+
+
+/* Dropdown Menu Styles */
+.nav-item-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-item-dropdown .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 220px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+body.ar .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #495565;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background-color: #F9FAFB;
+    color: #C62030;
+    padding-left: 24px;
+}
+
+body.ar .dropdown-item:hover {
+    padding-left: 20px;
+    padding-right: 24px;
+}
+
+/* Hide dropdown on mobile */
+@media (max-width: 899px) {
+    .dropdown-menu {
+        display: none;
+    }
+}
