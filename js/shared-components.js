@@ -84,13 +84,15 @@ function createNavBar(isArabic = false, activePage = 'home') {
         about: 'من نحن',
         strategy: 'الاستراتيجية والعمليات',
         investors: 'علاقات المستثمرين',
-        newsroom: 'الأخبار والوظائف'
+        newsroom: 'الأخبار والوظائف',
+        menu: 'القائمة'
     } : {
         home: 'Home',
         about: 'About Us',
         strategy: 'Strategy & Operations',
         investors: 'Investor Relations',
-        newsroom: 'Newsroom & Careers'
+        newsroom: 'Newsroom & Careers',
+        menu: 'Menu'
     };
     
     // تحديد الروابط حسب اللغة
@@ -106,7 +108,9 @@ function createNavBar(isArabic = false, activePage = 'home') {
         <div class="nav-bar">
             <div class="nav-content">
                 <div class="nav-logo">
-                    <img src="${logoSrc}" alt="Al Saif Gallery" />
+                    <a href="${homeHref}">
+                        <img src="${logoSrc}" alt="Al Saif Gallery" />
+                    </a>
                 </div>
                 <nav class="nav-menu">
                     <a href="${homeHref}" class="nav-item ${activePage === 'home' ? 'active' : ''}">${texts.home}</a>
@@ -114,6 +118,29 @@ function createNavBar(isArabic = false, activePage = 'home') {
                     <a href="${strategyHref}" class="nav-item ${activePage === 'strategy' ? 'active' : ''}">${texts.strategy}</a>
                     <a href="${investorsHref}" class="nav-item ${activePage === 'investors' ? 'active' : ''}">${texts.investors}</a>
                     <a href="${newsCareersHref}" class="nav-item ${activePage === 'news-careers' ? 'active' : ''}">${texts.newsroom}</a>
+                </nav>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" style="display: none;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <h3>${texts.menu}</h3>
+                    <button class="mobile-menu-close" onclick="toggleMobileMenu()">&times;</button>
+                </div>
+                <nav class="mobile-nav-menu">
+                    <a href="${homeHref}" class="mobile-nav-item ${activePage === 'home' ? 'active' : ''}">${texts.home}</a>
+                    <a href="${aboutHref}" class="mobile-nav-item ${activePage === 'about' ? 'active' : ''}">${texts.about}</a>
+                    <a href="${strategyHref}" class="mobile-nav-item ${activePage === 'strategy' ? 'active' : ''}">${texts.strategy}</a>
+                    <a href="${investorsHref}" class="mobile-nav-item ${activePage === 'investors' ? 'active' : ''}">${texts.investors}</a>
+                    <a href="${newsCareersHref}" class="mobile-nav-item ${activePage === 'news-careers' ? 'active' : ''}">${texts.newsroom}</a>
                 </nav>
             </div>
         </div>
@@ -264,3 +291,32 @@ document.addEventListener('DOMContentLoaded', function() {
         footerContainer.innerHTML = createFooter(isArabic);
     }
 });
+
+// Mobile Menu Toggle Function
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+}
+
+// Show/Hide Mobile Menu Toggle based on screen size
+function updateMobileMenuVisibility() {
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (toggle && navMenu) {
+        if (window.innerWidth <= 899) {
+            toggle.style.display = 'flex';
+            navMenu.style.display = 'none';
+        } else {
+            toggle.style.display = 'none';
+            navMenu.style.display = 'flex';
+        }
+    }
+}
+
+// Run on load and resize
+window.addEventListener('load', updateMobileMenuVisibility);
+window.addEventListener('resize', updateMobileMenuVisibility);

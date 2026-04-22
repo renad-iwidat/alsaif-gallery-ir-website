@@ -1,7 +1,7 @@
 /* Responsive Styles */
 
-/* Mobile Styles (< 600px) */
-@media (max-width: 599px) {
+/* Mobile Styles (< 900px) */
+@media (max-width: 899px) {
     .section-padding {
         padding-left: var(--padding-mobile);
         padding-right: var(--padding-mobile);
@@ -16,11 +16,16 @@
     }
     
     .nav-menu {
-        display: none;
+        display: none !important;
     }
     
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
+    }
+    
+    .nav-content {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
     
     .hero-section {
@@ -204,58 +209,7 @@
     .brands-title { font-size: 32px; }
 }
 
-/* Responsive Navigation */
-@media (max-width: 899px) {
-    .nav-menu {
-        display: none;
-    }
-    
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .mobile-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: var(--z-modal);
-        display: none;
-    }
-    
-    .mobile-menu.active {
-        display: flex;
-    }
-    
-    .mobile-menu-content {
-        background-color: white;
-        width: 100%;
-        max-width: 400px;
-        height: 100%;
-        padding: 20px;
-        overflow-y: auto;
-    }
-    
-    body.ar .mobile-menu-content {
-        margin-left: auto;
-    }
-    
-    body.ltr .mobile-menu-content {
-        margin-right: auto;
-    }
-}
-
-@media (min-width: 900px) {
-    .mobile-menu-toggle {
-        display: none;
-    }
-    
-    .nav-menu {
-        display: flex;
-    }
-}
+/* Responsive Navigation - Handled in shared-layout.css */
 
 /* Print Styles */
 @media print {
