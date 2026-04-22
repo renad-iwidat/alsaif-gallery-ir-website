@@ -1,7 +1,7 @@
 // Service Worker for Al Saif Gallery Website
 // يوفر التخزين المؤقت وتحسين الأداء
 
-const CACHE_VERSION = 'v1.0.0';
+const CACHE_VERSION = 'v1.0.1'; // Updated version to force cache refresh
 const CACHE_NAME = `alsaif-gallery-${CACHE_VERSION}`;
 
 // Resources to cache immediately
@@ -72,12 +72,12 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
     
-    // Skip cross-origin requests
+    // Skip cross-origin requests and external widgets - ALWAYS use network
     if (url.origin !== location.origin) {
-        // For external widget scripts, use network first
+        // For external widget scripts, ALWAYS use network (no cache)
         if (url.hostname === 'irp.atnmo.com') {
             event.respondWith(
-                fetch(request)
+                fetch(request, { cache: 'no-store' })
                     .catch(() => {
                         return new Response('Widget unavailable offline', {
                             status: 503,
@@ -87,6 +87,29 @@ self.addEventListener('fetch', (event) => {
             );
             return;
         }
+        return;
+    }
+    
+    // For HTML pages with widgets, use network first to get fresh content
+    if (request.url.includes('investors.html')) {
+        event.respondWith(
+            fetch(request)
+                .then((networkResponse) => {
+                    // Cache the response
+                    if (networkResponse && networkResponse.status === 200) {
+                        const responseToCache = networkResponse.clone();
+                        caches.open(CACHE_NAME)
+                            .then((cache) => {
+                                cache.put(request, responseToCache);
+                            });
+                    }
+                    return networkResponse;
+                })
+                .catch(() => {
+                    // Fallback to cache if network fails
+                    return caches.match(request);
+                })
+        );
         return;
     }
     

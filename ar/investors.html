@@ -12,9 +12,16 @@
   <!-- Preconnect to external widget domain for faster loading -->
   <link rel="preconnect" href="https://irp.atnmo.com">
   <link rel="dns-prefetch" href="https://irp.atnmo.com">
-  <!-- Defer widget loader to not block page rendering -->
-  <script src="https://irp.atnmo.com/v3/widget/widget-loader.js" defer></script>
+  <!-- Load widget loader synchronously to ensure loadWidget is available -->
+  <script src="https://irp.atnmo.com/v3/widget/widget-loader.js"></script>
   <style>
+    /* Mobile Top Bar Override - Show text on mobile */
+    @media (max-width: 599px) {
+      .top-bar-item span {
+        display: inline !important;
+      }
+    }
+    
     /* Investors & Governance Page Specific Styles */
     .ig-hero {
       width: 100%;
