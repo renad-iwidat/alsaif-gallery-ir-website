@@ -859,7 +859,16 @@
   </div>
 
   <script src="../js/shared-components.js"></script>
+  <script src="../js/search-dialog.js"></script>
   <script>
+    // Initialize SearchDialog
+    if (typeof SearchDialog !== 'undefined') {
+        SearchDialog.init();
+        console.log('SearchDialog is ready!');
+    } else {
+        console.error('SearchDialog not loaded!');
+    }
+    
     // Auto-Scrolling Timeline - Arabic RTL (Desktop/Tablet only)
     document.addEventListener('DOMContentLoaded', function() {
       const timelineContainer = document.querySelector('.heritage-timeline');
