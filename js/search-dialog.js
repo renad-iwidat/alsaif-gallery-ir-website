@@ -189,12 +189,16 @@ const SearchDialog = {
         container.innerHTML = dialogHTML;
         document.body.appendChild(container);
 
-        // Bind events
-        this.bindEvents();
-
-        // Focus input
+        // Wait for DOM to be ready, then bind events
         setTimeout(() => {
-            document.getElementById('search-input')?.focus();
+            this.bindEvents();
+            
+            // Focus input
+            const input = document.getElementById('search-input');
+            if (input) {
+                input.focus();
+                console.log('Input focused');
+            }
         }, 100);
     },
 
