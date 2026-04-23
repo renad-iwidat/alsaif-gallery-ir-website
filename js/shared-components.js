@@ -63,7 +63,7 @@ function createTopBar(isArabic = false) {
                             <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             <span>${texts.contact}</span>
                         </a>
-                        <a href="#" class="top-bar-item">
+                        <a href="#" class="top-bar-item" onclick="event.preventDefault(); if(typeof SearchDialog !== 'undefined') SearchDialog.show();">
                             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
                             <span>${texts.search}</span>
                         </a>
@@ -433,6 +433,25 @@ document.addEventListener('click', function(e) {
             
             // Update URL without jumping
             history.pushState(null, null, link.hash);
+        }
+    }
+});
+
+
+// Search Dialog Handler
+document.addEventListener('click', function(e) {
+    // Check if clicked element or its parent has the search icon
+    const searchItem = e.target.closest('.top-bar-item');
+    if (searchItem) {
+        const svg = searchItem.querySelector('svg');
+        const span = searchItem.querySelector('span');
+        
+        // Check if this is the search button (has "بحث" or "Search" text)
+        if (span && (span.textContent.includes('بحث') || span.textContent.includes('Search'))) {
+            e.preventDefault();
+            if (typeof SearchDialog !== 'undefined') {
+                SearchDialog.show();
+            }
         }
     }
 });

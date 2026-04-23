@@ -115,8 +115,10 @@ const TopBar = {
     
     // Handle search click
     handleSearch() {
-        // Show search modal (to be implemented)
-        console.log('Search clicked');
+        // Show search dialog
+        if (typeof SearchDialog !== 'undefined') {
+            SearchDialog.show();
+        }
     },
     
     // Handle language toggle
