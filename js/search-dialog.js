@@ -209,22 +209,39 @@ const SearchDialog = {
         const input = document.getElementById('search-input');
 
         console.log('Binding events...');
+        console.log('Overlay:', overlay);
+        console.log('Close button:', closeBtn);
         console.log('Input element:', input);
 
         // Close on overlay click
-        overlay?.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                this.close();
-            }
-        });
+        if (overlay) {
+            overlay.addEventListener('click', (e) => {
+                console.log('Overlay clicked');
+                if (e.target === overlay) {
+                    this.close();
+                }
+            });
+        }
 
         // Close on button click
-        closeBtn?.addEventListener('click', () => {
-            this.close();
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                console.log('Close button clicked');
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            });
+        }
 
         // Close on escape
-        document.addEventListener('keydown', this.handleEscape);
+        const escapeHandler = (e) => {
+            if (e.key === 'Escape') {
+                console.log('Escape pressed');
+                this.close();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+        };
+        document.addEventListener('keydown', escapeHandler);
 
         // Search on input - DIRECT binding
         if (input) {
@@ -427,11 +444,14 @@ const SearchDialog = {
 
     // Close dialog
     close() {
+        console.log('Closing dialog...');
         const dialog = document.getElementById('search-dialog');
-        if (dialog) {
+        if (dialog && dialog.parentElement) {
             dialog.parentElement.remove();
+            console.log('Dialog removed');
+        } else {
+            console.error('Dialog not found!');
         }
-        document.removeEventListener('keydown', this.handleEscape);
     }
 };
 
