@@ -267,6 +267,8 @@ const SearchDialog = {
 
     // Perform search
     performSearch(query) {
+        console.log('Searching for:', query);
+        
         // Detect language
         const htmlDir = document.documentElement.getAttribute('dir');
         const isArabic = htmlDir === 'rtl';
@@ -285,6 +287,8 @@ const SearchDialog = {
                    item.categoryEn.toLowerCase().includes(q) ||
                    item.categoryAr.includes(q);
         });
+
+        console.log('Found results:', this.currentResults.length);
 
         // Render results
         const results = document.getElementById('search-results');
