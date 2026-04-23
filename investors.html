@@ -470,6 +470,12 @@
   </div>
 
   <script src="js/shared-components.js"></script>
+  <script src="js/search-dialog.js"></script>
+  <script>
+    if (typeof SearchDialog !== 'undefined') {
+        SearchDialog.init();
+    }
+  </script>
   <script>
     // Lazy load widgets for better performance
     (function() {
