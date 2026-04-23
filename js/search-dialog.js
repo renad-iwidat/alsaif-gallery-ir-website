@@ -204,6 +204,9 @@ const SearchDialog = {
         const closeBtn = document.getElementById('search-close');
         const input = document.getElementById('search-input');
 
+        console.log('Binding events...');
+        console.log('Input element:', input);
+
         // Close on overlay click
         overlay?.addEventListener('click', (e) => {
             if (e.target === overlay) {
@@ -219,10 +222,22 @@ const SearchDialog = {
         // Close on escape
         document.addEventListener('keydown', this.handleEscape);
 
-        // Search on input
-        input?.addEventListener('input', (e) => {
-            this.handleSearch(e.target.value);
-        });
+        // Search on input - DIRECT binding
+        if (input) {
+            console.log('Adding input event listener...');
+            input.addEventListener('input', (e) => {
+                console.log('Input event fired! Value:', e.target.value);
+                this.handleSearch(e.target.value);
+            });
+            
+            // Also try keyup as backup
+            input.addEventListener('keyup', (e) => {
+                console.log('Keyup event fired! Value:', e.target.value);
+                this.handleSearch(e.target.value);
+            });
+        } else {
+            console.error('Input element not found!');
+        }
     },
 
     // Handle escape key
@@ -234,6 +249,8 @@ const SearchDialog = {
 
     // Handle search
     handleSearch(query) {
+        console.log('handleSearch called with:', query);
+        
         const loading = document.getElementById('search-loading');
         const results = document.getElementById('search-results');
         
@@ -242,6 +259,7 @@ const SearchDialog = {
         const isArabic = htmlDir === 'rtl';
 
         if (!query.trim()) {
+            console.log('Query is empty, showing empty state');
             this.currentResults = [];
             if (results) {
                 results.innerHTML = this.renderEmptyState(isArabic);
@@ -251,6 +269,7 @@ const SearchDialog = {
         }
 
         // Show loading
+        console.log('Showing loading...');
         if (loading) loading.style.display = 'flex';
 
         // Clear previous timeout
@@ -260,6 +279,7 @@ const SearchDialog = {
 
         // Debounce search
         this.searchTimeout = setTimeout(() => {
+            console.log('Performing search after debounce...');
             this.performSearch(query);
             if (loading) loading.style.display = 'none';
         }, 400);
