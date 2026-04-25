@@ -477,10 +477,8 @@
     }
   </script>
   <script>
-    // Lazy load widgets for better performance
+    // Load all widgets immediately on page load
     (function() {
-      let widgetsLoaded = false;
-      
       // Function to load a widget
       function loadWidgetElement(widgetScript) {
         if (typeof loadWidget === 'function') {
@@ -488,70 +486,23 @@
         }
       }
       
-      // Function to load all widgets
-      function loadAllWidgets() {
-        if (widgetsLoaded) return;
-        widgetsLoaded = true;
-        
-        const widgetScripts = document.querySelectorAll('.ir-widget-item script[data-lazy="true"]');
-        widgetScripts.forEach((script, index) => {
-          // Stagger widget loading to reduce server load
-          setTimeout(() => {
-            script.removeAttribute('data-lazy');
-            loadWidgetElement(script);
-          }, index * 100); // 100ms delay between each widget
-        });
-      }
-      
-      // Intersection Observer for lazy loading
-      const observerOptions = {
-        root: null,
-        rootMargin: '200px', // Start loading 200px before widget is visible
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const widgetItem = entry.target;
-            const script = widgetItem.querySelector('script[data-lazy="true"]');
-            if (script) {
-              script.removeAttribute('data-lazy');
-              loadWidgetElement(script);
-            }
-          }
-        });
-      }, observerOptions);
-      
-      // Wait for DOM and widget loader to be ready
-      function initLazyLoading() {
-        // Mark all widget scripts as lazy
+      // Initialize and load all widgets immediately
+      function initWidgets() {
         const widgetScripts = document.querySelectorAll('.ir-widget-item script');
-        widgetScripts.forEach(script => {
-          script.setAttribute('data-lazy', 'true');
-        });
         
-        // Observe all widget items
-        const widgetItems = document.querySelectorAll('.ir-widget-item');
-        widgetItems.forEach(item => observer.observe(item));
-        
-        // Load first 3 widgets immediately for better perceived performance
-        const firstWidgets = Array.from(widgetScripts).slice(0, 3);
-        firstWidgets.forEach((script, index) => {
+        // Load all widgets with minimal stagger for smooth loading
+        widgetScripts.forEach((script, index) => {
           setTimeout(() => {
-            script.removeAttribute('data-lazy');
             loadWidgetElement(script);
-          }, index * 150);
+          }, index * 30); // Very short 30ms delay between each widget
         });
       }
       
-      // Initialize when everything is ready
+      // Initialize immediately when DOM is ready
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          setTimeout(initLazyLoading, 500); // Small delay to let page render first
-        });
+        document.addEventListener('DOMContentLoaded', initWidgets);
       } else {
-        setTimeout(initLazyLoading, 500);
+        initWidgets();
       }
       
       // Hide skeleton loaders when widgets load
