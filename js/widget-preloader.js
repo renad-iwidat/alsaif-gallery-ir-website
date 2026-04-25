@@ -1,11 +1,11 @@
-// Widget Preloader - Preload and cache widgets for instant display
+// Widget Preloader - Advanced preloading with multiple strategies
 (function() {
     // Check if we're already on investors page
     const isInvestorsPage = window.location.pathname.includes('investors');
     
     // Cache key for widget data
     const CACHE_KEY = 'alsaif_widgets_cache';
-    const CACHE_DURATION = 1000 * 60 * 30; // 30 minutes
+    const CACHE_DURATION = 1000 * 60 * 60; // 60 minutes (increased from 30)
     
     // Function to check if cache is valid
     function isCacheValid() {
@@ -30,19 +30,43 @@
         localStorage.setItem(CACHE_KEY, JSON.stringify(data));
     }
     
-    // If not on investors page, preload in background
+    // Preload widget domain resources
+    function preloadWidgetResources() {
+        const widgetDomain = 'https://widgets.financialcontent.com';
+        const irpDomain = 'https://irp.atnmo.com';
+        
+        // DNS prefetch
+        ['dns-prefetch', 'preconnect'].forEach(function(rel) {
+            [widgetDomain, irpDomain].forEach(function(domain) {
+                const link = document.createElement('link');
+                link.rel = rel;
+                link.href = domain;
+                if (rel === 'preconnect') {
+                    link.crossOrigin = 'anonymous';
+                }
+                document.head.appendChild(link);
+            });
+        });
+    }
+    
+    // If not on investors page, preload aggressively
     if (!isInvestorsPage) {
+        // Immediate preload of widget domains (no wait)
+        preloadWidgetResources();
+        
         // Wait for page to load first
         window.addEventListener('load', function() {
-            // Wait 2 seconds to let current page settle
+            // Shorter wait time - 1 second instead of 2
             setTimeout(function() {
                 // Skip if already cached recently
                 if (isCacheValid()) {
-                    console.log('Widgets already cached');
+                    console.log('Widgets already cached (valid for ' + 
+                        Math.round((CACHE_DURATION - (Date.now() - JSON.parse(localStorage.getItem(CACHE_KEY)).timestamp)) / 60000) + 
+                        ' more minutes)');
                     return;
                 }
                 
-                console.log('Starting widget preload in background...');
+                console.log('Starting aggressive widget preload...');
                 
                 // Detect language
                 const htmlDir = document.documentElement.getAttribute('dir');
@@ -53,42 +77,59 @@
                     window.location.origin + '/ar/investors.html' : 
                     window.location.origin + '/investors.html';
                 
-                // Preload the investors page HTML
+                // Use high priority fetch
                 fetch(investorsUrl, {
                     method: 'GET',
-                    cache: 'force-cache'
+                    cache: 'force-cache',
+                    priority: 'high'
                 }).then(function(response) {
                     return response.text();
                 }).then(function(html) {
                     console.log('Investors page preloaded and cached');
                     markWidgetsCached();
+                    
+                    // Parse HTML and preload widget scripts
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const scripts = doc.querySelectorAll('script[src*="irp.atnmo.com"]');
+                    
+                    // Preload each widget script
+                    scripts.forEach(function(script, index) {
+                        setTimeout(function() {
+                            const link = document.createElement('link');
+                            link.rel = 'prefetch';
+                            link.as = 'script';
+                            link.href = script.src;
+                            document.head.appendChild(link);
+                            console.log('Prefetching widget script:', script.src);
+                        }, index * 100);
+                    });
                 }).catch(function(err) {
                     console.log('Preload skipped:', err);
                 });
                 
-                // Preload widget scripts domain
-                const widgetDomain = 'https://widgets.financialcontent.com';
-                const link = document.createElement('link');
-                link.rel = 'dns-prefetch';
-                link.href = widgetDomain;
-                document.head.appendChild(link);
-                
-                // Preconnect to widget domain for faster loading
-                const preconnect = document.createElement('link');
-                preconnect.rel = 'preconnect';
-                preconnect.href = widgetDomain;
-                preconnect.crossOrigin = 'anonymous';
-                document.head.appendChild(preconnect);
-                
                 console.log('Widget preload initiated');
-            }, 2000);
+            }, 1000); // Reduced from 2000ms to 1000ms
         });
     } else {
         // On investors page, mark as cached after widgets load
         window.addEventListener('load', function() {
             setTimeout(function() {
                 markWidgetsCached();
-            }, 5000); // Wait 5 seconds for widgets to load
+                console.log('Widgets cached for future visits');
+            }, 3000); // Reduced from 5000ms to 3000ms
         });
     }
+    
+    // Prefetch on hover over investor links (predictive loading)
+    document.addEventListener('DOMContentLoaded', function() {
+        const investorLinks = document.querySelectorAll('a[href*="investors"]');
+        investorLinks.forEach(function(link) {
+            link.addEventListener('mouseenter', function() {
+                if (!isCacheValid()) {
+                    preloadWidgetResources();
+                }
+            }, { once: true });
+        });
+    });
 })();

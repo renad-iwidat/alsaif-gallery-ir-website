@@ -456,7 +456,7 @@
     }
   </script>
   <script>
-    // Load all widgets immediately on page load
+    // Optimized immediate widget loading with parallel execution
     (function() {
       // Function to load a widget
       function loadWidgetElement(widgetScript) {
@@ -465,16 +465,16 @@
         }
       }
       
-      // Initialize and load all widgets immediately
+      // Initialize and load all widgets immediately in parallel
       function initWidgets() {
         const widgetScripts = document.querySelectorAll('.ir-widget-item script');
         
-        // Load all widgets with minimal stagger for smooth loading
-        widgetScripts.forEach((script, index) => {
-          setTimeout(() => {
-            loadWidgetElement(script);
-          }, index * 30); // Very short 30ms delay between each widget
+        // Load all widgets in parallel (no delay)
+        widgetScripts.forEach((script) => {
+          loadWidgetElement(script);
         });
+        
+        console.log('Loading ' + widgetScripts.length + ' widgets in parallel...');
       }
       
       // Initialize immediately when DOM is ready

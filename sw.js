@@ -1,9 +1,10 @@
 // Service Worker for Al Saif Gallery Website
 // يوفر التخزين المؤقت وتحسين الأداء
 
-const CACHE_VERSION = 'v1.0.3'; // Updated to aggressively cache widgets
+const CACHE_VERSION = 'v1.0.4'; // Aggressive widget caching with longer TTL
 const CACHE_NAME = `alsaif-gallery-${CACHE_VERSION}`;
 const WIDGET_CACHE = `alsaif-widgets-${CACHE_VERSION}`;
+const WIDGET_CACHE_TTL = 1000 * 60 * 60 * 24; // 24 hours for widgets
 
 // Resources to cache immediately
 const PRECACHE_URLS = [
@@ -73,17 +74,27 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
     
-    // Handle external widget scripts - Cache them aggressively
+    // Handle external widget scripts - Cache them aggressively with long TTL
     if (url.hostname === 'irp.atnmo.com' || url.hostname === 'widgets.financialcontent.com') {
         event.respondWith(
             caches.open(WIDGET_CACHE)
                 .then((cache) => {
                     return cache.match(request)
                         .then((cachedResponse) => {
-                            // Return cached version if available
+                            // Check if cached response is still fresh
                             if (cachedResponse) {
-                                console.log('[ServiceWorker] Serving widget from cache:', url.pathname);
-                                // Update cache in background
+                                const cachedDate = new Date(cachedResponse.headers.get('date'));
+                                const now = new Date();
+                                const age = now - cachedDate;
+                                
+                                // If cache is fresh (less than 24 hours), return it immediately
+                                if (age < WIDGET_CACHE_TTL) {
+                                    console.log('[ServiceWorker] Serving fresh widget from cache:', url.pathname);
+                                    return cachedResponse;
+                                }
+                                
+                                // Cache is stale, try to update but return cached version immediately
+                                console.log('[ServiceWorker] Serving stale widget, updating in background:', url.pathname);
                                 fetch(request)
                                     .then((networkResponse) => {
                                         if (networkResponse && networkResponse.status === 200) {
@@ -95,6 +106,7 @@ self.addEventListener('fetch', (event) => {
                             }
                             
                             // Not in cache, fetch from network
+                            console.log('[ServiceWorker] Fetching widget from network:', url.pathname);
                             return fetch(request)
                                 .then((networkResponse) => {
                                     if (networkResponse && networkResponse.status === 200) {
