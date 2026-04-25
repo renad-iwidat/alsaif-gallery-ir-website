@@ -3,18 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المستثمرون والحوكمة | مجموعة السيف | تداول: 4192</title>
+  <title>علاقات المستثمرين | مجموعة السيف | تداول: 4192</title>
   <meta name="description" content="علاقات المستثمرين، النتائج المالية، هيكل الحوكمة، وخدمات المساهمين لمجموعة السيف (تداول: 4192).">
   <meta name="theme-color" content="#C62030">
   
-  <!-- Force reload - clear cache - VERSION 2 -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  
-  <link rel="stylesheet" href="../css/shared-layout.css?v=20250425-2">
-  <link rel="stylesheet" href="../css/responsive.css?v=20250425-2">
-  <link rel="stylesheet" href="../css/animations.css?v=20250425-2">
+  <link rel="stylesheet" href="../css/shared-layout.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/animations.css">
   <!-- Preconnect to external widget domain for faster loading -->
   <link rel="preconnect" href="https://irp.atnmo.com">
   <link rel="dns-prefetch" href="https://irp.atnmo.com">
@@ -96,7 +91,7 @@
     
     /* Investment Case Section */
     .section__title {
-      text-align: center;
+      text-align: right;
       color: #101727;
       font-size: 28px;
       font-weight: 700;
@@ -104,7 +99,7 @@
     }
     
     .section__subtitle {
-      text-align: center;
+      text-align: right;
       color: #4B5563;
       font-size: 14px;
       font-weight: 400;
@@ -153,13 +148,6 @@
       text-align: right;
     }
     
-    /* Force numbers and percentages to display in correct order */
-    .percentage-ltr {
-      direction: ltr;
-      unicode-bidi: embed;
-      display: inline-block;
-    }
-    
     @media (max-width: 1199px) {
       .ig-hero,
       .section {
@@ -202,131 +190,82 @@
     /* Stock Ticker Section */
     .stock-ticker-section {
       background: white;
-      padding: 0 192px;
+      padding: 0 192px 8px;
     }
     
     .stock-ticker-wrapper {
-      border-top: 2px solid #C62030;
-      border-bottom: 2px solid #C62030;
+      border-top: 2px solid #E53935;
+      border-bottom: 2px solid #E53935;
       height: 70px;
       background: white;
       overflow: hidden;
-      display: flex;
-      align-items: center;
     }
     
     .stock-ticker-wrapper > div {
-      width: 100%;
       display: flex;
       align-items: center;
+      height: 100%;
     }
     
     /* IR Widgets Section */
     .ir-widgets-section {
       background: #F8FAFB;
-      padding: 24px 192px;
-    }
-    
-    .ir-widget-wrapper {
-      margin-bottom: 32px;
-    }
-    
-    .ir-widget-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1A1A1A;
-      margin-bottom: 12px;
-      text-align: right;
-      background: transparent;
       padding: 0;
     }
     
     .ir-widget-item {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      border: 2px solid #C62030;
-      min-height: 200px;
+      padding: 16px 192px 0;
+      text-align: right;
       position: relative;
     }
     
-    /* Skeleton Loader */
-    .widget-skeleton {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      z-index: 1;
+    .ir-widget-item h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 8px;
+      text-align: right;
     }
     
-    .skeleton-line {
-      height: 16px;
-      background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: 4px;
-      margin-bottom: 12px;
+    /* Remove borders from widgets */
+    .ir-widget-item [id$="-widget"],
+    .ir-widget-item [id$="-widget"] > *,
+    .ir-widget-item [id$="-widget"] iframe,
+    .ir-widget-item [id$="-widget"] * {
+      border: none !important;
+      outline: none !important;
     }
     
-    .skeleton-line:nth-child(1) { width: 60%; }
-    .skeleton-line:nth-child(2) { width: 100%; }
-    .skeleton-line:nth-child(3) { width: 90%; }
-    .skeleton-line:nth-child(4) { width: 80%; }
-    .skeleton-line:nth-child(5) { width: 95%; }
-    
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    
-    .ir-widget-item iframe,
-    .ir-widget-item > div:not(.widget-skeleton) {
-      position: relative;
-      z-index: 2;
+    .ir-widgets-section * {
+      border: none !important;
     }
     
     @media (max-width: 1199px) {
-      .stock-ticker-section {
-        padding-left: calc(10% - 8px);
-        padding-right: calc(10% - 8px);
-      }
-      .ir-widgets-section {
+      .stock-ticker-section,
+      .ir-widget-item {
         padding-left: calc(10% - 8px);
         padding-right: calc(10% - 8px);
       }
     }
     
     @media (max-width: 899px) {
-      .stock-ticker-section {
+      .stock-ticker-section,
+      .ir-widget-item {
         padding-left: 52px;
         padding-right: 52px;
-      }
-      .ir-widgets-section {
-        padding-left: 52px;
-        padding-right: 52px;
-      }
-      
-      .stock-ticker-wrapper {
-        height: 60px;
-      }
-    }
-    
-    @media (max-width: 599px) {
-      .stock-ticker-section {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-      .ir-widgets-section {
-        padding-left: 12px;
-        padding-right: 12px;
       }
       
       .stock-ticker-wrapper {
         height: 50px;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .stock-ticker-section,
+      .ir-widget-item {
+        padding-left: 12px;
+        padding-right: 12px;
       }
     }
   </style>
@@ -340,7 +279,7 @@
     <div id="nav-bar-container"></div>
 
     <!-- Hero Section -->
-    <section class="ig-hero">
+    <section class="ig-hero fade-in-up">
       <div class="ig-hero__content">
         <h1>علاقات المستثمرين</h1>
         <p>إفصاح شفاف. رقابة فعّالة. وقيمة مستدامة لجميع المساهمين.</p>
@@ -349,7 +288,7 @@
 
     <!-- Intro Section -->
     <section class="section section--white">
-      <div class="intro-content">
+      <div class="intro-content fade-in-up">
         <p class="intro-text">تلتزم السيف غاليري بأعلى معايير الإفصاح والتواصل مع المستثمرين الذين وضعوا ثقتهم في الشركة. يتيح هذا القسم وصولاً كاملاً إلى نتائجنا المالية وهيكل الحوكمة والإفصاحات التنظيمية وخدمات المساهمين والسياسات المؤسسية، باللغتين العربية والإنجليزية، انسجاماً مع التزاماتنا بوصفنا شركة مدرجة في السوق المالية السعودية.</p>
         <p class="intro-text">ندرك أن الثقة بين الشركة المدرجة ومساهميها تُبنى بالاتساق والوضوح والمساءلة، لا بالوعود. هدفنا أن تكون كل المعلومات التي يحتاجها المستثمر متاحة بوضوح وسهولة، ومطابقة تمامًا لمتطلبات هيئة السوق المالية.</p>
       </div>
@@ -357,43 +296,43 @@
 
     <!-- Investment Case Section -->
     <section class="section section--light" id="investment-case">
-      <h2 class="section__title">مقومات الاستثمار في السيف غاليري</h2>
-      <p class="section__subtitle">أبرز مقومات الاستثمار</p>
+      <h2 class="section__title fade-in-up">مقومات الاستثمار في السيف غاليري</h2>
+      <p class="section__subtitle fade-in-up">أبرز مقومات الاستثمار</p>
       
       <div class="investment-grid">
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">1</div>
           <h3 class="investment-card__title">قطاع متخصص نقوده</h3>
           <p class="investment-card__desc">نحتل مكانة متقدمة في أدوات المطبخ وأدوات التقديم والأجهزة المنزلية الصغيرة المتخصصة في المملكة العربية السعودية، مدعومين بشبكة توزيع وطنية وقدرة كاملة على التحكم في مواصفات المنتجات. هذا ليس قطاع تجزئة واسع المنافسة؛ بل قطاع متخصص محدد المعالم تُشكّل فيه خبرتنا على مدى ثلاثة عقود وبنيتنا في العلامات الخاصة وعمق خدمتنا حواجز دخول يصعب تجاوزها.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">2</div>
           <h3 class="investment-card__title">جودة الأرباح مصدرها العمليات</h3>
-          <p class="investment-card__desc">حقّقت السيف غاليري صافي ربح قدره ‎58‏ مليون ريال في عام ‎2025‏ بنمو ‎<span class="percentage-ltr">54.6%</span>‏ على أساس سنوي، مدفوعاً كلياً بتحسينات تشغيلية. لم يعتمد هذا الانتعاش على مبيعات أصول أو بنود استثنائية. وتعكس إيرادات بلغت ‎758.8‏ مليون ريال وهامش مجمل ربح بنسبة ‎<span class="percentage-ltr">23.5%</span>‏ وتدفق نقدي تشغيلي بقيمة ‎78.7‏ مليون ريال؛ القوة الربحية الكامنة للنموذج التشغيلي للشركة. وأنهت الشركة عام ‎2025‏ بصافي نقد ‎25.9‏ مليون ريال بعد السداد الكامل لجميع التزامات الدين قصير الأجل.</p>
+          <p class="investment-card__desc">حقّقت السيف غاليري صافي ربح قدره ‎58‏ مليون ريال في عام ‎2025‏ بنمو ‎%54.6‏ على أساس سنوي، مدفوعاً كلياً بتحسينات تشغيلية. لم يعتمد هذا الانتعاش على مبيعات أصول أو بنود استثنائية. وتعكس إيرادات بلغت ‎758.8‏ مليون ريال وهامش مجمل ربح بنسبة ‎%23.5‏ وتدفق نقدي تشغيلي بقيمة ‎78.7‏ مليون ريال؛ القوة الربحية الكامنة للنموذج التشغيلي للشركة. وأنهت الشركة عام ‎2025‏ بصافي نقد ‎25.9‏ مليون ريال بعد السداد الكامل لجميع التزامات الدين قصير الأجل.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">3</div>
           <h3 class="investment-card__title">ميزة هوامش العلامات التجارية الخاصة</h3>
-          <p class="investment-card__desc">تأتي نحو ‎<span class="percentage-ltr">88%</span>‏ من الإيرادات من علامات تجارية نملكها أو نمتلك توزيعها الحصري. ويُتيح التوريد المباشر من شركاء التصنيع هوامش ربح على المنتجات الخاصة تتفوق هيكلياً على نموذج البيع بالجملة والتجزئة التقليدي. كما يرفع التوسع المستمر لعلامة إيدسون نحو الأجهزة الكبيرة من فرص الإيرادات ويُحسّن مزيج الهوامش معاً.</p>
+          <p class="investment-card__desc">تأتي نحو ‎%88‏ من الإيرادات من علامات تجارية نملكها أو نمتلك توزيعها الحصري. ويُتيح التوريد المباشر من شركاء التصنيع هوامش ربح على المنتجات الخاصة تتفوق هيكلياً على نموذج البيع بالجملة والتجزئة التقليدي. كما يرفع التوسع المستمر لعلامة إيدسون نحو الأجهزة الكبيرة من فرص الإيرادات ويُحسّن مزيج الهوامش معاً.</p>
         </div>
       </div>
       
       <div class="investment-grid">
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">4</div>
           <h3 class="investment-card__title">رؤية 2030 رافعة نمو هيكلية</h3>
-          <p class="investment-card__desc">تُولّد طفرة الإسكان في المملكة العربية السعودية، ارتفاع نسبة تملّك المسكن من ‎47%‏ عام ‎2016‏ إلى ‎65.4%‏ عام ‎2024‏ مع أكثر من ‎660K+‏ وحدة سكنية قيد التطوير وبرنامج سكني دعم أكثر من ‎122K+‏ أسرة عام ‎2024‏، طلباً متيناً ومستداماً على مستلزمات المنزل. كل منزل سعودي جديد يحتاج إلى تجهيز مطبخ متكامل.</p>
+          <p class="investment-card__desc">تُولّد طفرة الإسكان في المملكة العربية السعودية، ارتفاع نسبة تملّك المسكن من ‎%47‏ عام ‎2016‏ إلى ‎%65.4‏ عام ‎2024‏ مع أكثر من ‎660,000+‏ وحدة سكنية قيد التطوير وبرنامج سكني دعم أكثر من ‎122,000+‏ أسرة عام ‎2024‏، طلباً متيناً ومستداماً على مستلزمات المنزل. كل منزل سعودي جديد يحتاج إلى تجهيز مطبخ متكامل.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">5</div>
           <h3 class="investment-card__title">تسارع التجارة الإلكترونية مع الرافعة التشغيلية</h3>
-          <p class="investment-card__desc">نمت التجارة الإلكترونية ‎37%‏ في ‎2025‏ مُسهِمةً بـ ‎94‏ مليون ريال، أي ‎12.4%‏ من الإيرادات، عبر تطبيق يتجاوز عدد تنزيلاته ‎500K+‏. وتعمل القناة الرقمية بالاعتماد على البنية اللوجستية المشتركة وخدمة ما بعد البيع مع الشبكة المادية، مما يُنشئ رافعة تشغيلية حقيقية مع نمو الإيرادات الرقمية ضمن شبكة الفروع والبنية التشغيلية القائمة.</p>
+          <p class="investment-card__desc">نمت التجارة الإلكترونية ‎%37‏ في ‎2025‏ مُسهِمةً بـ ‎94‏ مليون ريال، أي ‎%12.4‏ من الإيرادات، عبر تطبيق يتجاوز عدد تنزيلاته ‎500,000+‏. وتعمل القناة الرقمية بالاعتماد على البنية اللوجستية المشتركة وخدمة ما بعد البيع مع الشبكة المادية، مما يُنشئ رافعة تشغيلية حقيقية مع نمو الإيرادات الرقمية ضمن شبكة الفروع والبنية التشغيلية القائمة.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">6</div>
           <h3 class="investment-card__title">قيادة محترفة في لحظة محورية</h3>
           <p class="investment-card__desc">تم تعيين أحمد بن صالح آل سلطان رئيساً تنفيذياً في ديسمبر ‎2024‏، ويمثّل ذلك خطوة نضوج حوكمي مقصودة. إطاره الاستراتيجي ثلاثي المحاور، تجربة العميل وجودة الأرباح والتوسع المدروس، يتجلى بالفعل في نتائج ‎2025‏.</p>
@@ -413,240 +352,114 @@
     <!-- IR Widgets Section -->
     <section class="ir-widgets-section" id="widgets">
       <!-- Company Snapshot -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">نظرة عامة عن الشركة</h3>
-        <div class="ir-widget-item" id="company-snapshot">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="company-snapshot-widget">
-            <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="company-snapshot">
+        <h3>نظرة عامة عن الشركة</h3>
+        <div id="company-snapshot-widget">
+          <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Announcements -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">الإعلانات</h3>
-        <div class="ir-widget-item" id="announcements">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="corporate-news-widget">
-            <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="announcements">
+        <h3>الإعلانات</h3>
+        <div id="corporate-news-widget">
+          <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Fact Sheet -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">نشرة المعلومات</h3>
-        <div class="ir-widget-item" id="fact-sheet">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="fact-sheet-widget">
-            <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="fact-sheet">
+        <h3>نشرة المعلومات</h3>
+        <div id="fact-sheet-widget">
+          <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Stock Activity -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">نشاط السهم</h3>
-        <div class="ir-widget-item" id="stock-activity">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="stock-activity-widget">
-            <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="stock-activity">
+        <h3>نشاط السهم</h3>
+        <div id="stock-activity-widget">
+          <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Corporate Actions -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">الإجراءات النظامية</h3>
-        <div class="ir-widget-item" id="corporate-actions">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="corporate-actions-widget">
-            <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="corporate-actions">
+        <h3>الإجراءات النظامية</h3>
+        <div id="corporate-actions-widget">
+          <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Company Financials -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">البيانات المالية</h3>
-        <div class="ir-widget-item" id="financials">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="company-financials-widget">
-            <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="financials">
+        <h3>البيانات المالية</h3>
+        <div id="company-financials-widget">
+          <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Price -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">سعر السهم</h3>
-        <div class="ir-widget-item" id="share-price">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-price-widget">
-            <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-price">
+        <h3>سعر السهم</h3>
+        <div id="share-price-widget">
+          <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Performance -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">الأداء</h3>
-        <div class="ir-widget-item" id="performance">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="performance-widget">
-            <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="performance">
+        <h3>الأداء</h3>
+        <div id="performance-widget">
+          <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Investment Calculator -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">حاسبة الاستثمار</h3>
-        <div class="ir-widget-item" id="calculator">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="investment-calculator-widget">
-            <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="calculator">
+        <h3>حاسبة الاستثمار</h3>
+        <div id="investment-calculator-widget">
+          <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Series -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">سلسلة الأسهم</h3>
-        <div class="ir-widget-item" id="share-series">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-series-widget">
-            <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-series">
+        <h3>سلسلة الأسهم</h3>
+        <div id="share-series-widget">
+          <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share View -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">عرض الأسهم</h3>
-        <div class="ir-widget-item" id="share-view">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-view-widget">
-            <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-view">
+        <h3>عرض الأسهم</h3>
+        <div id="share-view-widget">
+          <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Price Lookup -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">البحث عن السعر</h3>
-        <div class="ir-widget-item" id="price-lookup">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="price-lookup-widget">
-            <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="price-lookup">
+        <h3>البحث عن السعر</h3>
+        <div id="price-lookup-widget">
+          <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Peer Group Analysis -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">تحليل المجموعة المماثلة</h3>
-        <div class="ir-widget-item" id="peer-group">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="peer-group-analysis-widget">
-            <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="peer-group">
+        <h3>تحليل المجموعة المماثلة</h3>
+        <div id="peer-group-analysis-widget">
+          <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Email Subscription -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">الاشتراك</h3>
-        <div class="ir-widget-item" id="subscribe">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="email-subscription-widget">
-            <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="subscribe">
+        <h3>الاشتراك</h3>
+        <div id="email-subscription-widget">
+          <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "ar", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
     </section>
@@ -656,15 +469,15 @@
   </div>
 
   <script src="../js/shared-components.js"></script>
-  <script src="../js/animations.js"></script>
   <script src="../js/search-dialog.js"></script>
+  <script src="../js/animations.js"></script>
   <script>
     if (typeof SearchDialog !== 'undefined') {
         SearchDialog.init();
     }
   </script>
   <script>
-    // Widget loading with skeleton removal
+    // Simple immediate widget loading
     (function() {
       // Function to load a widget
       function loadWidgetElement(widgetScript) {
@@ -681,60 +494,46 @@
         widgetScripts.forEach((script, index) => {
           setTimeout(() => {
             loadWidgetElement(script);
-          }, index * 50); // Reduced delay for faster loading
-        });
-      }
-      
-      // Hide skeleton when widget loads
-      function observeWidgetLoading() {
-        const widgetContainers = document.querySelectorAll('.ir-widget-item');
-        
-        widgetContainers.forEach(container => {
-          const skeleton = container.querySelector('.widget-skeleton');
-          const widgetDiv = container.querySelector('[id$="-widget"]');
-          
-          if (skeleton && widgetDiv) {
-            // Use MutationObserver to detect when iframe/content is added
-            const observer = new MutationObserver((mutations) => {
-              // Check if iframe or content has been added
-              const hasContent = widgetDiv.querySelector('iframe') || 
-                                widgetDiv.children.length > 1;
-              
-              if (hasContent) {
-                skeleton.style.opacity = '0';
-                skeleton.style.transition = 'opacity 0.3s ease';
-                setTimeout(() => {
-                  skeleton.style.display = 'none';
-                }, 300);
-                observer.disconnect();
-              }
-            });
-            
-            observer.observe(widgetDiv, { 
-              childList: true, 
-              subtree: true 
-            });
-            
-            // Fallback: hide skeleton after 5 seconds if nothing loaded
-            setTimeout(() => {
-              if (skeleton.style.display !== 'none') {
-                skeleton.style.display = 'none';
-              }
-            }, 5000);
-          }
+          }, index * 100);
         });
       }
       
       // Initialize when DOM is ready
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          initWidgets();
-          observeWidgetLoading();
-        });
+        document.addEventListener('DOMContentLoaded', initWidgets);
       } else {
         initWidgets();
-        observeWidgetLoading();
       }
+      
+      // Hide skeleton loaders when widgets load
+      const widgetObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.addedNodes.length > 0) {
+            const widget = mutation.target.closest('[id$="-widget"]');
+            if (widget) {
+              const skeleton = widget.querySelector('.widget-skeleton');
+              if (skeleton && widget.children.length > 1) {
+                skeleton.style.display = 'none';
+              }
+            }
+          }
+        });
+      });
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgets = document.querySelectorAll('[id$="-widget"]');
+        widgets.forEach(widget => {
+          widgetObserver.observe(widget, { childList: true, subtree: true });
+        });
+      });
+    })();
+  </script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const widgets = document.querySelectorAll('[id$="-widget"]');
+        widgets.forEach(widget => {
+          widgetObserver.observe(widget, { childList: true, subtree: true });
+        });
+      });
     })();
   </script>
 </body>

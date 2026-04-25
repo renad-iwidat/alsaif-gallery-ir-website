@@ -23,7 +23,7 @@
       }
     }
     
-    /* Investors & Governance Page Specific Styles */
+    /* Investor Relations Page Specific Styles */
     .ig-hero {
       width: 100%;
       height: 300px;
@@ -180,133 +180,99 @@
     /* Stock Ticker Section */
     .stock-ticker-section {
       background: white;
-      padding: 0 192px;
+      padding: 0 192px 8px;
     }
     
     .stock-ticker-wrapper {
-      border-top: 2px solid #C62030;
-      border-bottom: 2px solid #C62030;
+      border-top: 2px solid #E53935;
+      border-bottom: 2px solid #E53935;
       height: 70px;
       background: white;
       overflow: hidden;
-      display: flex;
-      align-items: center;
     }
     
     .stock-ticker-wrapper > div {
-      width: 100%;
       display: flex;
       align-items: center;
+      height: 100%;
     }
     
     /* IR Widgets Section */
     .ir-widgets-section {
       background: #F8FAFB;
-      padding: 24px 192px;
-    }
-    
-    .ir-widget-wrapper {
-      margin-bottom: 32px;
-    }
-    
-    .ir-widget-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1A1A1A;
-      margin-bottom: 12px;
-      text-align: left;
-      background: transparent;
       padding: 0;
     }
     
     .ir-widget-item {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      border: 2px solid #C62030;
-      min-height: 200px;
+      padding: 16px 192px 0;
       position: relative;
     }
     
-    /* Skeleton Loader */
-    .widget-skeleton {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      z-index: 1;
+    .ir-widget-item h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 8px;
     }
     
-    .skeleton-line {
-      height: 16px;
+    /* Remove borders from widgets */
+    .ir-widget-item [id$="-widget"],
+    .ir-widget-item [id$="-widget"] > *,
+    .ir-widget-item [id$="-widget"] iframe,
+    .ir-widget-item [id$="-widget"] * {
+      border: none !important;
+      outline: none !important;
+    }
+    
+    .ir-widgets-section * {
+      border: none !important;
+    }
+    
+    /* Widget Loading Skeleton */
+    .widget-skeleton {
+      min-height: 300px;
       background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
-      border-radius: 4px;
-      margin-bottom: 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
     }
-    
-    .skeleton-line:nth-child(1) { width: 60%; }
-    .skeleton-line:nth-child(2) { width: 100%; }
-    .skeleton-line:nth-child(3) { width: 90%; }
-    .skeleton-line:nth-child(4) { width: 80%; }
-    .skeleton-line:nth-child(5) { width: 95%; }
     
     @keyframes shimmer {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
     
-    .ir-widget-item iframe,
-    .ir-widget-item > div:not(.widget-skeleton) {
-      position: relative;
-      z-index: 2;
+    .ir-widget-item > div {
+      min-height: 300px;
     }
     
     @media (max-width: 1199px) {
-      .stock-ticker-section {
+      .stock-ticker-section,
+      .ir-widget-item {
         padding-left: calc(10% - 8px);
         padding-right: calc(10% - 8px);
-      }
-      .ir-widget-item {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: calc(10% - 8px);
-        margin-right: calc(10% - 8px);
       }
     }
     
     @media (max-width: 899px) {
-      .stock-ticker-section {
+      .stock-ticker-section,
+      .ir-widget-item {
         padding-left: 52px;
         padding-right: 52px;
-      }
-      .ir-widget-item {
-        margin-left: 52px;
-        margin-right: 52px;
-      }
-      
-      .stock-ticker-wrapper {
-        height: 60px;
-      }
-    }
-    
-    @media (max-width: 599px) {
-      .stock-ticker-section {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-      .ir-widget-item {
-        margin-left: 12px;
-        margin-right: 12px;
       }
       
       .stock-ticker-wrapper {
         height: 50px;
+      }
+    }
+    
+    @media (max-width: 599px) {
+      .stock-ticker-section,
+      .ir-widget-item {
+        padding-left: 12px;
+        padding-right: 12px;
       }
     }
   </style>
@@ -320,7 +286,7 @@
     <div id="nav-bar-container"></div>
 
     <!-- Hero Section -->
-    <section class="ig-hero">
+    <section class="ig-hero fade-in-up">
       <div class="ig-hero__content">
         <h1>Investor Relations</h1>
         <p>Transparent reporting. Effective oversight.<br>Long-term value creation for all shareholders.</p>
@@ -329,7 +295,7 @@
 
     <!-- Intro Section -->
     <section class="section section--white">
-      <div class="intro-content">
+      <div class="intro-content fade-in-up">
         <p class="intro-text">Al Saif Gallery is committed to the highest standards of disclosure and communication for the investors who have placed their trust in our company. This section provides full access to our financial results, governance structure, regulatory filings, shareholder services, and corporate policies, in both Arabic and English, consistent with our obligations as a company listed on the Saudi Exchange.</p>
         <p class="intro-text">We understand that trust between a listed company and its shareholders is earned through consistency, clarity, and accountability, not promises. Our goal is to make every piece of information an investor needs readily accessible, clearly presented, and fully compliant with CMA requirements.</p>
       </div>
@@ -337,23 +303,23 @@
 
     <!-- Investment Case Section -->
     <section class="section section--light" id="investment-case">
-      <h2 class="section__title">The Al Saif Gallery Investment Case</h2>
-      <p class="section__subtitle">Investment Highlights</p>
+      <h2 class="section__title fade-in-up">The Al Saif Gallery Investment Case</h2>
+      <p class="section__subtitle fade-in-up">Investment Highlights</p>
       
       <div class="investment-grid">
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">1</div>
           <h3 class="investment-card__title">A Niche Where We Lead</h3>
           <p class="investment-card__desc">We hold an advanced market position in kitchen tools, serveware, and specialized small household appliances in Saudi Arabia, supported by national distribution reach and control over product specification. This is not a broadly contested mass-retail category. It is a focused niche where our three decades of category expertise, owned-brand infrastructure, and service depth create barriers that are difficult to replicate.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">2</div>
           <h3 class="investment-card__title">Earnings Quality Rooted in Operations</h3>
           <p class="investment-card__desc">In 2025, Al Saif Gallery delivered SAR 58 million in net profit, a 54.6% increase year-on-year, driven entirely by operational improvements. Revenue of SAR 758.8 million, a gross margin of 23.5%, and operating cash flow of SAR 78.7 million reflect the underlying earning power of the platform. The Company ended 2025 with cash and cash equivalents of SAR 25.9 million.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">3</div>
           <h3 class="investment-card__title">Proprietary Brand Margin Advantage</h3>
           <p class="investment-card__desc">Approximately 88% of revenue flows through brands we own or exclusively hold. Direct sourcing from manufacturing partners enables gross margins on proprietary products that are structurally superior to the standard wholesale-retail model. The ongoing extension of the Edison brand into large appliances expands both revenue opportunity and margin mix.</p>
@@ -361,19 +327,19 @@
       </div>
       
       <div class="investment-grid">
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">4</div>
           <h3 class="investment-card__title">Vision 2030 as Structural Tailwind</h3>
           <p class="investment-card__desc">Saudi Arabia's housing boom, with homeownership rising from 47% in 2016 to 65.4% in 2024, with 660K+ new units in the pipeline and Sakani supporting 122K+ families in 2024, creates a durable demand tailwind for household essentials. Every new Saudi home requires a full kitchen outfitting.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">5</div>
           <h3 class="investment-card__title">Digital Acceleration with Operating Leverage</h3>
           <p class="investment-card__desc">E-commerce grew 37% in 2025, contributing SAR 94 million (12.4% of revenue) through an app with 500K+ downloads. The digital channel operates with shared logistics and after-sales infrastructure, creating operating leverage as digital revenue grows within the existing physical footprint.</p>
         </div>
         
-        <div class="investment-card">
+        <div class="investment-card fade-in-up">
           <div class="investment-card__number">6</div>
           <h3 class="investment-card__title">Professional Leadership at a Pivotal Moment</h3>
           <p class="investment-card__desc">The appointment of CEO Ahmed bin Saleh Al Sultan in Dec 2024 marks a deliberate governance maturation step. His three-pillar strategic framework (customer experience, earnings quality, measured expansion) is already reflected in the 2025 results.</p>
@@ -393,240 +359,128 @@
     <!-- IR Widgets Section -->
     <section class="ir-widgets-section" id="widgets">
       <!-- Company Snapshot -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Company Snapshot</h3>
-        <div class="ir-widget-item" id="company-snapshot">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="company-snapshot-widget">
-            <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="company-snapshot">
+        <h3>Company Snapshot</h3>
+        <div id="company-snapshot-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Announcements -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Announcements</h3>
-        <div class="ir-widget-item" id="announcements">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="corporate-news-widget">
-            <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="announcements">
+        <h3>Announcements</h3>
+        <div id="corporate-news-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Fact Sheet -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Fact Sheet</h3>
-        <div class="ir-widget-item" id="fact-sheet">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="fact-sheet-widget">
-            <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="fact-sheet">
+        <h3>Fact Sheet</h3>
+        <div id="fact-sheet-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Stock Activity -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Stock Activity</h3>
-        <div class="ir-widget-item" id="stock-activity">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="stock-activity-widget">
-            <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="stock-activity">
+        <h3>Stock Activity</h3>
+        <div id="stock-activity-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Corporate Actions -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Corporate Actions</h3>
-        <div class="ir-widget-item" id="corporate-actions">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="corporate-actions-widget">
-            <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="corporate-actions">
+        <h3>Corporate Actions</h3>
+        <div id="corporate-actions-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Company Financials -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Company Financials</h3>
-        <div class="ir-widget-item" id="financials">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="company-financials-widget">
-            <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="financials">
+        <h3>Company Financials</h3>
+        <div id="company-financials-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Price -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Share Price</h3>
-        <div class="ir-widget-item" id="share-price">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-price-widget">
-            <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-price">
+        <h3>Share Price</h3>
+        <div id="share-price-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Performance -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Performance</h3>
-        <div class="ir-widget-item" id="performance">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="performance-widget">
-            <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="performance">
+        <h3>Performance</h3>
+        <div id="performance-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Investment Calculator -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Investment Calculator</h3>
-        <div class="ir-widget-item" id="calculator">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="investment-calculator-widget">
-            <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="calculator">
+        <h3>Investment Calculator</h3>
+        <div id="investment-calculator-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share Series -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Share Series</h3>
-        <div class="ir-widget-item" id="share-series">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-series-widget">
-            <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-series">
+        <h3>Share Series</h3>
+        <div id="share-series-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Share View -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Share View</h3>
-        <div class="ir-widget-item" id="share-view">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="share-view-widget">
-            <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="share-view">
+        <h3>Share View</h3>
+        <div id="share-view-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Price Lookup -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Price Lookup</h3>
-        <div class="ir-widget-item" id="price-lookup">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="price-lookup-widget">
-            <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="price-lookup">
+        <h3>Price Lookup</h3>
+        <div id="price-lookup-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Peer Group Analysis -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Peer Group Analysis</h3>
-        <div class="ir-widget-item" id="peer-group">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="peer-group-analysis-widget">
-            <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="peer-group">
+        <h3>Peer Group Analysis</h3>
+        <div id="peer-group-analysis-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
       
       <!-- Email Subscription -->
-      <div class="ir-widget-wrapper">
-        <h3 class="ir-widget-title">Subscribe</h3>
-        <div class="ir-widget-item" id="subscribe">
-          <div class="widget-skeleton">
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-            <div class="skeleton-line"></div>
-          </div>
-          <div id="email-subscription-widget">
-            <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
-          </div>
+      <div class="ir-widget-item" id="subscribe">
+        <h3>Subscribe</h3>
+        <div id="email-subscription-widget">
+          <div class="widget-skeleton"></div>
+          <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
         </div>
       </div>
     </section>
@@ -636,8 +490,8 @@
   </div>
 
   <script src="js/shared-components.js"></script>
-  <script src="js/animations.js"></script>
   <script src="js/search-dialog.js"></script>
+  <script src="js/animations.js"></script>
   <script>
     if (typeof SearchDialog !== 'undefined') {
         SearchDialog.init();
@@ -693,49 +547,6 @@
           widgetObserver.observe(widget, { childList: true, subtree: true });
         });
       });
-      
-      // Style Company Snapshot widget headers
-      function styleCompanySnapshotHeaders() {
-        const companySnapshotWidget = document.getElementById('company-snapshot-widget');
-        if (companySnapshotWidget) {
-          // Try to access iframe content (will only work if same-origin)
-          const iframe = companySnapshotWidget.querySelector('iframe');
-          if (iframe) {
-            try {
-              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-              if (iframeDoc) {
-                // Add custom styles to iframe
-                const style = iframeDoc.createElement('style');
-                style.textContent = `
-                  h3, h4, .section-title, [class*="title"], [class*="heading"] {
-                    font-weight: 700 !important;
-                    font-size: 18px !important;
-                  }
-                `;
-                iframeDoc.head.appendChild(style);
-              }
-            } catch (e) {
-              // Cross-origin iframe - can't access content
-              console.log('Cannot style iframe content (cross-origin)');
-            }
-          }
-          
-          // Alternative: Style the widget container
-          const style = document.createElement('style');
-          style.textContent = `
-            #company-snapshot-widget h3,
-            #company-snapshot-widget h4 {
-              font-weight: 700 !important;
-              font-size: 18px !important;
-            }
-          `;
-          document.head.appendChild(style);
-        }
-      }
-      
-      // Try to style after widget loads
-      setTimeout(styleCompanySnapshotHeaders, 2000);
-      setTimeout(styleCompanySnapshotHeaders, 5000);
     })();
   </script>
 </body>
