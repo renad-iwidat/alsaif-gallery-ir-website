@@ -266,23 +266,13 @@
             display: flex;
             flex-direction: column;
             align-self: stretch; /* كل كارد يمتد لنفس الارتفاع */
+            position: relative;
+            overflow: hidden;
         }
         
         /* في العربي، عكس اتجاه السهم في الكروت */
         body.ar .service-link svg {
             transform: scaleX(-1);
-        }
-        
-        .service-card {
-            flex: 1;
-            min-height: 240px;
-            padding: 24px;
-            background-color: white;
-            border: 1px solid #E5E7EB;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
         }
         
         .service-icon {
