@@ -115,7 +115,7 @@ const Localization = {
         },
         cardStrategyLink: { ar: 'اكتشف الاستراتيجية', en: 'Explore Strategy' },
         
-        cardInvestorsTitle: { ar: 'المستثمرون والحوكمة', en: 'Investors & Governance' },
+        cardInvestorsTitle: { ar: 'علاقات المستثمرين', en: 'Investor Relations' },
         cardInvestorsDesc: { 
             ar: 'النتائج المالية، والإفصاحات التنظيمية، وهيكل مجلس الإدارة، وخدمات المساهمين لمستثمري تداول.', 
             en: 'Financial results, regulatory disclosures, board structure, and shareholder services for Tadawul investors.' 

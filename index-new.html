@@ -641,11 +641,11 @@
                     <div class="hero-overlay"></div>
                 </div>
                 <div class="hero-content">
-                    <h1 class="hero-title" id="hero-title">Saudi Arabia's Home<br>Since 1993.</h1>
-                    <p class="hero-subtitle" id="hero-subtitle">Thirty years of serving Saudi households. One purpose: trusted quality, every day.</p>
-                    <p class="hero-desc" id="hero-desc1">Al Saif Gallery is Saudi Arabia's specialist in household essentials and kitchen appliances, built from a single Riyadh showroom into a national retail platform of 73 locations across the Kingdom and the GCC. Listed on Tadawul since 2022, we combine the scale of a public company with the discipline of an operator that has earned household trust for three decades.</p>
-                    <p class="hero-desc" id="hero-desc2">Our model is powered by proprietary and exclusive brands, including Edison, Tornado, Robust, and Rocky, designed and specified for Saudi homes, Saudi kitchens, and Saudi hospitality traditions. Every product we carry reflects a deliberate choice: quality that earns loyalty, value that respects the customer.</p>
-                    <div class="hero-buttons">
+                    <h1 class="hero-title animate-on-scroll" id="hero-title">Saudi Arabia's Home<br>Since 1993.</h1>
+                    <p class="hero-subtitle animate-on-scroll" id="hero-subtitle">Thirty years of serving Saudi households. One purpose: trusted quality, every day.</p>
+                    <p class="hero-desc animate-on-scroll" id="hero-desc1">Al Saif Gallery is Saudi Arabia's specialist in household essentials and kitchen appliances, built from a single Riyadh showroom into a national retail platform of 73 locations across the Kingdom and the GCC. Listed on Tadawul since 2022, we combine the scale of a public company with the discipline of an operator that has earned household trust for three decades.</p>
+                    <p class="hero-desc animate-on-scroll" id="hero-desc2">Our model is powered by proprietary and exclusive brands, including Edison, Tornado, Robust, and Rocky, designed and specified for Saudi homes, Saudi kitchens, and Saudi hospitality traditions. Every product we carry reflects a deliberate choice: quality that earns loyalty, value that respects the customer.</p>
+                    <div class="hero-buttons animate-on-scroll">
                         <button class="hero-btn primary" id="hero-btn1" onclick="goToAbout()">Explore Our Story</button>
                         <button class="hero-btn secondary" id="hero-btn2" onclick="goToInvestors()">Investor Relations</button>
                     </div>
@@ -716,7 +716,7 @@
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.333" d="M10 35V8.333A3.333 3.333 0 0 1 13.333 5h13.334A3.333 3.333 0 0 1 30 8.333V35"/>
                                 </svg>
                             </div>
-                            <h3 class="service-title" id="service-title2">Investors & Governance</h3>
+                            <h3 class="service-title" id="service-title2">Investor Relations</h3>
                             <p class="service-desc" id="service-desc2">Financial results, regulatory disclosures, board structure, and shareholder services for Tadawul investors.</p>
                             <a href="investors.html" class="service-link" id="service-link2">
                                 <span>Investor Center</span>
@@ -968,7 +968,7 @@
                 serviceDesc1: 'كيف ننمو بانضباط: شبكة الفروع، محفظة العلامات التجارية، القنوات الرقمية، وخدمات ما بعد البيع.',
                 serviceLink1: 'اكتشف الاستراتيجية',
                 
-                serviceTitle2: 'المستثمرون والحوكمة',
+                serviceTitle2: 'علاقات المستثمرين',
                 serviceDesc2: 'النتائج المالية، والإفصاحات التنظيمية، وهيكل مجلس الإدارة، وخدمات المساهمين لمستثمري تداول.',
                 serviceLink2: 'مركز المستثمرين',
                 
@@ -994,7 +994,7 @@
                 modalGermany: 'ألمانيا',
                 modalTurkey: 'تركيا',
                 modalNoteLabel: 'ملاحظة: ',
-                modalNoteText: 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 80٪ من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.',
+                modalNoteText: 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 80\u200E% من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.',
                 
                 serviceTitle4: 'الوظائف والثقافة المؤسسية',
                 serviceDesc4: 'انضم إلى فريق يخدم الأسرة السعودية عبر ٧٣ صالة عرض. فرص في التجزئة واللوجستيات والرقمي والوظائف المؤسسية.',
@@ -1240,8 +1240,8 @@
                         if (isArabic) {
                             if (index === 0) el.textContent = '٧٣';
                             else if (index === 1) el.textContent = '٧٥٨.٨ مليون ريال سعودي';
-                            else if (index === 2) el.textContent = '~٨٨٪';
-                            else if (index === 3) el.textContent = '٣٧٪';
+                            else if (index === 2) { el.dir = 'ltr'; el.style.unicodeBidi = 'isolate'; el.textContent = '~٨٨%'; }
+                            else if (index === 3) { el.dir = 'ltr'; el.style.unicodeBidi = 'isolate'; el.textContent = '٣٧%'; }
                         } else {
                             const display = isDecimal ? current.toFixed(1) : Math.floor(current).toString();
                             el.textContent = `${prefix}${display}${suffix}`;
@@ -1350,7 +1350,7 @@
                 germany:      isArabic ? 'ألمانيا' : 'Germany',
                 turkey:       isArabic ? 'تركيا' : 'Turkey',
                 noteLabel:    isArabic ? 'ملاحظة: ' : 'Note: ',
-                noteText:     isArabic ? 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 88٪ من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.' : 'All proprietary brands (Edison, Tornado, Rocky, Robust) are designed and specified for Saudi households, with approximately 88% of our revenue flowing through brands we own or exclusively distribute.'
+                noteText:     isArabic ? 'جميع العلامات التجارية الملكية (إديسون، تورنادو، روكي، روبست) مصممة ومحددة للأسر السعودية، مع ما يقرب من 88\u200E% من إيراداتنا المتدفقة من خلال العلامات التجارية الملكية والحصرية.' : 'All proprietary brands (Edison, Tornado, Rocky, Robust) are designed and specified for Saudi households, with approximately 88% of our revenue flowing through brands we own or exclusively distribute.'
             };
             const ids = {
                 'modal-title': t.title, 'modal-intro': t.intro,

@@ -255,7 +255,7 @@ const Router = {
         const titles = {
             'about': 'About Us',
             'strategy': 'Strategy & Operations',
-            'investors': 'Investors & Governance',
+            'investors': 'Investor Relations',
             'news': 'Newsroom & Careers',
             'documents': 'Documents Library',
             'whistleblowing': 'Whistleblowing',
@@ -378,7 +378,7 @@ const Router = {
             'home': "Al Saif Gallery | Saudi Arabia's Home & Kitchen Retail Leader | Tadawul 4192",
             'about': 'About Us - Al Saif Gallery',
             'strategy': 'Strategy & Operations - Al Saif Gallery',
-            'investors': 'Investors & Governance - Al Saif Gallery',
+            'investors': 'Investor Relations - Al Saif Gallery',
             'news': 'Newsroom & Careers - Al Saif Gallery',
             'documents': 'Documents Library - Al Saif Gallery',
             'whistleblowing': 'Whistleblowing - Al Saif Gallery',
