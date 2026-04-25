@@ -38,6 +38,8 @@ body.ar {
     position: -webkit-sticky;
     position: sticky;
     background-color: inherit;
+    -webkit-transform: translateZ(0); /* iOS fix */
+    transform: translateZ(0);
 }
 
 #top-bar-container {
