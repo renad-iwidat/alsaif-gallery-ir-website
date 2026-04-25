@@ -9,6 +9,7 @@
   
   <link rel="stylesheet" href="css/shared-layout.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
   <!-- Preconnect to external widget domain for faster loading -->
   <link rel="preconnect" href="https://irp.atnmo.com">
   <link rel="dns-prefetch" href="https://irp.atnmo.com">
@@ -188,25 +189,41 @@
       height: 70px;
       background: white;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    
+    .stock-ticker-wrapper > div {
+      width: 100%;
+      display: flex;
+      align-items: center;
     }
     
     /* IR Widgets Section */
     .ir-widgets-section {
       background: #F8FAFB;
-      padding: 0;
+      padding: 24px 0;
     }
     
     .ir-widget-item {
-      background: white;
-      padding: 16px 192px 0;
-      border-bottom: 1px solid #E5E7EB;
+      padding: 0;
+      margin: 0 192px 32px 192px;
     }
     
     .ir-widget-item h3 {
       font-size: 20px;
       font-weight: 600;
       color: #1A1A1A;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      background: transparent;
+      padding: 0;
+    }
+    
+    .ir-widget-item > div[id$="-widget"] {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #E5E7EB;
     }
     
     /* Widget Loading Skeleton */
@@ -229,30 +246,45 @@
     }
     
     @media (max-width: 1199px) {
-      .stock-ticker-section,
-      .ir-widget-item {
+      .stock-ticker-section {
         padding-left: calc(10% - 8px);
         padding-right: calc(10% - 8px);
+      }
+      .ir-widget-item {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: calc(10% - 8px);
+        margin-right: calc(10% - 8px);
       }
     }
     
     @media (max-width: 899px) {
-      .stock-ticker-section,
-      .ir-widget-item {
+      .stock-ticker-section {
         padding-left: 52px;
         padding-right: 52px;
       }
+      .ir-widget-item {
+        margin-left: 52px;
+        margin-right: 52px;
+      }
       
       .stock-ticker-wrapper {
-        height: 50px;
+        height: 60px;
       }
     }
     
     @media (max-width: 599px) {
-      .stock-ticker-section,
-      .ir-widget-item {
+      .stock-ticker-section {
         padding-left: 12px;
         padding-right: 12px;
+      }
+      .ir-widget-item {
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+      
+      .stock-ticker-wrapper {
+        height: 50px;
       }
     }
   </style>
@@ -470,6 +502,7 @@
   </div>
 
   <script src="js/shared-components.js"></script>
+  <script src="js/animations.js"></script>
   <script src="js/search-dialog.js"></script>
   <script>
     if (typeof SearchDialog !== 'undefined') {
@@ -526,6 +559,49 @@
           widgetObserver.observe(widget, { childList: true, subtree: true });
         });
       });
+      
+      // Style Company Snapshot widget headers
+      function styleCompanySnapshotHeaders() {
+        const companySnapshotWidget = document.getElementById('company-snapshot-widget');
+        if (companySnapshotWidget) {
+          // Try to access iframe content (will only work if same-origin)
+          const iframe = companySnapshotWidget.querySelector('iframe');
+          if (iframe) {
+            try {
+              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+              if (iframeDoc) {
+                // Add custom styles to iframe
+                const style = iframeDoc.createElement('style');
+                style.textContent = `
+                  h3, h4, .section-title, [class*="title"], [class*="heading"] {
+                    font-weight: 700 !important;
+                    font-size: 18px !important;
+                  }
+                `;
+                iframeDoc.head.appendChild(style);
+              }
+            } catch (e) {
+              // Cross-origin iframe - can't access content
+              console.log('Cannot style iframe content (cross-origin)');
+            }
+          }
+          
+          // Alternative: Style the widget container
+          const style = document.createElement('style');
+          style.textContent = `
+            #company-snapshot-widget h3,
+            #company-snapshot-widget h4 {
+              font-weight: 700 !important;
+              font-size: 18px !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+      
+      // Try to style after widget loads
+      setTimeout(styleCompanySnapshotHeaders, 2000);
+      setTimeout(styleCompanySnapshotHeaders, 5000);
     })();
   </script>
 </body>

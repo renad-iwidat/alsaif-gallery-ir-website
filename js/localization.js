@@ -138,7 +138,7 @@ const Localization = {
         
         // Footer
         footerCtaTitle: { 
-            ar: 'تبحث عن تسوّق من أكثر من ‎15,000‏ منتج؟', 
+            ar: 'تبحث عن تسوّق من أكثر من 15,000 منتج؟', 
             en: 'Looking to shop our full range of 15,000+ products?' 
         },
         footerCtaSubtitle: { 
@@ -147,7 +147,7 @@ const Localization = {
         },
         footerCtaButton: { ar: 'تسوق الآن', en: 'Visit the Online Store' },
         
-        footerEstablished: { ar: 'تأسست عام ‎1993‏', en: 'Established in 1993' },
+        footerEstablished: { ar: 'تأسست عام 1993', en: 'Established in 1993' },
         footerCompany: { ar: 'الشركة', en: 'Company' },
         footerAboutUs: { ar: 'من نحن', en: 'About Us' },
         footerStrategy: { ar: 'الاستراتيجية', en: 'Strategy' },
@@ -159,7 +159,7 @@ const Localization = {
         footerContact: { ar: 'تواصل معنا', en: 'Contact' },
         footerIR: { ar: 'علاقات المستثمرين', en: 'Investor Relations' },
         footerCopyright: { 
-            ar: '© ‎2025‏ معرض السيف للأجهزة المنزلية. جميع الحقوق محفوظة.', 
+            ar: '© 2025 معرض السيف للأجهزة المنزلية. جميع الحقوق محفوظة.', 
             en: '© 2025 Al Saif Gallery. All rights reserved.' 
         },
         footerPrivacy: { ar: 'سياسة الخصوصية', en: 'Privacy Policy' },

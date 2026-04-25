@@ -59,7 +59,7 @@ function createTopBar(isArabic = false) {
                             <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             <span>${texts.documents}</span>
                         </a>
-                        <a href="#" class="top-bar-item">
+                        <a href="#" class="top-bar-item" onclick="event.preventDefault(); scrollToContact();">
                             <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             <span>${texts.contact}</span>
                         </a>
@@ -244,10 +244,10 @@ function createNavBar(isArabic = false, activePage = 'home') {
 
 function createFooter(isArabic = false) {
     const texts = isArabic ? {
-        ctaTitle: 'تبحث عن تسوّق من أكثر من ١٥,٠٠٠ منتج؟',
+        ctaTitle: 'تبحث عن تسوّق من أكثر من 15,000 منتج؟',
         ctaSubtitle: 'زُر متجر السيف غاليري الإلكتروني للتوصيل السريع في المملكة ودول الخليج.',
         ctaButton: 'تسوق الآن',
-        established: 'تأسست عام ١٩٩٣',
+        established: 'تأسست عام 1993',
         tadawul: 'تداول: 4192',
         company: 'الشركة',
         about: 'من نحن',
@@ -396,6 +396,33 @@ function toggleMobileMenu() {
     }
 }
 
+// Scroll to Contact Function - SIMPLE AND DIRECT
+function scrollToContact() {
+    console.log('=== SCROLL TO CONTACT CALLED ===');
+    
+    // Scroll to bottom immediately
+    window.scrollTo({ 
+        top: document.body.scrollHeight, 
+        behavior: 'smooth' 
+    });
+    
+    // Find and highlight contact section after scroll
+    setTimeout(function() {
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            const columns = footer.querySelectorAll('.footer-column');
+            const contactColumn = columns[columns.length - 1]; // Last column is Contact
+            
+            if (contactColumn) {
+                contactColumn.classList.add('highlight-pulse');
+                setTimeout(function() {
+                    contactColumn.classList.remove('highlight-pulse');
+                }, 3000);
+            }
+        }
+    }, 500);
+}
+
 // Show/Hide Mobile Menu Toggle based on screen size
 function updateMobileMenuVisibility() {
     const toggle = document.querySelector('.mobile-menu-toggle');
@@ -435,4 +462,57 @@ document.addEventListener('click', function(e) {
             history.pushState(null, null, link.hash);
         }
     }
+});
+
+
+// ============================================================================
+// RADICAL FIX: Prevent page scroll when scrolling inside dropdown
+// ============================================================================
+document.addEventListener('DOMContentLoaded', function() {
+    let isOverDropdown = false;
+    
+    // Track when mouse is over dropdown
+    document.addEventListener('mouseover', function(e) {
+        if (e.target.closest('.dropdown-content')) {
+            isOverDropdown = true;
+        }
+    }, true);
+    
+    document.addEventListener('mouseout', function(e) {
+        if (e.target.closest('.dropdown-content')) {
+            isOverDropdown = false;
+        }
+    }, true);
+    
+    // Prevent page scroll when scrolling dropdown
+    document.addEventListener('wheel', function(e) {
+        const dropdown = e.target.closest('.dropdown-content');
+        
+        if (dropdown && isOverDropdown) {
+            const isScrollable = dropdown.scrollHeight > dropdown.clientHeight;
+            
+            if (isScrollable) {
+                const scrollTop = dropdown.scrollTop;
+                const scrollHeight = dropdown.scrollHeight;
+                const clientHeight = dropdown.clientHeight;
+                const deltaY = e.deltaY;
+                
+                const isAtTop = scrollTop === 0;
+                const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+                
+                // Prevent page scroll at boundaries
+                if ((isAtTop && deltaY < 0) || (isAtBottom && deltaY > 0)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else {
+                    // Allow dropdown scroll but prevent page scroll
+                    e.stopPropagation();
+                }
+            } else {
+                // Not scrollable, prevent all scroll
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }
+    }, { passive: false, capture: true });
 });

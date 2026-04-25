@@ -67,7 +67,7 @@ const Footer = {
                             </div>
                             
                             <!-- Contact Column -->
-                            <div class="footer-column">
+                            <div class="footer-column" id="footer-contact">
                                 <h4>${Localization.t('footerContact')}</h4>
                                 <ul>
                                     <li><a href="/investors-governance">${Localization.t('footerIR')}</a></li>

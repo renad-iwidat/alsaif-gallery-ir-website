@@ -40,8 +40,21 @@ const NavigationBar = {
                                 ${Localization.t('navInvestors')}
                                 <div class="dropdown-content">
                                     <a href="/investors-governance" class="dropdown-item">${Localization.t('navInvestors')}</a>
-                                    <a href="/investors-governance#financials" class="dropdown-item">Financial Reports</a>
-                                    <a href="/investors-governance#governance" class="dropdown-item">Corporate Governance</a>
+                                    <a href="/investors-governance#investment-case" class="dropdown-item">Investment Case</a>
+                                    <a href="/investors-governance#company-snapshot" class="dropdown-item">Company Snapshot</a>
+                                    <a href="/investors-governance#announcements" class="dropdown-item">Announcements</a>
+                                    <a href="/investors-governance#fact-sheet" class="dropdown-item">Fact Sheet</a>
+                                    <a href="/investors-governance#stock-activity" class="dropdown-item">Stock Activity</a>
+                                    <a href="/investors-governance#corporate-actions" class="dropdown-item">Corporate Actions</a>
+                                    <a href="/investors-governance#financials" class="dropdown-item">Company Financials</a>
+                                    <a href="/investors-governance#share-price" class="dropdown-item">Share Price</a>
+                                    <a href="/investors-governance#performance" class="dropdown-item">Performance</a>
+                                    <a href="/investors-governance#calculator" class="dropdown-item">Investment Calculator</a>
+                                    <a href="/investors-governance#share-series" class="dropdown-item">Share Series</a>
+                                    <a href="/investors-governance#share-view" class="dropdown-item">Share View</a>
+                                    <a href="/investors-governance#price-lookup" class="dropdown-item">Price Lookup</a>
+                                    <a href="/investors-governance#peer-group" class="dropdown-item">Peer Group Analysis</a>
+                                    <a href="/investors-governance#subscribe" class="dropdown-item">Subscribe</a>
                                 </div>
                             </div>
                             <a href="/news-careers" class="nav-item" data-route="/news-careers">${Localization.t('navNewsroom')}</a>
@@ -154,6 +167,22 @@ const NavigationBar = {
                 this.closeMobileMenu();
             }
         });
+        
+        // Prevent page scroll when scrolling inside dropdown
+        document.addEventListener('wheel', (e) => {
+            const dropdown = e.target.closest('.dropdown-content');
+            if (dropdown) {
+                const isScrollable = dropdown.scrollHeight > dropdown.clientHeight;
+                if (isScrollable) {
+                    const isAtTop = dropdown.scrollTop === 0;
+                    const isAtBottom = dropdown.scrollTop + dropdown.clientHeight >= dropdown.scrollHeight;
+                    
+                    if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+                        e.preventDefault();
+                    }
+                }
+            }
+        }, { passive: false });
     },
     
     // Toggle dropdown

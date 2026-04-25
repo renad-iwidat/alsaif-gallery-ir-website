@@ -80,12 +80,19 @@ const TopBar = {
     
     // Bind event listeners
     bindEvents() {
-        // Delegate click events
-        Utils.dom.on(document, 'click', (e) => {
+        // RADICAL FIX: Use direct event listener instead of Utils.dom.on
+        document.addEventListener('click', (e) => {
             const item = e.target.closest('.top-bar-item');
             if (!item) return;
             
             const action = item.dataset.action;
+            
+            console.log('Top bar item clicked:', action); // Debug
+            
+            // Prevent default for all actions
+            e.preventDefault();
+            e.stopPropagation();
+            
             switch (action) {
                 case 'documents':
                     this.handleDocuments();
@@ -100,7 +107,7 @@ const TopBar = {
                     this.handleLanguage();
                     break;
             }
-        });
+        }, true); // Use capture phase
     },
     
     // Handle documents click
@@ -110,7 +117,36 @@ const TopBar = {
     
     // Handle contact click
     handleContact() {
-        Router.navigate('/news-careers', 'contact');
+        console.log('=== CONTACT HANDLER CALLED ==='); // Debug log
+        
+        // RADICAL FIX: Scroll immediately to bottom first
+        window.scrollTo({ 
+            top: document.body.scrollHeight, 
+            behavior: 'smooth' 
+        });
+        
+        // Then try to find and highlight contact section
+        setTimeout(() => {
+            const footer = document.querySelector('.footer');
+            console.log('Footer found:', !!footer);
+            
+            if (footer) {
+                const footerColumns = footer.querySelectorAll('.footer-column');
+                console.log('Footer columns found:', footerColumns.length);
+                
+                // Get last column (Contact column)
+                const contactColumn = footerColumns[footerColumns.length - 1];
+                
+                if (contactColumn) {
+                    console.log('Contact column found, adding highlight');
+                    contactColumn.classList.add('highlight-pulse');
+                    
+                    setTimeout(() => {
+                        contactColumn.classList.remove('highlight-pulse');
+                    }, 3000);
+                }
+            }
+        }, 500);
     },
     
     // Handle search click
