@@ -224,20 +224,13 @@ function createNavBar(isArabic = false, activePage = 'home') {
         
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobile-menu">
-            <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
-            <div class="mobile-menu-content">
-                <div class="mobile-menu-header">
-                    <h3>${texts.menu}</h3>
-                    <button class="mobile-menu-close" onclick="toggleMobileMenu()">&times;</button>
-                </div>
-                <nav class="mobile-nav-menu">
-                    <a href="${homeHref}" class="mobile-nav-item ${activePage === 'home' ? 'active' : ''}">${texts.home}</a>
-                    <a href="${aboutHref}" class="mobile-nav-item ${activePage === 'about' ? 'active' : ''}">${texts.about}</a>
-                    <a href="${strategyHref}" class="mobile-nav-item ${activePage === 'strategy' ? 'active' : ''}">${texts.strategy}</a>
-                    <a href="${investorsHref}" class="mobile-nav-item ${activePage === 'investors' ? 'active' : ''}">${texts.investors}</a>
-                    <a href="${newsCareersHref}" class="mobile-nav-item ${activePage === 'news-careers' ? 'active' : ''}">${texts.newsroom}</a>
-                </nav>
-            </div>
+            <nav class="mobile-nav-menu">
+                <a href="${homeHref}" class="mobile-nav-item ${activePage === 'home' ? 'active' : ''}">${texts.home}</a>
+                <a href="${aboutHref}" class="mobile-nav-item ${activePage === 'about' ? 'active' : ''}">${texts.about}</a>
+                <a href="${strategyHref}" class="mobile-nav-item ${activePage === 'strategy' ? 'active' : ''}">${texts.strategy}</a>
+                <a href="${investorsHref}" class="mobile-nav-item ${activePage === 'investors' ? 'active' : ''}">${texts.investors}</a>
+                <a href="${newsCareersHref}" class="mobile-nav-item ${activePage === 'news-careers' ? 'active' : ''}">${texts.newsroom}</a>
+            </nav>
         </div>
     `;
 }
@@ -392,7 +385,6 @@ function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) {
         mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     }
 }
 

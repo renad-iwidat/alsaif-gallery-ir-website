@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/animations.css">
   <style>
+    /* Fix sticky positioning */
+    body, .container {
+      overflow: visible !important;
+    }
+    
     /* Mobile Top Bar Override - Show text on mobile */
     @media (max-width: 599px) {
       .top-bar-item span {
@@ -381,12 +386,7 @@
     }
     
     @media (max-width: 599px) {
-      body {
-        overflow-x: hidden !important;
-      }
-      
       .container {
-        overflow-x: hidden !important;
         max-width: 100vw !important;
       }
       
@@ -396,7 +396,6 @@
         padding: 32px 16px !important;
         justify-content: flex-start !important;
         transform: none !important;
-        overflow-x: hidden !important;
       }
       
       .strategy-hero h1 {
@@ -420,7 +419,6 @@
       
       .section {
         padding: 32px 16px !important;
-        overflow-x: hidden !important;
         max-width: 100vw !important;
       }
       
