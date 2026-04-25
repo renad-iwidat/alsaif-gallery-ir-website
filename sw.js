@@ -1,7 +1,7 @@
 // Service Worker for Al Saif Gallery Website
 // يوفر التخزين المؤقت وتحسين الأداء
 
-const CACHE_VERSION = 'v1.0.5'; // Simplified caching
+const CACHE_VERSION = 'v1.0.6'; // Cache-First for widgets
 const CACHE_NAME = `alsaif-gallery-${CACHE_VERSION}`;
 const WIDGET_CACHE = `alsaif-widgets-${CACHE_VERSION}`;
 
@@ -73,32 +73,42 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
     
-    // Handle external widget scripts - Simple caching
+    // Handle external widget scripts - Cache-First strategy for instant loading
     if (url.hostname === 'irp.atnmo.com' || url.hostname === 'widgets.financialcontent.com') {
         event.respondWith(
-            fetch(request)
-                .then((networkResponse) => {
-                    // Cache the response
-                    if (networkResponse && networkResponse.status === 200) {
-                        caches.open(WIDGET_CACHE)
-                            .then((cache) => {
-                                cache.put(request, networkResponse.clone());
-                            });
-                    }
-                    return networkResponse;
-                })
-                .catch(() => {
-                    // Fallback to cache if network fails
-                    return caches.open(WIDGET_CACHE)
-                        .then((cache) => cache.match(request))
+            caches.open(WIDGET_CACHE)
+                .then((cache) => {
+                    return cache.match(request)
                         .then((cachedResponse) => {
+                            // Return cached version immediately if available
                             if (cachedResponse) {
+                                console.log('[ServiceWorker] Serving widget from cache:', url.pathname);
+                                // Update cache in background
+                                fetch(request)
+                                    .then((networkResponse) => {
+                                        if (networkResponse && networkResponse.status === 200) {
+                                            cache.put(request, networkResponse.clone());
+                                        }
+                                    })
+                                    .catch(() => {});
                                 return cachedResponse;
                             }
-                            return new Response('Widget unavailable', {
-                                status: 503,
-                                statusText: 'Service Unavailable'
-                            });
+                            
+                            // Not in cache, fetch from network
+                            console.log('[ServiceWorker] Fetching widget from network:', url.pathname);
+                            return fetch(request)
+                                .then((networkResponse) => {
+                                    if (networkResponse && networkResponse.status === 200) {
+                                        cache.put(request, networkResponse.clone());
+                                    }
+                                    return networkResponse;
+                                })
+                                .catch(() => {
+                                    return new Response('Widget unavailable', {
+                                        status: 503,
+                                        statusText: 'Service Unavailable'
+                                    });
+                                });
                         });
                 })
         );

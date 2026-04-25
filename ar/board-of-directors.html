@@ -20,6 +20,10 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row-reverse;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
     .dialog-header h1 {
@@ -234,11 +238,18 @@
       .data-table__row {
         grid-template-columns: 1fr;
         gap: 4px;
+        text-align: right;
       }
       
       .exp-table__header,
       .exp-table__row {
         grid-template-columns: 1fr;
+        text-align: right;
+      }
+      
+      .data-table__row > div {
+        text-align: right;
+        direction: rtl;
       }
     }
   </style>

@@ -20,6 +20,10 @@
       justify-content: space-between;
       align-items: center;
       flex-direction: row-reverse;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     
     .dialog-header h1 {
@@ -224,6 +228,17 @@
       .experience-card__header {
         flex-direction: column;
         gap: 4px;
+        align-items: flex-end;
+      }
+      
+      .experience-card__org {
+        text-align: right;
+        width: 100%;
+      }
+      
+      .experience-card__date {
+        text-align: right;
+        width: 100%;
       }
     }
   </style>

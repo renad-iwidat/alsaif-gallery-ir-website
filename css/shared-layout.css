@@ -18,6 +18,7 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding-top: 0 !important;
 }
 
 body.ar {
@@ -31,19 +32,35 @@ body.ar {
     background-color: #F8FAFB;
 }
 
-/* Top Bar */
+/* Sticky Header Containers */
+#top-bar-container,
+#nav-bar-container {
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: inherit;
+}
+
+#top-bar-container {
+    top: 0;
+    z-index: 1000;
+}
+
+#nav-bar-container {
+    top: 26px;
+    z-index: 999;
+}
+
+/* Top Bar - Sticky */
 .top-bar {
     width: 100%;
     height: 26px;
     background-color: #F8FAFB;
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 1000 !important;
 }
 
 .top-bar-wrapper {
     height: 25px;
     border-bottom: 1px solid #E5E7EB;
+    background-color: #F8FAFB;
 }
 
 .top-bar-content {
@@ -102,15 +119,13 @@ body.ar .top-bar-item {
 }
 
 /* Navigation Bar */
+/* Navigation Bar - Sticky */
 .nav-bar {
     width: 100%;
     height: 70px;
     background-color: white;
     border-bottom: 1px solid #E5E7EB;
     box-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    position: sticky !important;
-    top: 26px !important;
-    z-index: 999 !important;
 }
 
 .nav-content {
@@ -689,7 +704,7 @@ body.ar .dropdown-item:hover {
   width: 500px;
   max-height: 500px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  z-index: 10000;
+  z-index: 10000 !important;
   overflow: hidden;
   animation: dropdownFadeIn 0.2s ease-out;
   border: 2px solid #C62030;
