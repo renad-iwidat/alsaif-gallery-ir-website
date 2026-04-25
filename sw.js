@@ -1,20 +1,19 @@
 // Service Worker for Al Saif Gallery Website
 // يوفر التخزين المؤقت وتحسين الأداء
 
-const CACHE_VERSION = 'v1.0.7'; // Network-First for HTML, Cache-First for assets
+const CACHE_VERSION = 'v2.0.0'; // Network-First: Always fresh HTML
 const CACHE_NAME = `alsaif-gallery-${CACHE_VERSION}`;
 const WIDGET_CACHE = `alsaif-widgets-${CACHE_VERSION}`;
 
-// Resources to cache immediately
+// Resources to cache (only static assets, NO HTML)
 const PRECACHE_URLS = [
-    '/',
-    '/index-new.html',
     '/css/main.css',
     '/css/variables.css',
     '/css/reset.css',
     '/css/components.css',
     '/css/shared-layout.css',
     '/css/responsive.css',
+    '/css/animations.css',
     '/js/main.js',
     '/js/config.js',
     '/js/utils.js',
@@ -73,16 +72,21 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
     
-    // Handle external widget scripts - Cache-First strategy for instant loading
+    // Skip cross-origin requests (except widgets)
+    if (url.origin !== location.origin && 
+        url.hostname !== 'irp.atnmo.com' && 
+        url.hostname !== 'widgets.financialcontent.com') {
+        return;
+    }
+    
+    // Handle external widget scripts - Cache-First for instant loading
     if (url.hostname === 'irp.atnmo.com' || url.hostname === 'widgets.financialcontent.com') {
         event.respondWith(
             caches.open(WIDGET_CACHE)
                 .then((cache) => {
                     return cache.match(request)
                         .then((cachedResponse) => {
-                            // Return cached version immediately if available
                             if (cachedResponse) {
-                                console.log('[ServiceWorker] Serving widget from cache:', url.pathname);
                                 // Update cache in background
                                 fetch(request)
                                     .then((networkResponse) => {
@@ -94,8 +98,6 @@ self.addEventListener('fetch', (event) => {
                                 return cachedResponse;
                             }
                             
-                            // Not in cache, fetch from network
-                            console.log('[ServiceWorker] Fetching widget from network:', url.pathname);
                             return fetch(request)
                                 .then((networkResponse) => {
                                     if (networkResponse && networkResponse.status === 200) {
@@ -115,17 +117,16 @@ self.addEventListener('fetch', (event) => {
         return;
     }
     
-    // Skip other cross-origin requests
-    if (url.origin !== location.origin) {
-        return;
-    }
-    
-    // Network-First Strategy for HTML pages (always get fresh content)
-    if (request.destination === 'document' || request.url.endsWith('.html')) {
+    // Network-First for ALL HTML pages - ALWAYS get fresh content
+    if (request.destination === 'document' || 
+        request.url.endsWith('.html') ||
+        request.mode === 'navigate') {
         event.respondWith(
-            fetch(request)
+            fetch(request, {
+                cache: 'no-cache'
+            })
                 .then((networkResponse) => {
-                    // Cache the fresh response
+                    // Cache the fresh response for offline use
                     if (networkResponse && networkResponse.status === 200) {
                         const responseToCache = networkResponse.clone();
                         caches.open(CACHE_NAME)
@@ -133,32 +134,47 @@ self.addEventListener('fetch', (event) => {
                                 cache.put(request, responseToCache);
                             });
                     }
-                    console.log('[ServiceWorker] Serving HTML from network:', url.pathname);
                     return networkResponse;
                 })
                 .catch(() => {
-                    // Fallback to cache if network fails
-                    console.log('[ServiceWorker] Network failed, serving HTML from cache:', url.pathname);
-                    return caches.match(request);
+                    // Fallback to cache only if network completely fails
+                    return caches.match(request)
+                        .then(cachedResponse => {
+                            if (cachedResponse) {
+                                return cachedResponse;
+                            }
+                            return new Response('Offline - Page not available', {
+                                status: 503,
+                                headers: { 'Content-Type': 'text/html' }
+                            });
+                        });
                 })
         );
         return;
     }
     
-    // Cache-First Strategy for static assets (CSS, JS, images, fonts)
+    // Cache-First for static assets (CSS, JS, images, fonts)
     event.respondWith(
         caches.match(request)
             .then((cachedResponse) => {
                 if (cachedResponse) {
-                    // Return cached version and update cache in background
-                    updateCache(request);
+                    // Return cached version and update in background
+                    fetch(request)
+                        .then((networkResponse) => {
+                            if (networkResponse && networkResponse.status === 200) {
+                                caches.open(CACHE_NAME)
+                                    .then((cache) => {
+                                        cache.put(request, networkResponse);
+                                    });
+                            }
+                        })
+                        .catch(() => {});
                     return cachedResponse;
                 }
                 
                 // Not in cache, fetch from network
                 return fetch(request)
                     .then((networkResponse) => {
-                        // Cache successful responses
                         if (networkResponse && networkResponse.status === 200) {
                             const responseToCache = networkResponse.clone();
                             caches.open(CACHE_NAME)
@@ -167,36 +183,10 @@ self.addEventListener('fetch', (event) => {
                                 });
                         }
                         return networkResponse;
-                    })
-                    .catch((error) => {
-                        console.error('[ServiceWorker] Fetch failed:', error);
-                        
-                        // Return offline page for navigation requests
-                        if (request.mode === 'navigate') {
-                            return caches.match('/offline.html');
-                        }
-                        
-                        throw error;
                     });
             })
     );
 });
-
-// Update cache in background
-function updateCache(request) {
-    fetch(request)
-        .then((response) => {
-            if (response && response.status === 200) {
-                caches.open(CACHE_NAME)
-                    .then((cache) => {
-                        cache.put(request, response);
-                    });
-            }
-        })
-        .catch(() => {
-            // Silently fail - we already have cached version
-        });
-}
 
 // Message event - handle messages from clients
 self.addEventListener('message', (event) => {
