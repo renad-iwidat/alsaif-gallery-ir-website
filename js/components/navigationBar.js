@@ -214,9 +214,9 @@ const NavigationBar = {
             
             // Prevent body scroll when menu is open
             if (Utils.dom.hasClass(menu, 'active')) {
-                document.body.style.overflow = 'hidden';
+                Utils.dom.addClass(document.body, 'mobile-menu-open');
             } else {
-                document.body.style.overflow = '';
+                Utils.dom.removeClass(document.body, 'mobile-menu-open');
             }
         }
     },
@@ -226,7 +226,7 @@ const NavigationBar = {
         const menu = Utils.dom.get('mobile-menu');
         if (menu) {
             Utils.dom.removeClass(menu, 'active');
-            document.body.style.overflow = '';
+            Utils.dom.removeClass(document.body, 'mobile-menu-open');
         }
     },
     

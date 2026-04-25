@@ -3,19 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>علاقات المستثمرين | مجموعة السيف | تداول: 4192</title>
   <meta name="description" content="علاقات المستثمرين، النتائج المالية، هيكل الحوكمة، وخدمات المساهمين لمجموعة السيف (تداول: 4192).">
   <meta name="theme-color" content="#C62030">
   
-  <link rel="stylesheet" href="../css/shared-layout.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/shared-layout.css?v=2.1.0">
+  <link rel="stylesheet" href="../css/responsive.css?v=2.1.0">
+  <link rel="stylesheet" href="../css/animations.css?v=2.1.0">
   <!-- Preconnect to external widget domain for faster loading -->
   <link rel="preconnect" href="https://irp.atnmo.com">
   <link rel="dns-prefetch" href="https://irp.atnmo.com">
+  <!-- Cache Manager - Must load first -->
+  <script src="../js/cache-manager.js?v=2.1.0"></script>
   <!-- Load widget loader synchronously to ensure loadWidget is available -->
   <script src="https://irp.atnmo.com/v3/widget/widget-loader.js"></script>
   <style>
+    /* Fix sticky positioning */
+    body, .container {
+      overflow: visible !important;
+    }
+    
     /* Mobile Top Bar Override - Show text on mobile */
     @media (max-width: 599px) {
       .top-bar-item span {
@@ -35,6 +45,7 @@
       padding: 60px 192px;
       position: relative;
       transform: scaleX(-1);
+      overflow: hidden;
     }
     
     .ig-hero__content {
@@ -205,6 +216,12 @@
       display: flex;
       align-items: center;
       height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .stock-ticker-wrapper > div > * {
+      overflow: hidden;
     }
     
     /* IR Widgets Section */
@@ -468,9 +485,9 @@
     <div id="footer-container"></div>
   </div>
 
-  <script src="../js/shared-components.js"></script>
-  <script src="../js/search-dialog.js"></script>
-  <script src="../js/animations.js"></script>
+  <script src="../js/shared-components.js?v=2.1.0"></script>
+  <script src="../js/search-dialog.js?v=2.1.0"></script>
+  <script src="../js/animations.js?v=2.1.0"></script>
   <script>
     if (typeof SearchDialog !== 'undefined') {
         SearchDialog.init();

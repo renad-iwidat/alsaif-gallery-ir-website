@@ -2,7 +2,8 @@
 const CONFIG = {
     // App Settings
     APP_NAME: 'Al Saif Gallery',
-    VERSION: '2.0.0',
+    VERSION: '2.1.5',
+    CACHE_VERSION: Date.now(), // Auto-updates on each deployment
     
     // API Endpoints (if needed in future)
     API_BASE_URL: '',
@@ -26,7 +27,8 @@ const CONFIG = {
     // Local Storage Keys
     STORAGE_KEYS: {
         LANGUAGE: 'lang',
-        THEME: 'theme'
+        THEME: 'theme',
+        CACHE_VERSION: 'cache_version'
     },
     
     // Default Settings
@@ -51,8 +53,38 @@ const CONFIG = {
         REVENUE: 758.8,
         PROPRIETARY_REVENUE: 88,
         ECOMMERCE_GROWTH: 37
+    },
+    
+    // Cache Busting Helper
+    getCacheBustedUrl(url) {
+        const separator = url.includes('?') ? '&' : '?';
+        return `${url}${separator}v=${this.CACHE_VERSION}`;
     }
 };
+
+// Auto-clear cache if version changed
+(function() {
+    const storedVersion = localStorage.getItem(CONFIG.STORAGE_KEYS.CACHE_VERSION);
+    const currentVersion = CONFIG.VERSION;
+    
+    if (storedVersion !== currentVersion) {
+        // Clear all caches
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => caches.delete(name));
+            });
+        }
+        
+        // Update stored version
+        localStorage.setItem(CONFIG.STORAGE_KEYS.CACHE_VERSION, currentVersion);
+        
+        // Force reload if not first visit
+        if (storedVersion !== null) {
+            console.log('New version detected, clearing cache...');
+            window.location.reload(true);
+        }
+    }
+})();
 
 // Export for use in other modules
 if (typeof module !== 'undefined' && module.exports) {
