@@ -1,7 +1,7 @@
 // Service Worker for Al Saif Gallery Website
 // يوفر التخزين المؤقت وتحسين الأداء
 
-const CACHE_VERSION = 'v1.0.6'; // Cache-First for widgets
+const CACHE_VERSION = 'v1.0.7'; // Network-First for HTML, Cache-First for assets
 const CACHE_NAME = `alsaif-gallery-${CACHE_VERSION}`;
 const WIDGET_CACHE = `alsaif-widgets-${CACHE_VERSION}`;
 
@@ -120,12 +120,12 @@ self.addEventListener('fetch', (event) => {
         return;
     }
     
-    // For HTML pages with widgets, use network first to get fresh content
-    if (request.url.includes('investors.html')) {
+    // Network-First Strategy for HTML pages (always get fresh content)
+    if (request.destination === 'document' || request.url.endsWith('.html')) {
         event.respondWith(
             fetch(request)
                 .then((networkResponse) => {
-                    // Cache the response
+                    // Cache the fresh response
                     if (networkResponse && networkResponse.status === 200) {
                         const responseToCache = networkResponse.clone();
                         caches.open(CACHE_NAME)
@@ -133,17 +133,19 @@ self.addEventListener('fetch', (event) => {
                                 cache.put(request, responseToCache);
                             });
                     }
+                    console.log('[ServiceWorker] Serving HTML from network:', url.pathname);
                     return networkResponse;
                 })
                 .catch(() => {
                     // Fallback to cache if network fails
+                    console.log('[ServiceWorker] Network failed, serving HTML from cache:', url.pathname);
                     return caches.match(request);
                 })
         );
         return;
     }
     
-    // Strategy: Cache First, falling back to Network
+    // Cache-First Strategy for static assets (CSS, JS, images, fonts)
     event.respondWith(
         caches.match(request)
             .then((cachedResponse) => {
