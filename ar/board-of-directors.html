@@ -94,25 +94,28 @@
     }
     
     .ratio-card {
-      background: white;
-      padding: 20px;
-      border-radius: 6px;
-      border: 1px solid #E5E7EB;
+      background: #FAFAFA;
+      padding: 24px;
+      border-radius: 8px;
+      border: 2px solid #C62030;
+      box-shadow: 0 2px 4px rgba(198, 32, 48, 0.08);
     }
     
     .ratio-card__label {
-      font-size: 13px;
-      font-weight: 500;
-      color: #6B7280;
-      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #4B5563;
+      margin-bottom: 12px;
       text-align: right;
     }
     
     .ratio-card__value {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: #C62030;
       text-align: right;
+      unicode-bidi: bidi-override;
+      direction: rtl;
     }
     
     .percentage-ltr {
@@ -275,11 +278,11 @@
       <div class="ratio-cards">
         <div class="ratio-card">
           <div class="ratio-card__label">نسبة الأعضاء غير التنفيذيين</div>
-          <div class="ratio-card__value">4 من أصل 6 = <span class="percentage-ltr">66.7%</span></div>
+          <div class="ratio-card__value"><span class="percentage-ltr">66.7%</span> = 4 من أصل 6</div>
         </div>
         <div class="ratio-card">
           <div class="ratio-card__label">نسبة الأعضاء المستقلين</div>
-          <div class="ratio-card__value">2 من أصل 6 = <span class="percentage-ltr">33.3%</span></div>
+          <div class="ratio-card__value"><span class="percentage-ltr">33.3%</span> = 2 من أصل 6</div>
         </div>
       </div>
     </div>

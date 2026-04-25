@@ -180,12 +180,12 @@
     /* Stock Ticker Section */
     .stock-ticker-section {
       background: white;
-      padding: 16px 192px 8px;
+      padding: 0 192px;
     }
     
     .stock-ticker-wrapper {
-      border: 2px solid #C62030;
-      border-radius: 8px;
+      border-top: 2px solid #C62030;
+      border-bottom: 2px solid #C62030;
       height: 70px;
       background: white;
       overflow: hidden;
@@ -202,47 +202,69 @@
     /* IR Widgets Section */
     .ir-widgets-section {
       background: #F8FAFB;
-      padding: 24px 0;
+      padding: 24px 192px;
     }
     
-    .ir-widget-item {
-      padding: 0;
-      margin: 0 192px 32px 192px;
+    .ir-widget-wrapper {
+      margin-bottom: 32px;
     }
     
-    .ir-widget-item h3 {
+    .ir-widget-title {
       font-size: 20px;
       font-weight: 600;
       color: #1A1A1A;
       margin-bottom: 12px;
+      text-align: left;
       background: transparent;
       padding: 0;
     }
     
-    .ir-widget-item > div[id$="-widget"] {
+    .ir-widget-item {
       background: white;
       padding: 20px;
       border-radius: 8px;
-      border: 1px solid #E5E7EB;
+      border: 2px solid #C62030;
+      min-height: 200px;
+      position: relative;
     }
     
-    /* Widget Loading Skeleton */
+    /* Skeleton Loader */
     .widget-skeleton {
-      min-height: 300px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      z-index: 1;
+    }
+    
+    .skeleton-line {
+      height: 16px;
       background: linear-gradient(90deg, #F3F4F6 25%, #E5E7EB 50%, #F3F4F6 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
     }
+    
+    .skeleton-line:nth-child(1) { width: 60%; }
+    .skeleton-line:nth-child(2) { width: 100%; }
+    .skeleton-line:nth-child(3) { width: 90%; }
+    .skeleton-line:nth-child(4) { width: 80%; }
+    .skeleton-line:nth-child(5) { width: 95%; }
     
     @keyframes shimmer {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
     
-    .ir-widget-item > div {
-      min-height: 300px;
+    .ir-widget-item iframe,
+    .ir-widget-item > div:not(.widget-skeleton) {
+      position: relative;
+      z-index: 2;
     }
     
     @media (max-width: 1199px) {
@@ -371,128 +393,240 @@
     <!-- IR Widgets Section -->
     <section class="ir-widgets-section" id="widgets">
       <!-- Company Snapshot -->
-      <div class="ir-widget-item" id="company-snapshot">
-        <h3>Company Snapshot</h3>
-        <div id="company-snapshot-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Company Snapshot</h3>
+        <div class="ir-widget-item" id="company-snapshot">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="company-snapshot-widget">
+            <script>loadWidget('company-snapshot', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Announcements -->
-      <div class="ir-widget-item" id="announcements">
-        <h3>Announcements</h3>
-        <div id="corporate-news-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Announcements</h3>
+        <div class="ir-widget-item" id="announcements">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="corporate-news-widget">
+            <script>loadWidget('corporate-news', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Fact Sheet -->
-      <div class="ir-widget-item" id="fact-sheet">
-        <h3>Fact Sheet</h3>
-        <div id="fact-sheet-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Fact Sheet</h3>
+        <div class="ir-widget-item" id="fact-sheet">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="fact-sheet-widget">
+            <script>loadWidget('fact-sheet', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Stock Activity -->
-      <div class="ir-widget-item" id="stock-activity">
-        <h3>Stock Activity</h3>
-        <div id="stock-activity-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Stock Activity</h3>
+        <div class="ir-widget-item" id="stock-activity">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="stock-activity-widget">
+            <script>loadWidget('stock-activity', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Corporate Actions -->
-      <div class="ir-widget-item" id="corporate-actions">
-        <h3>Corporate Actions</h3>
-        <div id="corporate-actions-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Corporate Actions</h3>
+        <div class="ir-widget-item" id="corporate-actions">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="corporate-actions-widget">
+            <script>loadWidget('corporate-actions', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Company Financials -->
-      <div class="ir-widget-item" id="financials">
-        <h3>Company Financials</h3>
-        <div id="company-financials-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Company Financials</h3>
+        <div class="ir-widget-item" id="financials">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="company-financials-widget">
+            <script>loadWidget('company-financials', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Share Price -->
-      <div class="ir-widget-item" id="share-price">
-        <h3>Share Price</h3>
-        <div id="share-price-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Share Price</h3>
+        <div class="ir-widget-item" id="share-price">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="share-price-widget">
+            <script>loadWidget('share-price', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Performance -->
-      <div class="ir-widget-item" id="performance">
-        <h3>Performance</h3>
-        <div id="performance-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Performance</h3>
+        <div class="ir-widget-item" id="performance">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="performance-widget">
+            <script>loadWidget('performance', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Investment Calculator -->
-      <div class="ir-widget-item" id="calculator">
-        <h3>Investment Calculator</h3>
-        <div id="investment-calculator-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Investment Calculator</h3>
+        <div class="ir-widget-item" id="calculator">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="investment-calculator-widget">
+            <script>loadWidget('investment-calculator', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Share Series -->
-      <div class="ir-widget-item" id="share-series">
-        <h3>Share Series</h3>
-        <div id="share-series-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Share Series</h3>
+        <div class="ir-widget-item" id="share-series">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="share-series-widget">
+            <script>loadWidget('share-series', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Share View -->
-      <div class="ir-widget-item" id="share-view">
-        <h3>Share View</h3>
-        <div id="share-view-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Share View</h3>
+        <div class="ir-widget-item" id="share-view">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="share-view-widget">
+            <script>loadWidget('share-view', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Price Lookup -->
-      <div class="ir-widget-item" id="price-lookup">
-        <h3>Price Lookup</h3>
-        <div id="price-lookup-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Price Lookup</h3>
+        <div class="ir-widget-item" id="price-lookup">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="price-lookup-widget">
+            <script>loadWidget('price-lookup', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Peer Group Analysis -->
-      <div class="ir-widget-item" id="peer-group">
-        <h3>Peer Group Analysis</h3>
-        <div id="peer-group-analysis-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Peer Group Analysis</h3>
+        <div class="ir-widget-item" id="peer-group">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="peer-group-analysis-widget">
+            <script>loadWidget('peer-group-analysis', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
       
       <!-- Email Subscription -->
-      <div class="ir-widget-item" id="subscribe">
-        <h3>Subscribe</h3>
-        <div id="email-subscription-widget">
-          <div class="widget-skeleton"></div>
-          <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+      <div class="ir-widget-wrapper">
+        <h3 class="ir-widget-title">Subscribe</h3>
+        <div class="ir-widget-item" id="subscribe">
+          <div class="widget-skeleton">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+          <div id="email-subscription-widget">
+            <script>loadWidget('email-subscription', "5be9c146-613e-4141-a351-1f5e13fc5513", "en", "81a06c05-1a48-4d1b-8dbd-bcf60a76730f", "v3");</script>
+          </div>
         </div>
       </div>
     </section>
