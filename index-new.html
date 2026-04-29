@@ -81,6 +81,31 @@
             padding: 0 calc(10% - 8px);
             color: white;
             max-width: 1000px; /* حد أقصى للعرض */
+            width: 100%;
+        }
+
+        /* Hero Widget Container */
+        .hero-widget-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-widget {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-widget iframe {
+            border-radius: 10px;
+            display: block;
         }
         
         .hero-title {
@@ -433,12 +458,14 @@
             .hero-section {
                 height: auto !important;
                 min-height: auto !important;
-                padding: 30px 0 30px 0;
+                padding: 30px 0 0 0 !important;
                 max-width: 100vw !important;
+                overflow: visible !important;
             }
             
             .hero-background {
                 max-width: 100vw !important;
+                height: 300px !important;
             }
             
             .hero-background img {
@@ -447,10 +474,21 @@
                 max-width: 100vw !important;
             }
             
+            .hero-overlay {
+                height: 100%;
+            }
+            
             .hero-content {
                 padding: 20px 16px !important;
                 justify-content: flex-start !important;
                 max-width: 100% !important;
+                height: auto !important;
+                position: relative !important;
+                z-index: 10 !important;
+            }
+
+            .hero-widget-container {
+                display: none !important;
             }
             
             .hero-title {
@@ -617,6 +655,37 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 16px;
             }
+
+            .hero-widget-container {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: auto;
+                padding: 0;
+            }
+
+            .hero-widget iframe {
+                width: 400px !important;
+                height: 200px !important;
+            }
+        }
+
+        /* Desktop Responsive */
+        @media (min-width: 900px) {
+            .hero-widget-container {
+                position: absolute;
+                right: 40px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: auto;
+                padding: 0;
+            }
+
+            .hero-widget iframe {
+                width: 524px !important;
+                height: 232px !important;
+            }
         }
     </style>
 </head>
@@ -635,6 +704,11 @@
                 <div class="hero-background">
                     <img src="assets/images/modern_kitchen.jpeg" alt="Modern Kitchen" />
                     <div class="hero-overlay"></div>
+                </div>
+                <div class="hero-widget-container">
+                    <div class="hero-widget">
+                        <iframe title="Property Widget" src="https://irp.atnmo.com/v3/widget/share-view?UUID=5be9c146-613e-4141-a351-1f5e13fc5513&listingId=81a06c05-1a48-4d1b-8dbd-bcf60a76730f&lang=en&dataSource=test&mode=dark" width="625px" frameborder="0" style="overflow: hidden; width:524px; height: 232px; border-radius:10px" scrolling="no"></iframe>
+                    </div>
                 </div>
                 <div class="hero-content">
                     <h1 class="hero-title" id="hero-title">Saudi Arabia's Home<br>Since 1993.</h1>
@@ -1405,6 +1479,22 @@
     if (typeof SearchDialog !== 'undefined') {
         SearchDialog.init();
     }
+
+    // Widget Auto-Refresh every 5 minutes
+    (function() {
+        const widgetIframe = document.querySelector('.hero-widget iframe');
+        
+        if (!widgetIframe) return;
+
+        // Auto-refresh widget every 5 minutes
+        setInterval(() => {
+            const currentSrc = widgetIframe.src;
+            // Add timestamp to force refresh
+            const separator = currentSrc.includes('?') ? '&' : '?';
+            widgetIframe.src = currentSrc.split('&t=')[0] + separator + 't=' + Date.now();
+            console.log('Widget refreshed');
+        }, 5 * 60 * 1000); // 5 minutes
+    })();
   </script>
 </body>
 </html>
