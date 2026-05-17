@@ -237,7 +237,7 @@ function createNavBar(isArabic = false, activePage = 'home') {
 
 function createFooter(isArabic = false) {
     const texts = isArabic ? {
-        ctaTitle: 'تبحث عن تسوّق من أكثر من 15,000 منتج؟',
+        ctaTitle: 'تبحث عن تجربة تسوق ثرية بين أكثر من 15,000منتج؟',
         ctaSubtitle: 'زُر متجر السيف غاليري الإلكتروني للتوصيل السريع في المملكة ودول الخليج.',
         ctaButton: 'تسوق الآن',
         established: 'تأسست عام 1993',
@@ -253,7 +253,6 @@ function createFooter(isArabic = false) {
         governance: 'الحوكمة',
         reports: 'التقارير',
         contact: 'تواصل معنا',
-        ir: 'علاقات المستثمرين',
         copyright: '© ٢٠٢٦ معرض السيف للأجهزة المنزلية. جميع الحقوق محفوظة.',
         privacy: 'سياسة الخصوصية',
         terms: 'الشروط والأحكام',
@@ -275,7 +274,6 @@ function createFooter(isArabic = false) {
         governance: 'Governance',
         reports: 'Reports & Filings',
         contact: 'Contact',
-        ir: 'Investor Relations',
         copyright: '© 2026 Al Saif Gallery. All rights reserved.',
         privacy: 'Privacy Policy',
         terms: 'Terms of Service',
@@ -308,7 +306,7 @@ function createFooter(isArabic = false) {
         <footer class="footer">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <h4>Al Saif Gallery</h4>
+                    <h4>${isArabic ? 'السيف غاليري' : 'Al Saif Gallery'}</h4>
                     <p>${texts.established}</p>
                     <p>${texts.tadawul}</p>
                 </div>
@@ -333,7 +331,6 @@ function createFooter(isArabic = false) {
                 <div class="footer-column">
                     <h4>${texts.contact}</h4>
                     <ul class="footer-links">
-                        <li><a href="#" class="footer-link">${texts.ir}</a></li>
                         <li><a href="mailto:ir@alsaifgallery.com" class="footer-link">ir@alsaifgallery.com</a></li>
                         <li><a href="tel:+966114064444" class="footer-link">+966 11 406 4444</a></li>
                     </ul>

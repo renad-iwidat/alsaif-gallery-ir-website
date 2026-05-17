@@ -42,7 +42,10 @@
         const counters = document.querySelectorAll('.stat-number, [data-count]');
         
         counters.forEach(function(counter) {
-            const target = parseInt(counter.getAttribute('data-count') || counter.textContent.replace(/[^0-9]/g, ''));
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const prefix = counter.getAttribute('data-prefix') || '';
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const isDecimal = counter.getAttribute('data-decimal') === 'true';
             
             if (isNaN(target)) return;
             
@@ -59,7 +62,15 @@
                                 current = target;
                                 clearInterval(timer);
                             }
-                            counter.textContent = Math.floor(current).toLocaleString();
+                            
+                            let displayValue;
+                            if (isDecimal) {
+                                displayValue = current.toFixed(1);
+                            } else {
+                                displayValue = Math.floor(current).toLocaleString();
+                            }
+                            
+                            counter.textContent = prefix + displayValue + suffix;
                         }, 16);
                         
                         counterObserver.unobserve(counter);

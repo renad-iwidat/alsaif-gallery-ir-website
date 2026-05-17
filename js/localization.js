@@ -99,11 +99,11 @@ const Localization = {
             en: 'Built on Brands Customers Return To' 
         },
         brandsDesc1: { 
-            ar: 'نقوم بتصميم وتوريد وتقديم مستلزمات المنزل عبر فئات يعتمد عليها العملاء في حياتهم اليومية ويعودون لشرائها باستمرار. ويقوم نموذج أعمالنا على ثلاث ركائز رئيسية متكاملة: محفظة من العلامات التجارية المملوكة المصممة خصيصًا لتلبية احتياجات الأسر السعودية، وشبكة وطنية من صالات العرض مدعومة بمستودع مركزي ومركز توزيع في جدة، ومنظومة متكاملة لخدمات ما بعد البيع تشمل الضمان والصيانة وتوفير قطع الغيار؛ بما يحوّل عملية الشراء إلى علاقة طويلة الأمد مع العميل.', 
+            ar: 'نقوم بتصميم وتوريد وتقديم مستلزمات المنزل عبر فئات يعتمد عليها العملاء في حياتهم اليومية ويعودون لشرائها باستمرار. ويقوم نموذج أعمالنا على ثلاث ركائز رئيسية متكاملة: محفظة من العلامات التجارية المملوكة المصممة خصيصًا لتلبية احتياجات الأسر السعودية، وشبكة وطنية من المعارض مدعومة بمستودعيين مركزيين في مدينة الرياض, إضافة إلى مركز "إيفاء" في جدة، ومنظومة متكاملة لخدمات ما بعد البيع تشمل الضمان والصيانة وتوفير قطع الغيار؛ بما يحوّل عملية الشراء إلى علاقة طويلة الأمد مع العميل.', 
             en: 'We source, design, and deliver household essentials across categories customers buy repeatedly and rely on daily. Our platform is structured around three reinforcing strengths: a proprietary brand portfolio with specifications tailored to Saudi households; a national showroom network supported by centralized warehousing and a Jeddah fulfillment center; and integrated service infrastructure covering warranty, repair, and spare parts that transforms a purchase into a lasting relationship.' 
         },
         brandsDesc2: { 
-            ar: 'هذا ليس نموذج تجارة تجزئة تقليدي، إذ تعمل السيف غاليري في قطاع متخصص محدد المعالم، في فئات الأدوات المنزلية وأجهزة المطبخ حيث نتمتع بموقع ريادي في المملكة العربية السعودية، ونقدم فيها جودة موثوقة بقيمة تنافسية. وتطورت علامة إديسون -من أكثر العلامات شهرة في الأجهزة المنزلية الصغيرة في المملكة- إلى منظومة متكاملة للأجهزة المنزلية، تشمل الثلاجات والغسالات وأنظمة التكييف وحلول المطابخ المدمجة.', 
+            ar: 'هذا ليس نموذج تجارة تجزئة تقليدي، إذ تعمل السيف غاليري في قطاع متخصص محدد المعالم، في فئات الأدوات المنزلية وأجهزة المطبخ حيث نتمتع بموقع ريادي في المملكة العربية السعودية، ونقدم فيها جودة موثوقة بقيمة تنافسية. وتطورت علامة إديسون - وهي من أكثر العلامات شهرة في الأجهزة المنزلية الصغيرة في المملكة- إلى منظومة متكاملة للأجهزة المنزلية، تشمل الثلاجات والغسالات وأنظمة التكييف وحلول المطابخ المدمجة.', 
             en: 'This is not generic retail. Al Saif Gallery operates in a carefully defined niche: the household goods and kitchen appliances categories where we hold a leading position in Saudi Arabia, delivering dependable quality at competitive value. Our Edison brand has grown from the country\'s most recognized small appliance label into a full home ecosystem, including refrigerators, washing machines, air conditioning, and built-in kitchen solutions.' 
         },
         
@@ -138,7 +138,7 @@ const Localization = {
         
         // Footer
         footerCtaTitle: { 
-            ar: 'تبحث عن تسوّق من أكثر من 15,000 منتج؟', 
+            ar: 'تبحث عن تجربة تسوق ثرية بين أكثر من 15,000منتج؟', 
             en: 'Looking to shop our full range of 15,000+ products?' 
         },
         footerCtaSubtitle: { 
@@ -157,7 +157,6 @@ const Localization = {
         footerGovernance: { ar: 'الحوكمة', en: 'Governance' },
         footerReports: { ar: 'التقارير', en: 'Reports & Filings' },
         footerContact: { ar: 'تواصل معنا', en: 'Contact' },
-        footerIR: { ar: 'علاقات المستثمرين', en: 'Investor Relations' },
         footerCopyright: { 
             ar: '© 2025 معرض السيف للأجهزة المنزلية. جميع الحقوق محفوظة.', 
             en: '© 2025 Al Saif Gallery. All rights reserved.' 
